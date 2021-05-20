@@ -2,8 +2,8 @@
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
 /***********************************************************************************/
-APRIL 26th 2021 Monday: 
-TWO SUM LEETCODE #1: 
+1. Two Sum
+Easy
 Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 You may assume that each input would have exactly one solution, and you may not use the same element twice.
 You can return the answer in any order.
@@ -27,9 +27,8 @@ twoSum(nums, target);
 /*************************************QUESTION********************************************/
 /***********************************************************************************/
 /*
-APRIL 27th 2021 Tuesday: 
 7. Reverse Integer
-Difficulty Easy:
+Easy:
 Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.
 
 Assume the environment does not allow you to store 64-bit integers (signed or unsigned).
@@ -49,23 +48,7 @@ Example 4:
 Input: x = 0
 Output: 0
 
-Constraints:
-
--2 31 <= x <= 2 31 - 1
-
-Our Plan: 
-1.Convert Number Into String
-2. Convert into Array using split
-3. Reverse the Array
-4. Join the Array Into a String Again
-5. Use Parse Float (to account for decimals as well) and to Convert String into Number Again
-5. Use Math.sign to get the sign from the original number and multiple the reversed number 
-to keep the sign consistent 
-6. Define a 32 bit number 
-7. Use an if statement to return the reverse number only if it meets the 
-Constraints of the 32 bit number 
-8. Else Return 0 
-
+Constraints: -2 31 <= x <= 2 31 - 1
 */
 /**************************************************************************************/
 /************************************ANSWER********************************************/
@@ -95,8 +78,7 @@ console.log(reverse(input64Bit))
 /***********************************************************************************/
 /*
 9. Palindrome Number
-
-Difficulty: Easy 
+Easy 
 Given an integer x, return true if x is palindrome integer.
 An integer is a palindrome when it reads the same backward as forward. For example, 121 is palindrome while 123 is not.
 
@@ -118,18 +100,7 @@ Example 4:
 Input: x = -101
 Output: false
  
-Constraints:
-
--231 <= x <= 231 - 1
-
-OUR PLAN: 
-1. Convert Integer to String 
-2. Split into Array 
-3. Reverse Array
-4. Join to String
-5. Wrap All that in A Parse Float to Convert String back into an Integer
-Compare that to Original Integer to see if it is a Palidrome if it's negative it will
-automatically be false. And if it's a decimal that is taken care of by the Parse Float 
+Constraints: -231 <= x <= 231 - 1
 */
 /**************************************************************************************/
 /************************************ANSWER********************************************/
@@ -147,11 +118,8 @@ console.log(isPalindrome(12.21));
 /*************************************QUESTION********************************************/
 /***********************************************************************************/
 /*
-APRIL 28 2020 WEDNESDAY
-
 13. Roman to Integer
-Difficulty: Easy
-
+Easy
 Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
 
 Symbol       Value
@@ -170,8 +138,6 @@ I can be placed before V (5) and X (10) to make 4 and 9.
 X can be placed before L (50) and C (100) to make 40 and 90. 
 C can be placed before D (500) and M (1000) to make 400 and 900.
 Given a roman numeral, convert it to an integer.
-
-
 Example 1:
 
 Input: s = "III"
@@ -200,7 +166,7 @@ Constraints:
 1 <= s.length <= 15
 s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
 It is guaranteed that s is a valid roman numeral in the range [1, 3999]. 
-Our Plan: 
+
 */
 /**************************************************************************************/
 /************************************ANSWER********************************************/
@@ -231,15 +197,13 @@ romanToInt('IV');
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
 /***********************************************************************************/
-/*APRIL 28th THURSDAY
-14. Longest Common Prefix
-Difficulty Easy
-Write a function to find the longest common prefix string amongst an array of strings.
 
+14. Longest Common Prefix
+Easy
+Write a function to find the longest common prefix string amongst an array of strings.
 If there is no common prefix, return an empty string "".
 
 Example 1:
-
 Input: strs = ["flower","flow","flight"]
 Output: "fl"
 Example 2:
@@ -274,48 +238,33 @@ longestCommonPrefix(arrayOfStrings);
 /*************************************QUESTION********************************************/
 /***********************************************************************************/
 /*
-29 APRIL 2021 FRIDAY
 20. Valid Parentheses
-Difficulty Easy
-
-Share
+Easy
 Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
-
 An input string is valid if:
-
-Open 
-brackets must be closed by the same type of brackets.
-Open brackets must be closed in the correct order.
+Open, brackets must be closed by the same type of brackets., Open brackets must be closed in the correct order.
  
 Example 1:
-
 Input: s = "()"
 Output: true
-Example 2:
 
+Example 2:
 Input: s = "()[]{}"
 Output: true
-Example 3:
 
+Example 3:
 Input: s = "(]"
 Output: false
-Example 4:
 
+Example 4:
 Input: s = "([)]"
 Output: false
-Example 5:
 
+Example 5:
 Input: s = "{[]}"
 Output: true
- 
 
-Constraints:
-
-1 <= s.length <= 104
-s consists of parentheses only '()[]{}'.
-
-}
-
+Constraints: 1 <= s.length <= 104, s consists of parentheses only '()[]{}'.}
 */
 
    /*hasOwnProperty returns a boolean value indicating whether the object on which you are calling it has a property(keys) with the name of the argument.here we are checking for the opening brackets so the keys in the object
@@ -346,111 +295,7 @@ var isValid = function (s) {
   return stack.length === 0;
 };
 isValid("([)]");
-/**************************************************************************************/
-/*************************************QUESTION********************************************/
-/***********************************************************************************/
-/*
-1832. Check if the Sentence Is Pangram
-Difficulty Easy
-A pangram is a sentence where every letter of the English alphabet appears at least once.
-Given a string sentence containing only lowercase English letters, return true if sentence is a pangram, or false otherwise.
-Example 1:
-Input: sentence = "thequickbrownfoxjumpsoverthelazydog"
-Output: true
-Explanation: sentence contains at least one of every letter of the English alphabet.
-Example 2:
 
-Input: sentence = "leetcode"
-Output: false
- 
-
-Constraints:
-
-1 <= sentence.length <= 1000
-sentence consists of lowercase English letters.
-*/
-/**************************************************************************************/
-/************************************ANSWER********************************************/
-/***********************************************************************************/ 
-var checkIfPangram = function (sentence) {
-  let alphabet = 'abcdefghijklmnopqrstuvwxyz';
-  for (const letter in alphabet) {
-   if (sentence.indexOf(alphabet[letter]) < 0) {
-     return false;
-    }
-  }
-  return true
-};
-checkIfPangram("thequickbrownfoxjumpsoverthelazydog");
-/**************************************************************************************/
-/*************************************QUESTION********************************************/
-/***********************************************************************************/    
-/*
-1480. Running Sum of 1d Array
-Difficulty Easy
-
-Given an array nums. We define a running sum of an array as runningSum[i] = sum(nums[0]…nums[i])
-Return the running sum of nums.
-
-Example 1:
-Input: nums = [1,2,3,4]
-Output: [1,3,6,10]
-Explanation: Running sum is obtained as follows: [1, 1+2, 1+2+3, 1+2+3+4].
-
-Example 2:
-Input: nums = [1,1,1,1,1]
-Output: [1,2,3,4,5]
-Explanation: Running sum is obtained as follows: [1, 1+1, 1+1+1, 1+1+1+1, 1+1+1+1+1].
-
-Example 3:
-Input: nums = [3,1,2,10,1]
-Output: [3,4,6,16,17]
- 
-Constraints:
-1 <= nums.length <= 1000
--10^6 <= nums[i] <= 10^6
-
-*/
-/**************************************************************************************/
-/************************************ANSWER********************************************/
-/***********************************************************************************/ 
-var runningSum = function(nums) {
-let sum = 0;
-let runSum = [];
-for(const x in nums){
-sum+=parseFloat(nums[x]);
-runSum.push(sum);
-}
-return runSum;
-};
-/**************************************************************************************/
-/*************************************QUESTION********************************************/
-/***********************************************************************************/
-/*
-1108. Defanging an IP Address
-Difficulty Easy
-Given a valid (IPv4) IP address, return a defanged version of that IP address.
-A defanged IP address replaces every period "." with "[.]".
-Example 1:
-
-Input: address = "1.1.1.1"
-Output: "1[.]1[.]1[.]1"
-Example 2:
-
-Input: address = "255.100.50.0"
-Output: "255[.]100[.]50[.]0"
-}
-Constraints: The given address is a valid IPv4 address.
-*/
-
-*/
-/**************************************************************************************/
-/************************************ANSWER********************************************/
-/***********************************************************************************/ 
-var defangIPaddr = function (address) {
-  return address.replace(/\./g, "[.]");
-};
-defangIPaddr("255.100.50.0");
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
 /***********************************************************************************/
@@ -461,26 +306,21 @@ Merge two sorted linked lists and return it as a sorted list. The list should be
 
 
 Example 1:
-
 Input: l1 = [1,2,4], l2 = [1,3,4]
 Output: [1,1,2,3,4,4]
 Example 2:
-
 Input: l1 = [], l2 = []
 Output: []
 Example 3:
-
 Input: l1 = [], l2 = [0]
 Output: [0]
- 
-Constraints:
-
-The number of nodes in both lists is in the range [0, 50].
--100 <= Node.val <= 100
+Constraints: The number of nodes in both lists is in the range [0, 50]. -100 <= Node.val <= 100
 Both l1 and l2 are sorted in non-decreasing order.
 
-Seen this question in a real interview before?*/
-
+*/
+/**************************************************************************************/
+/************************************ANSWER********************************************/
+/***********************************************************************************/ 
 
 /*********OUR ANSWER *******DIDNT WORK*/
 var mergeTwoLists = function(l1, l2){
@@ -528,14 +368,12 @@ var mergeTwoLists = function(l1, l2) {
 
 /*
 26. Remove Duplicates from Sorted Array
-Difficulty : Easy
-
+Easy
 Given a sorted array nums, remove the duplicates in-place such that each element appears only once and returns the new length.
 
 Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
 
 Clarification:
-
 Confused why the returned value is an integer but your answer is an array?
 
 Note that the input array is passed in by reference, which means a modification to the input array will be known to the caller as well.
@@ -587,269 +425,7 @@ var removeDuplicates = function(nums) {
   return count;
 };
 removeDuplicates([1, 1, 2]);
-/**************************************************************************************/
-/*************************************QUESTION********************************************/
-/***********************************************************************************/
 
-
-/*819. Most Common Word
-
-Given a string paragraph and a string array of the banned words banned, return the most frequent word that is not banned. It is guaranteed there is at least one word that is not banned, and that the answer is unique.
-
-The words in paragraph are case-insensitive and the answer should be returned in lowercase.
-
-Example 1:
-Input: paragraph = "Bob hit a ball, the hit BALL flew far after it was hit.", banned = ["hit"]
-Output: "ball"
-
-Explanation: 
-"hit" occurs 3 times, but it is a banned word.
-"ball" occurs twice (and no other word does), so it is the most frequent non-banned word in the paragraph. 
-Note that words in the paragraph are not case sensitive,
-that punctuation is ignored (even if adjacent to words, such as "ball,"), 
-and that "hit" isn't the answer even though it occurs more because it is banned.
-
-Example 2:
-Input: paragraph = "a.", banned = []
-Output: "a"
- 
-Constraints: 1 <= paragraph.length <= 1000
-paragraph consists of English letters, space ' ', or one of the symbols: "!?',;.".
-0 <= banned.length <= 100
-1 <= banned[i].length <= 10
-banned[i] consists of only lowercase English letters.
-*/
-
-/**************************************************************************************/
-/************************************ANSWER********************************************/
-/***********************************************************************************/ 
-
-var mostCommonWord = function (paragraph, banned) {
-  let obj = {};
-  let mostCommon;
- let wordArr = paragraph.toLowerCase().replace(/(~|`|!|@|#|$|%|^|&|\*|\(|\)|{|}|\[|\]|;|:|\"|'|<|,|\.|>|\?|\/|\\|\||-|_|\+|=)/g," ").split(" ");
-  let bannedSet = new Set();
-  banned.forEach((e) => bannedSet.add(e));
-  let result = wordArr.filter(Boolean).filter((x) => !bannedSet.has(x));
-  let counter = (key) => (obj[key] = ++obj[key] || 1);
-  result.forEach(counter);
-  let topWordLength = Math.max(...Object.values(obj));
-  let findMatch = (key) => obj[key] === topWordLength ? (mostCommon = key) : false;
-  result.forEach(findMatch);
-  return mostCommon
-};
-mostCommonWord("Bob hit a ball, the hit BALL ball flew far after it was hit.", ['hit']);
-/**************************************************************************************/
-/*************************************QUESTION********************************************/
-/***********************************************************************************/
-
-1800. Maximum Ascending Subarray Sum
-
-Given an array of positive integers nums, return the maximum possible sum of an ascending subarray in nums.
-
-A subarray is defined as a contiguous sequence of numbers in an array.
-
-A subarray [numsl, numsl+1, ..., numsr-1, numsr] is ascending if for all i where l <= i < r, numsi < numsi+1. Note that a subarray of size 1 is ascending.
-
-Example 1:
-
-Input: nums = [10,20,30,5,10,50]
-Output: 65
-Explanation: [5,10,50] is the ascending subarray with the maximum sum of 65.
-Example 2:
-
-Input: nums = [10,20,30,40,50]
-Output: 150
-Explanation: [10,20,30,40,50] is the ascending subarray with the maximum sum of 150.
-Example 3:
-
-Input: nums = [12,17,15,13,10,11,12]
-Output: 33
-Explanation: [10,11,12] is the ascending subarray with the maximum sum of 33.
-Example 4:
-
-Input: nums = [100,10,1]
-Output: 100
- 
-
-Constraints:
-
-1 <= nums.length <= 100
-1 <= nums[i] <= 100
-*/
-
-/**************************************************************************************/
-/************************************ANSWER********************************************/
-/***********************************************************************************/ 
-var maxAscendingSum = function (nums) {
-  let sum = 0;
-  let count = [];
-  for (let item = 0; item < nums.length; item++) {
-    if (nums[item] < nums[item + 1] && sum >= nums[item] && nums[item] > nums[item - 1]) {
-      sum += nums[item];
-    } else if (nums[item] <= nums[item - 1] ||(nums[item] < nums[item + 1] && sum >= nums[item])
-    ) {
-      sum = nums[item];
-    } else {
-      sum += nums[item];
-      count.push(sum);
-    }
-  }
-  return Math.max(...count);
-};
-
-maxAscendingSum([12,17,15,13,10,11,12])
-
-/**************************************************************************************/
-/*************************************QUESTION********************************************/
-/***********************************************************************************/
-1700. Number of Students Unable to Eat Lunch
-Easy
-
-The school cafeteria offers circular and square sandwiches at lunch break, referred to by numbers 0 and 1 respectively. All students stand in a queue. Each student either prefers square or circular sandwiches.
-
-The number of sandwiches in the cafeteria is equal to the number of students. The sandwiches are placed in a stack. At each step:
-
-If the student at the front of the queue prefers the sandwich on the top of the stack, they will take it and leave the queue.
-Otherwise, they will leave it and go to the queue's end.
-This continues until none of the queue students want to take the top sandwich and are thus unable to eat.
-
-You are given two integer arrays students and sandwiches where sandwiches[i] is the type of the i​​​​​​th sandwich in the stack (i = 0 is the top of the stack) and students[j] is the preference of the j​​​​​​th student in the initial queue (j = 0 is the front of the queue). Return the number of students that are unable to eat.
-
-
-Example 1:
-
-Input: students = [1,1,0,0], sandwiches = [0,1,0,1]
-Output: 0 
-Explanation:
-- Front student leaves the top sandwich and returns to the end of the line making students = [1,0,0,1].
-- Front student leaves the top sandwich and returns to the end of the line making students = [0,0,1,1].
-- Front student takes the top sandwich and leaves the line making students = [0,1,1] and sandwiches = [1,0,1].
-- Front student leaves the top sandwich and returns to the end of the line making students = [1,1,0].
-- Front student takes the top sandwich and leaves the line making students = [1,0] and sandwiches = [0,1].
-- Front student leaves the top sandwich and returns to the end of the line making students = [0,1].
-- Front student takes the top sandwich and leaves the line making students = [1] and sandwiches = [1].
-- Front student takes the top sandwich and leaves the line making students = [] and sandwiches = [].
-Hence all students are able to eat.
-Example 2:
-
-Input: students = [1,1,1,0,0,1], sandwiches = [1,0,0,0,1,1]
-Output: 3
- 
-
-Constraints:
-
-1 <= students.length, sandwiches.length <= 100
-students.length == sandwiches.length
-sandwiches[i] is 0 or 1.
-students[i] is 0 or 1.
-*/
-
-/*************************************************************************************/
-/************************************ANSWER********************************************/
-/***********************************************************************************/ 
-var countStudents = function (students, sandwiches) {
-  let shift = students.length * sandwiches.length;
-  for (i = 0; i < shift; i++) {
-    if (students[0] != sandwiches[0]) {
-      students.push(students.splice(0, 1)[0]);
-    } else {
-      sandwiches.splice(0, 1);
-      students.splice(0, 1);
-    }
-  }
-  return students.length;
-};
-countStudents([0,0,0,1,1,1,1,0,0,0], [1,0,1,0,0,1,1,0,0,0]);
-/**************************************************************************************/
-/*************************************QUESTION********************************************/
-/***********************************************************************************/
-/*
-1200. 
-Difficulty: EASY
-Given an array of distinct integers arr, find all pairs of elements with the minimum absolute difference of any two elements. 
-
-Return a list of pairs in ascending order(with respect to pairs), each pair [a, b] follows
-a, b are from arr
-a < b
-b - a equals to the minimum absolute difference of any two elements in arr
- 
-
-Example 1:
-Input: arr = [4,2,1,3]
-Output: [[1,2],[2,3],[3,4]]
-Explanation: The minimum absolute difference is 1. List all pairs with difference equal to 1 in ascending order.
-
-Example 2:
-Input: arr = [1,3,6,10,15]
-Output: [[1,3]]
-
-Example 3:
-Input: arr = [3,8,-10,23,19,-4,-14,27]
-Output: [[-14,-10],[19,23],[23,27]]
- 
-Constraints:
-
-2 <= arr.length <= 10^5
--10^6 <= arr[i] <= 10^6
-*/
-*/
-
-/*************************************************************************************/
-/************************************ANSWER********************************************/
-/***********************************************************************************/ 
-
-takes too long 
-var minimumAbsDifference = function(arr) {
-  let diff;
-  let obj={};
-  let pairs;
-  arr.sort(function(a, b){return a-b}); 
-for(let i=0; i<arr.length; i++){
-  for(let j=i+1; j<arr.length; j++){
-   diff=Math.abs(arr[i]-(arr[j]));
-   obj[[arr[i], arr[j]]]=diff;
-   if(i===0 && j===1){
-     curr=diff
-   }
-    if(diff<curr){
-      curr=diff
-      }
-}
-}
-    Object.keys(obj).forEach((key)=> obj[key]!=curr ? delete obj[key] : false);
-   pairs = Array.from((Object.keys(obj)), e => e.split(','));
-     let pairsNums = pairs.map((x) => x.map((y) => +y));
-     return pairsNums
-};
-
-//minimumAbsDifference([1,3,6,10,15])
-minimumAbsDifference([3,8,-10,23,19,-4,-14,27])
-//minimumAbsDifference([4,2,1,3])
-
-//actual answervar minimumAbsDifference = function (arr) {
-  let diff;
-  let curr;
-  let newArr = [];
-  arr.sort(function (a, b) {
-    return a - b;
-  });
-  for (let i = 0; i < arr.length; i++) {
-    diff = Math.abs(arr[i] - arr[i + 1]);
-    if (i === 0) {
-      curr = diff;
-    }
-    if (diff < curr) {
-      curr = diff;
-      newArr = [[arr[i], arr[i + 1]]];
-    } else if (diff === curr) {
-      newArr.push([arr[i], arr[i + 1]]);
-    }
-  }
-  return newArr;
-};
-
-minimumAbsDifference([3,8,-10,23,19,-4,-14,27])
 
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
@@ -972,8 +548,6 @@ Constraints: 1 <= nums.length <= 3 * 104 -105 <= nums[i] <= 105
 /*************************************************************************************/
 /************************************ANSWER********************************************/
 /***********************************************************************************/ 
-
-
 var maxSubArray = function(nums) {
     let maxSoFar = nums[0];
     let max = nums[0];
@@ -997,34 +571,7 @@ var maxSubArray = function(nums) {
     }
     return max;
 };
-maxSubArray([8,-19,5,-4,20]);/**************************************************************************************/
-/*************************************QUESTION********************************************/
-/***********************************************************************************/
-
-709. To Lower Case
-EASY
-
-Implement function ToLowerCase() that has a string parameter str, and returns the same string in lowercase.
-
-Example 1:
-Input: "Hello"
-Output: "hello"
-
-Example 2:
-Input: "here"
-Output: "here"
-Example 3:
-
-Input: "LOVELY"
-Output: "lovely"
-*/
-/*************************************************************************************/
-/************************************ANSWER********************************************/
-/***********************************************************************************/ 
-var toLowerCase = function(str) {
-   return str.toLowerCase();
-};
-toLowerCase("Hello");
+maxSubArray([8,-19,5,-4,20]);
 
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
@@ -1054,6 +601,60 @@ var lengthOfLastWord = function(s) {
     return s.trim().split(" ").pop().length;
 };
 lengthOfLastWord("hello world  ")
+
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***********************************************************************************/
+
+/*
+27. Remove Element
+Easy
+Given an array nums and a value val, remove all instances of that value in-place and return the new length.Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.The order of elements can be changed. It doesn't matter what you leave beyond the new length.
+
+Clarification:
+Confused why the returned value is an integer but your answer is an array?
+Note that the input array is passed in by reference, which means a modification to the input array will be known to the caller as well.
+
+Internally you can think of this:
+// nums is passed in by reference. (i.e., without making a copy)
+int len = removeElement(nums, val);
+
+// any modification to nums in your function would be known by the caller.
+// using the length returned by your function, it prints the first len elements.
+for (int i = 0; i < len; i++) {
+    print(nums[i]);
+}
+ 
+
+Example 1:
+Input: nums = [3,2,2,3], val = 3
+Output: 2, nums = [2,2]
+Explanation: Your function should return length = 2, with the first two elements of nums being 2.
+It doesn't matter what you leave beyond the returned length. For example if you return 2 with nums = [2,2,3,3] or nums = [2,2,0,0], your answer will be accepted.
+Example 2:
+
+Input: nums = [0,1,2,2,3,0,4,2], val = 2
+Output: 5, nums = [0,1,4,0,3]
+Explanation: Your function should return length = 5, with the first five elements of nums containing 0, 1, 3, 0, and 4. Note that the order of those five elements can be arbitrary. It doesn't matter what values are set beyond the returned length.
+ 
+Constraints: 0 <= nums.length <= 100 0 <= nums[i] <= 50 0 <= val <= 100
+*/
+
+*/
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/***********************************************************************************/ 
+var removeElement = function(nums, val) {
+for(i=0; i<nums.length; i++){
+  if(nums[i]===val){
+    nums.splice(i, 1)
+    i--;
+}
+}
+return nums.length
+};
+removeElement([3,2,2,3], 2);
+
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
 /***********************************************************************************/
@@ -1117,96 +718,6 @@ var plusOne = function (digits) {
 plusOne([6,1,4,5,3,9,0,1,9,5,1,8,6,7,0,5,5,4,3]);
 
 */
-/**************************************************************************************/
-/*************************************QUESTION********************************************/
-/***********************************************************************************/
-
-/*
-27. Remove Element
-Easy
-Given an array nums and a value val, remove all instances of that value in-place and return the new length.Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.The order of elements can be changed. It doesn't matter what you leave beyond the new length.
-
-Clarification:
-Confused why the returned value is an integer but your answer is an array?
-Note that the input array is passed in by reference, which means a modification to the input array will be known to the caller as well.
-
-Internally you can think of this:
-// nums is passed in by reference. (i.e., without making a copy)
-int len = removeElement(nums, val);
-
-// any modification to nums in your function would be known by the caller.
-// using the length returned by your function, it prints the first len elements.
-for (int i = 0; i < len; i++) {
-    print(nums[i]);
-}
- 
-
-Example 1:
-Input: nums = [3,2,2,3], val = 3
-Output: 2, nums = [2,2]
-Explanation: Your function should return length = 2, with the first two elements of nums being 2.
-It doesn't matter what you leave beyond the returned length. For example if you return 2 with nums = [2,2,3,3] or nums = [2,2,0,0], your answer will be accepted.
-Example 2:
-
-Input: nums = [0,1,2,2,3,0,4,2], val = 2
-Output: 5, nums = [0,1,4,0,3]
-Explanation: Your function should return length = 5, with the first five elements of nums containing 0, 1, 3, 0, and 4. Note that the order of those five elements can be arbitrary. It doesn't matter what values are set beyond the returned length.
- 
-Constraints: 0 <= nums.length <= 100 0 <= nums[i] <= 50 0 <= val <= 100
-*/
-
-*/
-/*************************************************************************************/
-/************************************ANSWER********************************************/
-/***********************************************************************************/ 
-var removeElement = function(nums, val) {
-for(i=0; i<nums.length; i++){
-  if(nums[i]===val){
-    nums.splice(i, 1)
-    i--;
-}
-}
-return nums.length
-};
-removeElement([3,2,2,3], 2);
-/**************************************************************************************/
-/*************************************QUESTION********************************************/
-/***********************************************************************************/
-/*1848. Minimum Distance to the Target Element
-Easy
-Given an integer array nums (0-indexed) and two integers target and start, find an index i such that nums[i] == target and abs(i - start) is minimized. Note that abs(x) is the absolute value of x.
-Return abs(i - start).
-
-It is guaranteed that target exists in nums.
-Example 1:
-Input: nums = [1,2,3,4,5], target = 5, start = 3
-Output: 1
-Explanation: nums[4] = 5 is the only value equal to target, so the answer is abs(4 - 3) = 1.
-
-Example 2:
-Input: nums = [1], target = 1, start = 0
-Output: 0
-Explanation: nums[0] = 1 is the only value equal to target, so the answer is abs(0 - 0) = 0.
-
-Example 3:
-Input: nums = [1,1,1,1,1,1,1,1,1,1], target = 1, start = 0
-Output: 0
-Explanation: Every value of nums is 1, but nums[0] minimizes abs(i - start), which is abs(0 - 0) = 0.
- 
-
-Constraints: 1 <= nums.length <= 1000 1 <= nums[i] <= 104 0 <= start < nums.length
-target is in nums.
-/*************************************************************************************/
-/************************************ANSWER********************************************/
-/***********************************************************************************/ 
-*/
-var getMinDistance = function(nums, target, start) {
-  let mySet = new Set();
-  nums.forEach((x)=> x===start | x===target ? mySet.add(x): false);
-  console.log(mySet)
-};
-getMinDistance([1,2,3,4,5], 5, 3)
-//x===target mySet.add(x)
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
 /***********************************************************************************/
@@ -1489,5 +1000,355 @@ var generate = function(numRows) {
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
 /***********************************************************************************/
+/*94. Binary Tree Inorder Traversal
+Easy-Given the roo of a binary tree, return the inorder traversal of its nodes' values.
+
+Example 1:
+Input: roo = [1,null,2,3]
+Output: [1,3,2]
+
+Example 2:
+Input: roo = []
+Output: []
+
+Example 3:
+Input: roo = [1]
+Output: [1] */
+
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/***********************************************************************************/ 
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[]}
+ */
 
 
+function TreeNode(val, left, right) {
+  let node = {};
+  node.val = val === undefined ? 0 : val;
+  node.left = left === undefined ? null : left;
+  node.right = right === undefined ? null : right;
+  return node;
+}
+function inOrder(treeNode, res) {
+  if (!treeNode) return res;
+  inOrder(treeNode.left, res);
+  res.push(treeNode.val);
+  inOrder(treeNode.right, res);
+  return res;
+}
+
+function arrayToTree(arr) {
+  if (arr[0] === null) {
+    return null;
+  }
+  let tree = new TreeNode(arr[0]); 
+  function preOrder(currentNode, index) {
+    if (currentNode == null || index >= arr.length) return index;
+    let leftNode = arr[index] != null ? TreeNode(arr[index]) : null;
+    let rightIndex = preOrder(leftNode, index + 1);
+    currentNode.left = leftNode;
+    let rightNode = rightIndex >= arr.length || arr[rightIndex] == null
+        ? null
+        : TreeNode(arr[rightIndex]);
+    currentNode.right = rightNode; 
+    return preOrder(rightNode, rightIndex + 1);
+  }
+  preOrder(tree, 1);
+  console.log(tree)
+  return tree;
+}
+
+function inorderTraversal(arr) {
+  let root = arrayToTree(arr);
+  return inOrder(root, []);
+}
+
+inorderTraversal([1, null, 2, 3]);
+
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***********************************************************************************/
+/*
+101. Symmetric Tree
+Easy
+Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
+Example 1:
+Input: root = [1,2,2,3,4,4,3]
+Output: true
+Example 2:
+Input: root = [1,2,2,null,3,null,3]
+Output: false
+Constraints: The number of nodes in the tree is in the range [1, 1000]. -100 <= Node.val <= 100*/
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/***********************************************************************************/ 
+function Node(val, left, right) {
+  let node = {};
+  node.val = val === undefined ? 0 : val;
+  node.left = left === undefined ? null : left;
+  node.right = right === undefined ? null : right;
+  return node;
+}
+function arrayToTree(arr) {
+  if (arr[0] === null) return null;
+  function deserialize(cNode, i) {
+    if (cNode == null || i >= arr.length) return i;
+    let nodeL = arr[i] != null ? Node(arr[i]) : null;
+    let iRight = deserialize(nodeL, i + 1);
+    cNode.left = nodeL;
+    let nodeR = iRight >= arr.length || arr[iRight] == null ? null : TreeNode(arr[iRight]);
+    cNode.right = nodeR; 
+    return deserialize(nodeR, iRight + 1);
+  }
+  let cNode = new Node(arr[0]); 
+  deserialize(cNode, 1);
+  console.log(cNode)
+  return cNode;
+}
+function isSymmetric(root) {
+  if(!root) return false;
+  function isMirror(treeX, treeY) {
+  if(!treeX && !treeY) return true
+  if(!treeX || !treeY) return false
+  return (treeX.val === treeY.val) && isMirror(treeX.left, treeY.right) && isMirror(treeX.right, treeY.left);
+}
+ let tree = arrayToTree(root);
+ return isMirror(tree.left, tree.right); 
+}
+
+//isSymmetric([1,2,2,null,3,null,3]);
+isSymmetric([1,2,2,3,4,4,3]);
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***********************************************************************************/
+101. Symmetric Tree
+Easy
+Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
+Example 1:
+Input: root = [1,2,2,3,4,4,3]
+Output: true
+Example 2:
+Input: root = [1,2,2,null,3,null,3]
+Output: false
+Constraints: The number of nodes in the tree is in the range [1, 1000]. -100 <= Node.val <= 100*/
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+
+function Node(val, left, right) {
+  let node = {};
+  node.val = val === undefined ? 0 : val;
+  node.left = left === undefined ? null : left;
+  node.right = right === undefined ? null : right;
+  return node;
+}
+function arrayToTree(arr) {
+  if (arr[0] === null) return null;
+  function deserialize(cNode, i) {
+    if (cNode == null || i >= arr.length) return i;
+    let nodeL = arr[i] != null ? Node(arr[i]) : null;
+    let iRight = deserialize(nodeL, i + 1);
+    cNode.left = nodeL;
+    let nodeR = iRight >= arr.length || arr[iRight] == null ? null : Node(arr[iRight]);
+    cNode.right = nodeR; 
+    return deserialize(nodeR, iRight + 1);
+  }
+  let cNode = new Node(arr[0]); 
+  deserialize(cNode, 1);
+  return cNode;
+}
+function isSymmetric(root) {
+  if(!root) return false;
+  function isMirror(treeX, treeY) {
+  if(!treeX && !treeY) return true
+  if(!treeX || !treeY) return false
+  return (treeX.val === treeY.val) && isMirror(treeX.left, treeY.right) && isMirror(treeX.right, treeY.left);
+}
+ let tree = arrayToTree(root);
+ return isMirror(tree.left, tree.right); 
+}
+
+var rootNode = arrayToTree([1,2,3,null,null,4,null,null,2,4,null,null,3,null,null]);
+isSymmetric(rootNode);
+/*//isSymmetric([1,2,2,null,3,null,3]);
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***********************************************************************************/
+104. Maximum Depth of Binary Tree
+Easy
+A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+Example 1:
+Input: root = [3,9,20,null,null,15,7]
+Output: 3
+Example 2:
+Input: root = [1,2,2,null,3,null,3]
+Example 3:
+Input: root = []
+Output: 0
+Example 4:
+Input: root = [0]
+Output: 1
+Constraints: The number of nodes in the tree is in the range [0, 104]. -100 <= Node.val <= 100*
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+function Node(val, left, right) {
+  let node = {};
+  node.val = val === undefined ? 0 : val;
+  node.left = left === undefined ? null : left;
+  node.right = right === undefined ? null : right;
+  return node;
+}
+function TreeNode(val) {
+  this.val = val;
+  this.left = this.right = null;
+}
+function arrayToTree(arr) {
+   if (arr[0] === null) return null;
+  function deserialize(cNode, i) {
+    if (cNode == null || i >= arr.length) return null;
+    let nodeL = arr[i] != null ? new Node(arr[i]) : null;
+    let iRight = deserialize(nodeL, i+1);
+    cNode.left = nodeL;
+    let nodeR = iRight >= arr.length || arr[iRight] == null
+        ? null
+        : new Node(arr[iRight]);
+    cNode.right = nodeR;
+    return deserialize(nodeR, iRight + 1);
+  }
+  cNode = new Node(arr[0]);
+  deserialize(cNode, 1);
+  return cNode;
+}
+function maxDepth(root) {
+  console.log(arrayToTree(root))
+  return findDepth(arrayToTree(root))
+}
+function findDepth(root) {
+  return root === null ? 0 : Math.max(findDepth(root.left), findDepth(root.right)+1)
+}
+maxDepth([1,2,2,3,4,4,3]);
+//[3,9,20,null,null,15,7] exp 3 */
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***********************************************************************************/
+/*
+108. Convert Sorted Array to Binary Search Tree
+Easy
+  Given an integer array nums where the elements are sorted in ascending order
+  convert it to a height-balanced binary search tree.
+  A height-balanced binary tree is a binary tree in which the depth of the two subtrees of every node never differs by more than one.
+Example 1:
+  Input: nums = [-10,-3,0,5,9]
+  Output: [0,-3,9,-10,null,5]
+  Explanation: [0,-10,5,null,-3,null,9] is also accepted:
+Example 2:
+  Input: nums = [1,3]
+  Output: [3,1]
+  Explanation: [1,3] and [3,1] are both a height-balanced BSTs.
+Constraints: 1 <= nums.length <= 104 && -104 <= nums[i] <= 104 && nums is sorted in a strictly increasing order.
+*/
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/***********************************************************************************/ 
+const sortedArrayToBST = nums => {
+  const createBST = (nums, start, end) => {
+    if (end < start) {
+      return null
+    }
+    const mid = Math.ceil((start + end) / 2)
+    const node = new TreeNode(nums[mid])
+    node.left = createBST(nums, start, mid - 1)
+    node.right = createBST(nums, mid + 1, end)
+    return node
+  }
+  return createBST(nums, 0, nums.length - 1)
+}
+sortedArrayToBST([-10,-3,0,5,9]);
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***********************************************************************************/
+108. Convert Sorted Array to Binary Search Tree
+Easy
+  Given an integer array nums where the elements are sorted in ascending order
+  convert it to a height-balanced binary search tree.
+  A height-balanced binary tree is a binary tree in which the depth of the two subtrees of every node never differs by more than one.
+Example 1:
+  Input: nums = [-10,-3,0,5,9]
+  Output: [0,-3,9,-10,null,5]
+  Explanation: [0,-10,5,null,-3,null,9] is also accepted:
+Example 2:
+  Input: nums = [1,3]
+  Output: [3,1]
+  Explanation: [1,3] and [3,1] are both a height-balanced BSTs.
+Constraints: 1 <= nums.length <= 104 && -104 <= nums[i] <= 104 && nums is sorted in a strictly increasing order.
+*/
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/***********************************************************************************/ 
+function TreeNode(val) {
+  this.val = val;
+  this.left = this.right = null;
+}
+  var sortedArrayToBST = function(nums) {
+      return traverse(nums,0,nums.length-1);
+  };
+
+  function traverse(nums,start,end){
+      if(start>end){                         
+          return null;
+      }
+      let mid = Math.floor((start+end)/2);       
+      let root = new TreeNode(nums[mid]);         
+      root.left = traverse(nums,start,mid-1);      
+      root.right = traverse(nums,mid+1,end);   
+      return root;                             
+ }
+
+sortedArrayToBST([0,-3,9,-10,null,5]);
+
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***********************************************************************************/
+/*
+119. Pascal's Triangle II
+Easy
+Given an integer rowIndex, return the rowIndexth (0-indexed) row of the Pascal's triangle.
+In Pascal's triangle, each number is the sum of the two numbers directly above it as shown:
+Example 1:
+Input: rowIndex = 3
+Output: [1,3,3,1]
+Example 2:
+Input: rowIndex = 0
+Output: [1]
+Example 3:
+Input: rowIndex = 1
+Output: [1,1]
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+
+var getRow = function(rowIndex) {
+  let row = [];
+  for (let i = 0; i < rowIndex+1; i++) {
+  row[i] = [];
+  row[i][0] = 1;
+  row[i][row.length-1] = 1;
+  for (let j = 1; j < i; j++) {
+    row[i][j] = row[i-1][j-1] + row[i-1][j];
+  }
+}
+  return row[rowIndex] 
+};
+getRow(3)
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***********************************************************************************/

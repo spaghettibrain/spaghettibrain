@@ -1,0 +1,19 @@
+
+/****************************************LOOP EXAMPLES******************************/
+
+  let arrx = s1 + s2;
+  console.log(arrx.split(''))
+  s1.split('').forEach((i, j) =>i!= s2[j] ? arr.push(s2[j], i) : '');  
+  arr.sort();
+  console.log(arr)
+  for (i = 0; i < arr.length; i++) {
+    if (arr[i] != arr[i + 1] || arr.length > 4 ) {
+      return false;
+    } 
+      i = i + 1;
+  }
+  return true 
+
+
+
+  /*******WHILE*******/

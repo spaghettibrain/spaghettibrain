@@ -1,0 +1,66 @@
+
+/*********************ARROW FUNCTION EXAMPLES*********************************/
+  function reg (a){
+  return a + 100;
+} 
+console.log(m(10)) //returns 110
+
+
+  let arrow = a => a + 100;
+  console.log(arrow(10)) //returns 110
+  
+  const materials = [
+  'Hydrogen',
+  'Helium',
+  'Lithium',
+  'Beryllium'
+];
+
+console.log(materials.map(material => material.length));
+// expected output: Array [8, 6, 7, 9]
+//lol good for longest word
+
+// Traditional Function
+function (a){
+  return a + 100;
+}
+
+// Arrow Function Break Down
+
+// 1. Remove the word "function" and place arrow between the argument and opening body bracket
+(a) => {
+  return a + 100;
+}
+
+// 2. Remove the body brackets and word "return" -- the return is implied.
+(a) => a + 100;
+
+// 3. Remove the argument parentheses
+a => a + 100;
+
+ARRAY 
+ let pairsNums = pairs.map((x) => x.map((y) => +y));
+
+
+
+ /*let w;
+  let arr = s.split('');
+    for(let i=0; i<s.length; i++){
+      // const found = arr.find((e) => e===arr[i]);
+      console.log(arr[i])
+      let copy = ((e)=> e===arr[i])
+      //console.log(arr.findIndex(copy))
+      let p = arr.findIndex(copy);
+      //w.push(p)
+      if(p!=undefined){   arr.splice(0, p)}
+     
+  //  w = arr.splice(0, i)
+       /*
+      if(arr[i+1]===arr[i]){
+ 
+        console.log(arr[i])
+         w = arr.splice(0, i-1)
+      }
+      }
+     // console.log(w)
+      return arr*/

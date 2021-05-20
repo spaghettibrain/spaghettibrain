@@ -1,0 +1,10 @@
+
+/****************************************FOR EACH EXAMPLES******************************/
+
+array1.forEach(element => console.log(element));
+
+  let objV =  Object.values(countObj)
+  objV.forEach(element => console.log(element));
+  
+  /**FOR EACH NEEDS example:     x.forEach(()=>) u need the round brace
+ Object.entries(books).forEach((book) => console.log(book));

@@ -1,0 +1,30 @@
+{
+  "name": "spaghettibrain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mollybeach/spaghettibrain.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mollybeach/spaghettibrain/issues"
+  },
+  "homepage": "https://github.com/mollybeach/spaghettibrain#readme",
+  "dependencies": {
+    "@replit/database": "^2.0.1",
+    "core-js": "^3.12.1",
+    "eslint": "^7.26.0",
+    "lodash": "^4.17.21",
+    "lodash.js": "0.0.1-security",
+    "ololog": "^1.1.175",
+    "rainbow-utils": "^0.9.0",
+    "rxjs": "^7.0.1"
+  }
+}

@@ -1,0 +1,55 @@
+
+
+
+  
+
+
+
+
+
+
+
+  /******** ANOTHER***/
+    let matchStudents=[];
+    let matchSandwiches=[];
+    /****TO PUSH MULTIPLE INDEXES TO AN ARRAY AND NOT PUSH THE WHOLE ARRAY ******/
+  for(i=0; i<max; i++ ){
+    matchSandwiches.push(parseFloat((sandwiches.splice(i, 1).toString())));
+    matchStudents.push(parseFloat((students.splice(i, 1).toString())));
+  }
+
+  //  /*  let lengthArr = [];
+  lengthArr.push(students.length, sandwiches.length);
+  let max = Math.max(...lengthArr);
+  */
+//for(i=0; i<max*2; i++ ){ 
+
+/****SORT*** REVERSE***/
+fruits.reverse();
+
+let input = 10000;
+let n = 10
+how many times a number can be divided by N
+console.log(Math.floor(Math.log(input)/Math.log(n)) )
+result -> 4
+
+
+
+
+
+/*
+~~~~~WELCOME TO SPAGHETTI BRAIN REPL CHANNEL~~~~~~~~
+~PASTE 1-3 LEETCODE QUESTIONS HERE EVERYDAY~~~~~~~~
+~~~~~~PREVIOUSLY SOLVED QUESTION SOLUTIONS~~~~~~
+~CAN BE FOUND IN THE FILES~~~~~~~~~~~
+~TO THE LEFT SIDE OF THE WEBPAGE~~~~~
+~~~~~SEPERATED BY: EASY MEDIUM AND HARD~~~~~~~~~~
+~THE IDEA BOARD DRAWING BOARD~~~~
+~~~~~IN THE FILES CAN BE USED~
+~~~TO WORK OUT PROBLEMS VISUALLY WITH PEERS~~~~~~~~~~~! 
+~~~~~~~~~~~~~~ENJOY!~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+
+
+
+

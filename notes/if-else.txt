@@ -1,0 +1,20 @@
+ /*******************************IF ELSE EXAMPLES******************************/
+
+   let consective = nums.reduce((acc, i) => acc + 1 === i ? true : false);
+   if(consective){console.log('hi')} //if true 
+     if(!consective){console.log('hi')} //if false
+
+
+/***************************IF STATEMENTS EXAMPLES*************************/
+a => (a < 10) ? 'valid' : 'invalid'
+As you've probably found, the body of an arrow function without braces can only be a single expression, so if statements are not allowed.
+
+// good
+const itemHeight = (item) => (item.height <= 256 ? item.largeSize : item.smallSize);
+
+// good
+const itemHeight = (item) => {
+  const { height, largeSize, smallSize } = item;
+  return height <= 256 ? largeSize : smallSize;
+}
+

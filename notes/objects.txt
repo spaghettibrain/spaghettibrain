@@ -1,0 +1,169 @@
+
+ /********************************OBJECT EXAMPLES********************************/
+ var obj = {key1: "value1", key2: "value2"};
+Object.assign(obj, {key3: "value3"});
+
+remember when assigning variable a value or a key to object u need to use []
+let x = (item) => nums[item] > nums[item-1] ? Object.assign(obj, {[item]: [sum] }): false;
+
+ //Object.entries(obj).forEach(([key, value]) => value === diff ? obj2[key]=1: false);
+ //console.log(obj2)
+ sort obj by value
+    const sortable = Object.entries(obj)
+    .sort(([,a],[,b]) => a-b)
+    .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+    console.log(sortable)
+ Object.entries(books).forEach(([key, value]) => value === 0 ? true: false);
+
+    /*
+    for(const i in newArr){
+      if(newArr[i]!=diff && i%2===0){
+        newArr.splice(i, 2)
+      }
+      }
+    */
+Object.entries(obj).forEach(([key, value]) => {if (key === 0) console.log(value);});
+Object.entries(obj).forEach(([key, value]) => {if (value === 0) console.log(key);});
+let getKeyByValue = (object, value) => Object.keys(object).find(key => object[key] === value);
+
+so u can use two arrow function witinin another crazy
+  let getObjEntry = (objInput, input) => Object.entries(objInput).forEach(([key, value]) => {if (value === input) return key;});
+
+
+
+let getObjEntry = (objInput, input) => Object.entries(objInput).forEach(([key, value]) => value === 0 ?  console.log('true'): console.log('false') );
+
+
+
+/*****OBJ FOR EACH*****/
+
+     removing objs with a certain values
+  for (const key in obj) {
+    if (obj[key] != curr) {
+      delete obj[key];
+    }
+  }
+  
+  Object.keys(obj).forEach((key)=> obj[key]!=curr ? delete obj[key] : false);
+
+
+/*    let sortObj= Object.entries(obj).sort(([,a],[,b]) => a-b)
+    .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});*/
+    //}
+  //let sortObj= Object.entries(obj).sort(([,a],[,b]) => a-b)
+ // let sortObj= Object.entries(obj).sort(([,a], [,b]) => a-b)
+  //  .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+   // console.log(sortObj)
+/***COUNT DIGITS IN A NUMBER*****/
+(Math.max(Math.floor(Math.log10(Math.abs(yNum))), 0)+1)
+
+
+
+
+function ternary() { return true ? 'awesome' : 'nicht awesome' }
+ternary()     // returns 'awesome'
+
+
+
+let answer = '';
+let getObjEntry = (objInput, input) => Object.entries(objInput).forEach(([key, value], input) => value === input ? answer = key : '');
+/***ENTRY*/
+ Let’s extract the entries of hero object:
+
+const hero = {
+  name: 'Batman',
+  city: 'Gotham'  
+};
+
+Object.entries(hero); // => `[['name', 'Batman'], ['city', 'Gotham']]`
+
+/****FOR LOOP ON OBJ****/
+const books = {
+  'The Shining': 5.50,
+  'Harry Potter and the Goblet of Fire': 10.00,
+  '1984': 0
+};
+
+for (const [book, price] of Object.entries(books)) {
+  if (price === 0) {
+    console.log(book);
+  }
+}
+/**FOR EACH NEEDS example:     x.forEach(()=>) u need the round brace
+ Object.entries(books).forEach((book) => console.log(book));
+ Object.entries(books).forEach(([book, price]) => {if (price === 0) console.log(book);});
+// logs '1984'
+/***/
+  // Object.keys(myobj)[0] = 'hi';
+ //  Object.values(myobj)[0] = count;
+//  obj[currentItem] = count;
+ //let obj = {};
+ //let mostCommon = Object.keys(obj).find(key => obj  [key] === count)
+ //Object.keys(obj)prints all keys
+ //Object.values(obj) prints all values
+//Object.keys(obj)[0] prints first key in object
+//Object.values(obj)[0] prints first value in object
+//remove empty array values from array 
+ let filtered = pArray.filter(Boolean); here’s how u remove empty array values
+
+ let bannedSet = new Set();
+  banned.forEach(e => bannedSet.add(e));
+  //checking if object has that variable
+  let result = pArray.filter(x => !bannedSet.has(x));
+Object.entries(books).forEach(([book, price]) => {if (price === 0) console.log(book);});
+
+//checking if variable exists
+  if (typeof variable === 'undefined' || variable === null) {
+    // variable is undefined or null
+}
+//Count how many times an item exists by using for each and storing it 
+
+let countObj = {};
+let arr = [1,2,3,1,2,3,4];
+let countFunc = keys => {
+  countObj[keys] = ++countObj[keys] || 1;
+}
+
+arr.forEach(countFunc);
+// {1: 2, 2: 2, 3: 2, 4: 1}
+Object.entries(books).forEach(([book, price]) => {if (price === 0) console.log(book);});
+/*var mostCommonWord = function (paragraph, banned) {
+  let wordCount = 0;
+  let mostCommon = "";
+  let pArray = paragraph.toLowerCase().replace(/(~|`|!|@|#|$|%|^|&|\*|\(|\)|{|}|\[|\]|;|:|\"|'|<|,|\.|>|\?|\/|\\|\||-|_|\+|=)/g,"").split(" ");
+  let bannedSet = new Set();
+  banned.forEach((e) => bannedSet.add(e));
+  console.log(bannedSet);
+  let result = pArray.filter((x) => !bannedSet.has(x));
+  let resultStr = result.toString();
+  for (let i = 0; i < result.length; i++) {
+    let currentItem = result[i];
+    let regex = new RegExp("\\b" + currentItem + "\\b", "g");
+    let found = resultStr.match(regex);
+    if (found.length > wordCount) {
+      wordCount = found.length;
+      mostCommon = currentItem;
+    }
+  }
+  return mostCommon;
+};
+mostCommonWord("Bob hit a ball, the hit BALL flew far after it was hit.", [
+  "hit",
+  "ball",
+]);
+*/
+3.4 Use property value shorthand. eslint: object-shorthand
+
+Why? It is shorter and descriptive.
+
+const lukeSkywalker = 'Luke Skywalker';
+
+// bad
+const obj = {
+  lukeSkywalker: lukeSkywalker,
+};
+
+// good
+const obj = {
+  lukeSkywalker,
+};

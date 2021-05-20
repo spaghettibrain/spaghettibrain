@@ -1,0 +1,45 @@
+
+/****************************************ARRAY EXAMPLES******************************/
+ let pairs =  [[ '7', '6', '5' ],
+  [ '2', '1', '0' ],
+  [ '7', '6', '5' ],
+  [ '2', '1', '0' ],
+  [ '2', '1', '0' ]]
+  --->
+  console.log(pairs.join().split(','))
+
+--->
+
+  [
+  '7', '6', '5', '2',
+  '1', '0', '7', '6',
+  '5', '2', '1', '0',
+  '2', '1', '0'
+]
+    //p.forEach((e) => half.push(e));
+      half.push(...p)
+      to copy an array just use ... not for each
+
+
+
+//arr.join('').toString()
+
+
+  THIS WILL JOIN WITHINTHENESTED ARRAYS
+  //let pairsNums = pairs.map((x) => x.map((y) => y.join()));
+
+    //let pairsNums = pairs.map((x) => x.join());
+
+
+
+
+/***ARRAY*****/
+
+const animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
+//console.log(animals.slice(1)); //this deletes ant i guess it it's the new
+//starting point
+/****NESTED***/
+
+
+
+s[s.length-1]

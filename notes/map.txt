@@ -1,0 +1,37 @@
+/****************************************MAP EXAMPLES******************************/
+
+var lengthOfLongestSubstring = function(s) {
+    let letters = new Map()
+    let highestLength = 0
+    let length = 0
+    // loop thru s until you find a repeating character and then slide and move to the letter of the repeating charcter
+    for(i = 0; i < s.length; i++) {
+        // this checks if a letter is no longer need for e.i abba when you go to b a is no longer used so you increase the length since it doesn't exist anymore
+        if(letters.get(s[i]) !== undefined && letters.get(s[i]) >= i - length) {
+            length = i - letters.get(s[i])
+        } else {
+            length++
+        }
+        letters.set(s[i], i)
+        highestLength = Math.max(highestLength, length)
+    }
+    
+    return highestLength
+};
+
+Map { 'a' => 0, 'b' => 1, 'c' => 2 }
+Map { 'a' => 3, 'b' => 1, 'c' => 2 }
+Map { 'a' => 3, 'b' => 4, 'c' => 2 }
+Map { 'a' => 3, 'b' => 4, 'c' => 5 }
+Map { 'a' => 3, 'b' => 6, 'c' => 5 }
+
+
+Map type has a special prototype to get length of the Map object
+
+const map1 = new Map();
+
+map1.set('a', 'alpha');
+map1.set('b', 'beta');
+map1.set('g', 'gamma');
+
+console.log(map1.size);

@@ -1,0 +1,44 @@
+
+/**************************************Set() EXAMPLES*******************************/
+ let bannedSet = new Set();
+  banned.forEach((e) => bannedSet.add(e));
+  console.log(bannedSet);
+  let result = pArray.filter((x) => !bannedSet.has(x));
+
+
+
+/*****.HAS***/
+var mostCommonWord = function (paragraph, banned) {
+  let obj = {};
+  let mostCommon;
+ let pArray = paragraph.toLowerCase().replace(/(~|`|!|@|#|$|%|^|&|\*|\(|\)|{|}|\[|\]|;|:|\"|'|<|,|\.|>|\?|\/|\\|\||-|_|\+|=)/g," ").split(" ");
+  let bannedSet = new Set();
+  banned.forEach((e) => bannedSet.add(e));
+  let result = pArray.filter(Boolean).filter((x) => !bannedSet.has(x));
+  let counter = (keys) => (obj[keys] = ++obj[keys] || 1);
+  result.forEach(counter);
+  let topWordLength = Math.max(...Object.values(obj));
+  Object.entries(obj).forEach(([key, value]) =>
+    value === topWordLength ? (mostCommon = key) : false
+  );
+  return mostCommon
+};
+
+var mostCommonWord = function (paragraph, banned) {
+  let obj = {};
+  let mostCommon;
+ let wordArr = paragraph.toLowerCase().replace(/(~|`|!|@|#|$|%|^|&|\*|\(|\)|{|}|\[|\]|;|:|\"|'|<|,|\.|>|\?|\/|\\|\||-|_|\+|=)/g," ").split(" ");
+  let bannedSet = new Set();
+  banned.forEach((e) => bannedSet.add(e));
+  let result = wordArr.filter(Boolean).filter((x) => !bannedSet.has(x));
+  let counter = (key) => (obj[key] = ++obj[key] || 1);
+  result.forEach(counter);
+  let topWordLength = Math.max(...Object.values(obj));
+  let findMatch = (key) => obj[key] === topWordLength ? (mostCommon = key) : false;
+  result.forEach(findMatch)
+  return mostCommon
+};
+mostCommonWord("Bob hit a ball, the hit BALL ball flew far after it was hit.", ['hit'])
+
+/*****FASTEST WAY TO MOVE INDEX TO BACK****/
+students.push(students.shift(i));

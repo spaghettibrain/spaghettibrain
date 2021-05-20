@@ -1,0 +1,19 @@
+/**************************SPLICE**********************/
+let exampleSpliceLoop = function(input){
+ let cut;
+
+for(i=0; i<input.length; i++ ){
+   cut = input.slice(i); //the new array start at the argument u put in 
+}
+return(cut); //returns ['f']
+}
+
+exampleSpliceLoop(['a','b','c','d','e', 'f']);
+     let matchStudents;
+     let matchSandwiches;
+     matchStudents = students.slice(i); //removes that index from array
+     matchSandwiches = sandwiches.slice(i);//removes that index from array
+      matchSandwiches = sandwiches.splice(i, 1); //makes a new array w that index && modifies original array
+      matchStudents = students.splice(i, 1);  //makes a new array w that index
+      && modifies original array
+      

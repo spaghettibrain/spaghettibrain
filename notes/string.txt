@@ -1,0 +1,43 @@
+/**************************************STRING EXAMPLES******************************/
+var str="0-12345";
+var is_dashed=(str.indexOf("-") !== -1);
+str= str.replace('-',''); //many more ideas , it seems simple to remove all '-
+/*******ITERATE THROUGH A STRING IN REVERSE*******/
+function reverse(str){  
+  let reversed = "";      
+   for (var i = str.length - 1; i >= 0; i--){         
+     reversed += str[i];  
+   }     
+  return reversed;
+
+  var lengthOfLongestSubstring = function(s) {
+  let arr = s.split(''), h;
+    for(let i=arr.length-1; i>0; i--){
+      let q = arr.indexOf(arr[i])
+      console.log('e: '+ arr[i] + ' i: '+ i + '  q: '+ q + '  arr:  [ '+ arr +' ]' + '\n')
+      if(q!=i) arr.splice(i, 1)
+    }
+    return arr
+};
+lengthOfLongestSubstring(s = "abcabcbb");
+
+
+// s=s.replace(s[i], '')
+
+//     console.log('e: '+ arr[i] + ' i: '+ i + '  q: '+ q + '  arr:  [ '+ arr +' ]' + '\n')
+/*
+var str="0-12345";
+//var is_dashed=(str.indexOf("3") !== -1);
+str= str.replace('3',''); //many more ideas , it seems simple to remove all '-
+
+*/
+/***********MAP*******/
+var lengthOfLongestSubstring = function(s) {
+    let inst = new Map(), length = 0;
+    for(i = 0; i < s.length; i++) {
+       inst.set(s[i],i)
+    }
+    
+    return inst.size
+};
+lengthOfLongestSubstring(s = "abcabcbb");

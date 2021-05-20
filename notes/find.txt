@@ -1,0 +1,47 @@
+
+/****************************************FIND EXAMPLES******************************/
+const array1 = [5, 12, 8, 130, 44];
+
+const found = array1.find(element => element > 10);
+
+console.log(found);
+// expected output: 12
+const inventory = [
+  {name: 'apples', quantity: 2},
+  {name: 'bananas', quantity: 0},
+  {name: 'cherries', quantity: 5}
+];
+
+function isCherries(fruit) {
+  return fruit.name === 'cherries';
+}
+
+console.log(inventory.find(isCherries));
+// { name: 'cherries', quantity: 5 }
+const inventory = [
+  {name: 'apples', quantity: 2},
+  {name: 'bananas', quantity: 0},
+  {name: 'cherries', quantity: 5}
+];
+
+const result = inventory.find( ({ name }) => name === 'cherries' );
+
+console.log(result) // { name: 'cherries', quantity: 5 }
+const trees = [
+  "birch",
+  "maple",
+  "oak",
+  "poplar"
+];
+
+const result = trees.find(tree => tree.startsWith("m"));
+
+/********FIND WITH OBJ*******/
+function getKeyByValue(object, value) {
+  return Object.keys(object).find(key => object[key] === value);
+}
+/***IN ARROW FORM****/
+let getKeyByValue = (object, value) => Object.keys(object).find(key => object[key] === value);
+const objExample = {"first" : "1", "second" : "2"};
+console.log(getKeyByValue(objExample,"2"));
+/**FOR EACH NEEDS example:     x.forEach(()=>) u need the round brace

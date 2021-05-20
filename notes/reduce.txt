@@ -1,0 +1,248 @@
+
+/* let arr = [];s1.reduce((acc, i) => {
+   return {...acc, i : (acc[i] || 0) + 1}
+   }, {})
+ 
+};s1.reduce((acc, i) => {
+   return {...acc, i : (acc[i] || 0) + 1}
+   }, {})
+ 
+};
+
+/******************REDUCE YOUTVIDEO ************************************************************/
+https://www.youtube.com/watch?v=NiLUGy1Mh4U
+  https://github.com/leighhalliday/reduce-example/blob/master/index.js
+const people = [
+  { id: "1", name: "Leigh", age: 35 },
+  { id: "2", name: "Jenny", age: 30 },
+  { id: "3", name: "Heather", age: 28 },
+];
+
+let result;
+
+// count
+
+result = people.reduce((acc, person) => acc + 1, 0);
+
+// sum ages
+
+result = people.reduce((acc, person) => acc + person.age, 0);
+
+// array of names (map)
+
+result = people.reduce((acc, person) => [...acc, person.name], []);
+
+// convert to id => person lookup (dict)
+
+result = people.reduce((acc, person) => {
+  return { ...acc, [person.id]: person };
+}, {});
+
+// max age
+
+result = people.reduce((acc, person) => {
+  if (acc === null || person.age > acc) return person.age;
+  return acc;
+}, null);
+
+// min age
+
+result = people.reduce((acc, person) => {
+  if (acc === null || person.age < acc) return person.age;
+  return acc;
+}, null);
+
+// find by name
+
+result = people.reduce((acc, person) => {
+  if (acc !== null) return acc;
+  if (person.name === "Leigh") return person;
+  return null;
+}, null);
+
+// all over 18
+
+result = people.reduce((acc, person) => {
+  if (!acc) return false;
+  return person.age > 18;
+}, true);
+
+// any over 18
+
+result = people.reduce((acc, person) => {
+  if (acc) return true;
+  return person.age > 18;
+}, false);
+
+// count occurrences
+
+const orders = [
+  { id: "1", status: "pending" },
+  { id: "2", status: "pending" },
+  { id: "3", status: "cancelled" },
+  { id: "4", status: "shipped" },
+];
+
+result = orders.reduce((acc, order) => {
+  return { ...acc, [order.status]: (acc[order.status] || 0) + 1 };
+}, {});
+
+// flatten
+
+const folders = [
+  "index.js",
+  ["flatten.js", "map.js"],
+  ["any.js", ["all.js", "count.js"]],
+];
+
+function flatten(acc, item) {
+  if (Array.isArray(item)) {
+    return item.reduce(flatten, acc);
+  }
+  return [...acc, item];
+}
+
+result = folders.reduce(flatten, []);
+
+// create reduce ourselves
+
+function reduce(array, callback, initial) {
+  let acc = initial;
+  for (let i = 0; i < array.length; i++) {
+    acc = callback(acc, array[i], i);
+  }
+  return acc;
+}
+
+result = reduce([1, 2, 3], (acc, num) => acc + num, 0);
+
+// reduce with early abort
+
+function reduceAbort(array, callback, initial) {
+  let acc = initial;
+
+  try {
+    for (let i = 0; i < array.length; i++) {
+      acc = callback(acc, array[i], i, array);
+    }
+  } catch (error) {
+    if (Array.isArray(error) && error[0] === "abort") {
+      return error[1];
+    }
+    throw error;
+  }
+
+  return acc;
+}
+
+person = reduceAbort(
+  people,
+  (_acc, person) => {
+    if (person.name === "Leigh") throw ["abort", person];
+    return null;
+  },
+  null
+);
+/*****************OTHER STUFF************/
+tehehehuerhhsadjhdsajk.sdasdsdjk.jksdabjk.bjk.SDFAbk.dfbjk.fdbsdf7&&&&&&&&*&(&*(&(&*(&*(&(*))))))
+var areAlmostEqual = function (s1, s2) {
+  let miss =0;
+ let one = s1.split('');
+  let two = s2.split('')
+  one.forEach((i, j)=> i!=two[j] ? miss=miss+1 : '')
+let obj1 = one.reduce(function(acc, i) {
+     if(!acc[i]) acc[i]  = 0; 
+     acc[i]++;                   
+    return acc;   
+    }, {}
+   );
+
+
+let a1Key = Object.keys(obj1);
+   // console.log(a1Key)
+let obj2 = two.reduce(function(acc, i) {
+     if(!acc[i]) acc[i]  = 0; 
+     acc[i]++;                   
+    return acc;   
+    }, {}
+   );
+  
+let a1Val = Object.values(obj1);
+ console.log(a1Val)
+   let a2Val = Object.values(obj2);
+      console.log(a2Val)
+   let a2Key = Object.keys(obj2);
+  //  console.log(a2Key)
+
+
+console.log(miss)
+
+    if(a1Key.sort().toString() != a2Key.sort().toString() ||  miss>2 ){return false}
+    return true
+}
+areAlmostEqual(s1 = "abcd", s2 = "dcba")
+
+// console.log(obj2) let pairsNums = pairs.map((x) => x.map((y) => +y));
+
+
+/**********OTHER STUFF******/
+
+const restoreString = (s, arr) => (
+    arr.reduce((accumulator, currentValue, index) => {
+        accumulator[currentValue] = s[index];
+        return accumulator;
+    }, []).join("")
+);
+
+
+//var restoreString = function(s, arr) {
+//restoreString(s = "codeleet", indices = [4,5,6,7,0,2,1,3])
+//restoreString( s = "abc", indices = [0,1,2])
+//restoreString(s = "aiohn", arr = [3,1,4,2,0])
+restoreString(s = "aaiougrt", arr = [4,0,2,6,7,3,1,5])
+//restoreString (s = "art", indices = [1,0,2])
+
+
+
+/*// Arrow function
+reduce((accumulator, currentValue) => { ... } )
+//reduce((accumulator, currentValue, index) => { ... } )
+reduce((accumulator, currentValue, index, array) => { ... } )
+reduce((accumulator, currentValue, index, array) => { ... }, initialValue)
+
+// Callback function
+reduce(callbackFn)
+reduce(callbackFn, initialValue)
+
+// Inline callback function
+reduce(function callbackFn(accumulator, currentValue) { ... })
+reduce(function callbackFn(accumulator, currentValue, index) { ... })
+reduce(function callbackFn(accumulator, currentValue, index, array){ ... })
+reduce(function callbackFn(accumulator, currentValue, index, array) { ... }, initialValue)*/
+
+/*
+var firstMissingPositive = function (nums) {
+  nums = nums.sort((a, b) => a - b);
+  let one = [];
+  let ln = nums.length-1;
+  let consective = nums.reduce((acc, i) => acc + 1 === i ? true : one.push(i));
+  if (consective===true) {
+    if (nums[0] <= 0 && (nums[ln] + 1) >= 0 ) {
+      console.log('if --> if')
+      return nums[ln] + 1;
+    } else {
+         console.log('if -----> else')   
+     return  1;
+    }
+  } else {
+      // console.log('last else')
+    //return one[0]+1;
+    if(){
+
+    }
+    
+  }
+};
+firstMissingPositive(nums = [7,8,9,11,12]);
+
+*/

@@ -1,0 +1,38 @@
+
+/**********************************************BOOLEAN*****************************/
+let expression = 2;
+var x = !!(expression);
+console.log(x)
+//evaluates to true
+
+var x = Boolean(expression);     // use this...
+var x = !!(expression);          // ...or this
+var x = new Boolean(expression); // don't use this!
+/****BOOL ARR EXAMP**/
+let arr = [1, 2, 3, 4]
+for(const item in arr){
+ 
+  let x =arr[x]; 
+  if(!!x)
+  {console.log('it exists')
+  }
+}
+/*prints: 
+ it exists
+it exists
+it exists
+it exists
+*/
+
+/*****U CAN ONLY HAVE ONE RETURN STATEMENT PER FUNCTION EVEN IF WITHIN******/
+let find = () => {
+let arr = [1, 2, 3, 4]
+for(const item in arr){
+  let x =arr[item]; 
+  if(!!x)
+  {
+    return true
+  }
+}
+}
+find() //returns true one time

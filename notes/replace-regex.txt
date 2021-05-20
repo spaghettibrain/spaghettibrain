@@ -1,0 +1,18 @@
+/*********************************Replace*Examples*****************************************/
+
+var str="0-12345";
+var is_dashed=(str.indexOf("-") !== -1);
+str= str.replace('-',''); //many more ideas , it seems simple to remove all '-
+/*****************************REGEX EXAMPLES*********************************/
+let paragraph = "Bob hit a ball, the hit BALL flew far after it was hit.";
+ let pArray = paragraph.toLowerCase().replace(/(~|`|!|@|#|$|%|^|&|\*|\(|\)|{|}|\[|\]|;|:|\"|'|<|,|\.|>|\?|\/|\\|\||-|_|\+|=)/g,"").split(" ");
+
+ /********TO USE VARIABLES IN REGEX YOU HAVE TO SET IT UP LIKE THIS******/
+   let currentItem = result[i]; //variable
+  let regex = new RegExp("\\b" + currentItem + "\\b", "g"); //use the \\b 'break s to match just a entire word not just part of a word
+  //.match for matching any part of a word/full word if u use //b
+  let found = resultStr.match(regex);
+
+
+
+  
