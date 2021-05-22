@@ -1,3 +1,4 @@
+
 /**************************************STRING EXAMPLES******************************/
 var str="0-12345";
 var is_dashed=(str.indexOf("-") !== -1);
@@ -41,3 +42,7 @@ var lengthOfLongestSubstring = function(s) {
     return inst.size
 };
 lengthOfLongestSubstring(s = "abcabcbb");
+
+check for spaces in string
+
+  if(s[i]=' '){

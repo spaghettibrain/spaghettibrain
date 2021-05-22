@@ -3,6 +3,17 @@
 var str="0-12345";
 var is_dashed=(str.indexOf("-") !== -1);
 str= str.replace('-',''); //many more ideas , it seems simple to remove all '-
+
+
+remove nums
+
+var sortSentence = function(s) {
+  s= s.replace(/[0-9]/g, '');
+  return s
+  
+};
+ 
+sortSentence("is2 sentence4 This1 a3")
 /*****************************REGEX EXAMPLES*********************************/
 let paragraph = "Bob hit a ball, the hit BALL flew far after it was hit.";
  let pArray = paragraph.toLowerCase().replace(/(~|`|!|@|#|$|%|^|&|\*|\(|\)|{|}|\[|\]|;|:|\"|'|<|,|\.|>|\?|\/|\\|\||-|_|\+|=)/g,"").split(" ");

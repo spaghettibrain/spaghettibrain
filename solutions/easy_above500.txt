@@ -758,3 +758,71 @@ var getMinDistance = function(nums, target, start) {
 };
 getMinDistance([1,2,3,4,5], 5, 3)
 //x===target mySet.add(x)
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************/
+/*
+1854. Maximum Population Year
+Easy
+You are given a 2D integer array logs where each logs[i] = [birthi, deathi] indicates the birth and death years of the ith person.
+The population of some year x is the number of people alive during that year. The ith person is counted in year x's population if x is in the inclusive range [birthi, deathi - 1]. Note that the person is not counted in the year that they die.
+Return the earliest year with the maximum population.
+
+Example 1:
+Input: logs = [[1993,1999],[2000,2010]]
+Output: 1993
+Explanation: The maximum population is 1, and 1993 is the earliest year with this population.
+
+Example 2:
+Input: logs = [[1950,1961],[1960,1971],[1970,1981]]
+Output: 1960
+Explanation: 
+The maximum population is 2, and it had happened in years 1960 and 1970.
+The earlier year between them is 1960.
+
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+const maximumPopulation = (logs) => {
+    let m = new Map();
+    for (const [birth, death] of logs) {
+        for (let year = birth; year < death; year++) {
+            m.set(year, m.get(year) + 1 || 1);
+        }
+    }
+    m = new Map([...m].sort((a, b) => {
+        if (a[1] == b[1]) return a[0] - b[0]; // if population same, smaller year comes first
+        return b[1] - a[1]; // sort by population decreasing
+    }));
+    return m.keys().next().value;
+};
+maximumPopulation( logs = [[1982,1998],[2013,2042],[2010,2035],[2022,2050],[2047,2048]]);
+
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************/
+/*
+1859. Sorting the Sentence
+Easy
+A sentence is a list of words that are separated by a single space with no leading or trailing spaces. Each word consists of lowercase and uppercase English letters.
+A sentence can be shuffled by appending the 1-indexed word position to each word then rearranging the words in the sentence.
+For example, the sentence "This is a sentence" can be shuffled as "sentence4 a3 is2 This1" or "is2 sentence4 This1 a3".
+Given a shuffled sentence s containing no more than 9 words, reconstruct and return the original sentence.
+
+Example 1:
+Input: s = "is2 sentence4 This1 a3"
+Output: "This is a sentence"
+Explanation: Sort the words in s to their original positions "This1 is2 a3 sentence4", then remove the numbers.
+Example 2:
+Input: s = "Myself2 Me1 I4 and3"
+Output: "Me Myself and I"
+Explanation: Sort the words in s to their original positions "Me1 Myself2 and3 I4", then remove the numbers.*./
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+var sortSentence = function(s) {
+return s.split(' ').sort((a,b) => a[a.length-1] - b[b.length-1]).join('').replace(/[0-9]/g, ' ').trim();
+
+};
+ 
+sortSentence("is2 sentence4 This1 a3")

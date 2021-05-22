@@ -1,5 +1,17 @@
 /***************************************MATH EXAMPLES******************************/
+var lengthOfLongestSubstring = function(s) {
+    let inst = new Map(), ln = 0, lnHigh=0;
+    for(i = 0; i < s.length; i++) {
+        if(inst.get(s[i])!==undefined && inst.get(s[i])>=i-ln)  ln = i-inst.get(s[i]) 
+         else ln++;
+        inst.set(s[i], i);  
+         lnHigh = Math.max(lnHigh, ln)
+    }   
+    return lnHigh
+};
 
+lengthOfLongestSubstring("abcabcbb");
+use math max in a loop to maintain to store the highest current number 
 
 /**********MATH MAX*********/
 console.log(Math.max(1, 3, 2));

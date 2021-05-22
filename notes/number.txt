@@ -1,0 +1,10 @@
+In JavaScript, there are two ways to check if a variable is a number :
+isNaN() – Stands for “is Not a Number”, if variable is not a number, it return true, else return false.
+typeof – If variable is a number, it will returns a string named “number”.
+
+
+if it is a number : 
+   if(!isNaN(s[i])){
+
+     if it is not a number : 
+   if(isNaN(s[i])){

@@ -6,7 +6,28 @@
 
 
 
-
+var sortSentence = function(s) {
+  let inst = new Map(), str='';
+ for(i=0; i<s.length; i++){
+    inst.set(s[i], i)
+   if(!isNaN(s[i])){
+    //  console.log(inst.get(' '))
+     // console.log(s[i])
+ //  str = str+s.substring(inst.get(s[' ']), i)
+ console.log(inst.get(' '))
+ console.log(i)
+ str=str+s.substring((inst.get(' ')), i)
+    }
+ }
+ 
+ 
+ //console.log(inst)
+ //str= str.replace(/[0-9]/g, '');
+  return str
+  
+};
+ 
+sortSentence("is2 sentence4 This1 a3")
 
 
   /******** ANOTHER***/

@@ -1,81 +1,62 @@
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
-/***********************************************************************************/
+/***************************************************************************************/
 /*
-3. Longest Substring Without Repeating Characters
+5. Longest Palindromic Substring
 Medium
-Given a string s, find the length of the longest substring without repeating characters.
+Given a string s, return the longest palindromic substring in s.
+
 Example 1:
-  Input: s = "abcabcbb"
-  Output: 3
-  Explanation: The answer is "abc", with the length of 3.
+Input: s = "babad"
+Output: "bab"
+Note: "aba" is also a valid answer.
+
 Example 2:
-  Input: s = "bbbbb"
-  Output: 1
-  Explanation: The answer is "b", with the length of 1.
+Input: s = "cbbd"
+Output: "bb"
+
 Example 3:
-  Input: s = "pwwkew"
-  Output: 3
-  Explanation: The answer is "wke", with the length of 3.
-  Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
+Input: s = "a"
+Output: "a"
+
 Example 4:
-Input: s = ""
-Output: 0
+Input: s = "ac"
+Output: "a"
 /*************************************************************************************/
 /************************************ANSWER********************************************/
 /*********************************************************************************/
-
-var lengthOfLongestSubstring = function(s) {
-    let letters = new Map()
-    let highestLength = 0
-    let length = 0
-    // loop thru s until you find a repeating character and then slide and move to the letter of the repeating charcter
-    for(i = 0; i < s.length; i++) {
-        // this checks if a letter is no longer need for e.i abba when you go to b a is no longer used so you increase the length since it doesn't exist anymore
-        if(letters.get(s[i]) !== undefined && letters.get(s[i]) >= i - length) {
-       
-     console.log('letters.get(s[i]) : ' + letters.get(s[i]) + ' > i-length : ' + (i-length) );
-
-          console.log(letters)
-
-        } else {
-            length++
+var longestPalindrome = function(s) {
+    let start = 0;
+    let end = 0;
+    let len = 0;
+   
+    //the helper function below finds the longest palindrome of the string
+    function isPalindromeLength(s, left, right){
+        if(left > right ) return 0;
+        while(left >=0 && right < s.length && s[left] == s[right]){
+            left --;
+            right++;
         }
-        letters.set(s[i], i)
-        highestLength = Math.max(highestLength, length)
+        return right - left - 1
     }
     
-    return highestLength
-};
-
-
-lengthOfLongestSubstring(s = "pwwkew");
-
-/*
-var lengthOfLongestSubstring = function(s) {
-    let inst = new Map(), len=s.length, ln=0;
-
-   if(len===0 || len===1) return len;
-    for(i = len-1; i >= 0; i--) {
-
-      if(inst.get(s[i]) && ln>i ) return inst;
-      if(inst.get(s[i])===undefined) ln++;
-       inst.set(s[i],i)
+    
+     for(var i = 0 ; i  < s.length; i++){
+       let p1 = isPalindromeLength(s, i,i)
+       let p2 = isPalindromeLength(s, i, i+1)
+       len = Math.max(p1,p2)
+	   //the if statement below calculates the substring using the length of the longest palindrome 
+        if(len > end - start){
+          start  = Math.ceil(i - ((len-1)/2))/** here we subtract the (length-1)/2 from the current index and round it up. e.g when our length is 2, (2-1)/2=>0.5 then we round up using Math.ceil to 1 **/ 
+          end = i + (len/2)
+        } 
+        
     }
-  //  console.log()
-    return inst.size
+    
+    return s.slice(start, end + 1) 
 };
-lengthOfLongestSubstring(s = "pwwkew");
-*/
-/*
-var lengthOfLongestSubstring = function(s) {
-    let inst = new Map(), len=s.length;
-    for(i = len+1; i > 0; i--) {
-      if(inst.get(s[i]) && i ) return ln;
-      if(inst.get(s[i])) len--;
-       inst.set(s[i],i)
-    }
-    return len
-};
-lengthOfLongestSubstring(s = "aaaaabbbbbbbbbccccc");
-*/
+longestPalindrome(s = "cbbd");
+
+
+
+

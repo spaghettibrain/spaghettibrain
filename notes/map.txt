@@ -19,6 +19,22 @@ var lengthOfLongestSubstring = function(s) {
     return highestLength
 };
 
+
+
+var lengthOfLongestSubstring = function(s) {
+    let inst = new Map(), ln = 0;
+    for(i = 0; i < s.length; i++) {
+        if(inst.get(s[i])!==undefined && inst.get(s[i])>=i-ln){  ln = i-inst.get(s[i])} 
+         else{ ln++};
+        inst.set(s[i], i);  
+    }   
+    return ln
+};
+
+lengthOfLongestSubstring("abcabcbb");
+
+
+
 Map { 'a' => 0, 'b' => 1, 'c' => 2 }
 Map { 'a' => 3, 'b' => 1, 'c' => 2 }
 Map { 'a' => 3, 'b' => 4, 'c' => 2 }
