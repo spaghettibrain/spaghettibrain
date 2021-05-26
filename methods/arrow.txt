@@ -64,3 +64,13 @@ ARRAY
       }
      // console.log(w)
       return arr*/
+
+
+   let tackNum = ()=> { res=res+numStr[0], numStr=numStr.substring(1)};
+ let tackChar = ()=> {res=res+charStr[0], charStr=charStr.substring(1)};
+      let tackNum = function(){
+         res=res+numStr[0], numStr=numStr.substring(1)
+      }
+    let tackChar = function(){
+       res=res+charStr[0], charStr=charStr.substring(1)
+    }

@@ -1,0 +1,5 @@
+Copy an Array
+let fruits = ["Strawberry", "Mango"]
+let shallowCopy = fruits.slice() // this is how to make a copy
+return shallowCopy
+// returns -> ["Strawberry", "Mango"]

@@ -1,0 +1,10 @@
+I too was thinking about this. But, tbh you can figure this out on your own. After solving around 100 questions I realized that you can(should) build test cases before submitting the questions.
+
+I will give you scenarios:-
+
+Array -> empty array, out of range limits, out of range numbers.
+Linked List -> Empty linked list, last node linked list scenarios, in case multiple lists are involved handling both of them(adding numbers, merging linked list, pairwise swap etc.)
+Trees -> Empty tree, single left, single right, empty leaf nodes.
+The way I generally attempt a question now is that I write all possible test cases and then build the code based on that. I have observed that with this it really improves the structure as well as the speed of the code. Also, it is not about the number of test cases but the quality of it. I generally come up with around 10 cases that mostly cover all the scenarios and because of the same my submissions rate has drastically improved.
+
+But, also if we are able to see test cases for a few of the questions it will be amazing from leetcode, for all the questions it might not really help a lot. But again, that is my opinion and it might vary for other people. But, for a few questions, it will definitely help :)

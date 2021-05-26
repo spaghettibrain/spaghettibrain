@@ -1,0 +1,3 @@
+
+array.sort(function(a, b){return b.length - a.length});
+arr.sort((a, b) => b.length - a.length)

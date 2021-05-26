@@ -1,0 +1,60 @@
+/*********************************WHILE**********************************/
+var convert = function(s, numRows) {
+ let zig = [], str = '', i = 0, len=s.length;
+  if (numRows == 1) return s
+  while (i != numRows) {
+    zig.push([])
+    i++
+  } 
+  i = 0
+  // algorithim
+  while (i != len) {
+    let j = 0
+    // increasing
+    while (j!=numRows && i!=len) {
+      zig[j].push(s[i])
+      i++
+      j++
+    }
+    // decreasing
+    j = numRows - 2 //coming back down from peak 
+    while (j!=0 && i!=len) {
+      zig[j].push(s[i])
+      i++
+      j--
+    }
+  }
+  zig.forEach((i)=> str+=i.join(''))
+return str
+};
+
+convert(s = "PAYPALISHIRING", numRows = 3);
+
+
+
+
+var diStringMatch=function (s) {
+  let len=s.length, a =[...Array(len + 1).keys()], left=0, right=len,i=0;
+  while (left <= right && i <= len) {
+    if (left===right) a[i]=left;
+    else if (i===0){
+      if (s[i]==='D') a.reverse(), right--
+      else a[i]=left, left++ }
+    else {
+      if (s[i]==='D') (a[i]=right), right--
+      else a[i]=left, left++ }
+   i++;
+  }
+  return a;
+};
+
+diStringMatch( 'IDID')
+
+
+/******WHILE****/
+
+The most efficient/performant way will be always to use regular loop:
+
+var array = ['1', '2', '3', '4'], i = array.length, result = 1;
+while (i > 0)
+  result *= array[--i];

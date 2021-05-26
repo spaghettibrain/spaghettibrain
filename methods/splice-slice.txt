@@ -1,0 +1,122 @@
+
+BEFORE ATTEMPTING THINK ABOUT FILTER 
+
+const result = words.filter(word => word.length > 6);
+/**************************SPLICE**********************/
+let exampleSpliceLoop = function(input){
+ let cut;
+
+for(i=0; i<input.length; i++ ){
+   cut = input.slice(i); //the new array start at the argument u put in 
+}
+return(cut); //returns ['f']
+}
+
+exampleSpliceLoop(['a','b','c','d','e', 'f']);
+     let matchStudents;
+     let matchSandwiches;
+     matchStudents = students.slice(i); //removes that index from array
+     matchSandwiches = sandwiches.slice(i);//removes that index from array
+      matchSandwiches = sandwiches.splice(i, 1); //makes a new array w that index && modifies original array
+      matchStudents = students.splice(i, 1);  //makes a new array w that index
+      && modifies original array
+
+      SPACES AND SLICE
+      const str = 'The quick brown fox jumps over the lazy dog.';
+
+console.log(str.slice(31));
+// expected output: "the lazy dog."
+
+console.log(str.slice(4, 19));
+// expected output: "quick brown fox"
+
+console.log(str.slice(-4));
+// expected output: "dog."
+
+console.log(str.slice(-9, -5));
+// expected output: "lazy"
+
+var rotateString = function (s, goal) {
+  if (s===goal) return true ;
+  for (let char of s) {
+    s = s.slice(1) + s.slice(0, 1);   //rotating the string 
+    if (s===goal) return true;
+  }
+  return false;
+};
+
+
+/*************SLICE*****/
+nums= [ 1, 2, 3, 4 ]  nums = nums.slice(1);       nums=[ 2, 3, 4 ]
+nums= [ 1, 2, 3, 4 ]  nums = nums.slice(0);       nums=[1, 2, 3, 4 ]
+nums= [ 1, 2, 3, 4 ]  nums = nums.slice(0, 1);    nums=[1 ]
+nums= [ 1, 2, 3, 4 ]  nums = nums.slice(0, 2);    nums=[1, 2]
+nums= [ 1, 2, 3, 4 ]  nums = nums.slice(0, 3);    nums=[1, 2, 3, 4 ] 
+                        len=nums.length
+nums= [ 1, 2, 3, 4 ]  nums = nums.slice(0, len);  nums=[ 1, 2, 3, 4 ]
+nums= [ 1, 2, 3, 4 ]  nums = nums.slice(1, len);  nums=[ 2, 3, 4 ]
+nums= [ 1, 2, 3, 4 ]  nums = nums.slice(1, 0);    nums=[]
+nums= [ 1, 2, 3, 4 ]  nums = nums.slice(3, 2);    nums=[]
+nums= [ 1, 2, 3, 4 ]  nums=nums.slice(-3, 4);     nums=[ 2, 3, 4 ]
+
+
+/*************SPLICE*****/
+  nums= [ 1, 2, 3, 4 ]    nums = nums.splice(1, 1);  nums=[ 2]
+  nums= [ 1, 2, 3, 4 ]    nums = nums.splice(1, 2);  nums= [ 2, 3 ]
+  nums= [ 1, 2, 3, 4 ]    nums = nums.splice(1, 1);  nums=[ 2]
+  nums= [ 1, 2, 3, 4 ]    nums = nums.splice(1, 1);  nums=[ 2]
+    nums = nums.splice(1, len); nums=[ 2, 3, 4 ]
+
+let lastRes=res.slice(-1); get last letter in string doesnt change string
+
+function to remember splice vlaues 
+
+var prt = function(arr, arr2) {
+    console.log('input - array : ')
+        console.log(arr)
+  let len=arr.length;
+let a = 0;
+let b = 1;
+  splicedArray= arr.splice(a, 1);
+  slicedArray = arr2.slice(a, 1);
+
+
+  console.log('\n The splice() method changes the contents of an array by \n removing or replacing existing elements and/or adding  \n new elements in place. \n \n  The original array will be modified. \n')
+    console.log('--splice-result--> \n  ')
+  console.log('  let splicedArray = array.splice(' +a+ ','+ b + '); \n  Input Array now = ['+ arr + '] \n  splicedArray = [' +  splicedArray +']' + '\n')
+  
+
+
+  console.log('The slice() method returns a shallow copy of a portion of an array \n into a new array obj selected from start to end (end not included) where start and end represent the index of items in that array. \n  \n  The original array will not be modified. \n')
+   console.log('--slice--result--> \n')
+  console.log('  let slicedArray = array.slice(' +a+ ','+ b + '); \n  Input Array now = ['+ arr2 + '] \n  slicedArray = [' +  slicedArray +']' + '\n')
+
+
+
+};
+
+var prt = function(arr, arr2) {
+  console.log('SPLICE AND')
+
+  console.log(' splice(start) \n splice(start, deleteCount) \n splice(start, deleteCount, item1) \n splice(start, deleteCount, item1, item2, itemN) \n' )
+   console.log('SLICE')
+  console.log('slice(start) slice(start, end) \n' )
+    console.log('inputArray = ')
+        console.log(arr)
+  let len=arr.length;
+let a = 0;
+let b = 1;
+  splicedArray= arr.splice(a, 1);
+  slicedArray = arr2.slice(a, 1);
+
+
+  console.log('  \n  let splicedArray = array.splice(' +a+ ','+ b + ')')
+    console.log('  let slicedArray = array.slice(' +a+ ','+ b + ')')
+   console.log(' \nsplice result')
+  console.log(' \n  inputArray now = ['+ arr + '] \n  splicedArray = [' +  splicedArray +']' + '\n')
+   console.log(' \n slice RESULT')
+  console.log(' \n  inputArray now = ['+ arr2 + '] \n  slicedArray = [' +  slicedArray +']' + '\n')
+
+};
+//prt(arr = [1,2,3,4], arr2=[1,2,3,4]);
+prt(arr = [1,2,3,4], arr2=[1,2,3,4]);

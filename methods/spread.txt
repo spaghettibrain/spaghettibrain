@@ -1,0 +1,48 @@
+
+arr=  [ 'as' ]
+res =   [ 'hero' ]
+
+                                         
+arr = [arr, ...res] ------------>  [ [ [ [Array], 'as' ], 'hero' ] ]   
+arr = [...arr, ...res] ------------> [ 'as', 'hero' ]                                
+                                        
+                                         
+
+/**************************SPREAD OPERATOR EXAMPLES********************/
+
+used usually in functions 
+function a(...args){
+  b(...args);
+  b(6, ...args, 8) // You can even add more elements
+}
+function b(){
+  console.log(arguments)
+}
+
+a('input', 2, 3)
+
+
+//WITH MATH MAX
+const array1 = [1, 3, 2];
+
+console.log(Math.max(...array1));
+
+//REALLY GOOD FOR COPYING THE INSIDE OF ONE ARRAY INTO ANOTHER 
+
+
+Spread in array literals
+A more powerful array literal
+Without spread syntax, to create a new array using an existing array as one part of it, the array literal syntax is no longer sufficient and imperative code must be used instead using a combination of push(), splice(), concat(), etc. With spread syntax this becomes much more succinct:
+
+let parts = ['shoulders', 'knees'];
+let lyrics = ['head', ...parts, 'and', 'toes'];
+//  ["head", "shoulders", "knees", "and", "toes"]
+Just like spread for argument lists, ... can be used anywhere in the array literal, and may be used more than once.
+
+Copy an array
+let arr = [1, 2, 3];
+let arr2 = [...arr]; // like arr.slice()
+
+arr2.push(4);
+//  arr2 becomes [1, 2, 3, 4]
+//  arr remains unaffected

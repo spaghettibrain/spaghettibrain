@@ -1,0 +1,3 @@
+/**********************CONSOLE ********/
+
+   console.log(prevValue,curValue) -> prints :       1 4

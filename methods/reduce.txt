@@ -1,4 +1,14 @@
 
+ nums = [1,2,3,4]
+let x = nums.reduce((a,b)=> a*b)
+ 
+  res = arr.reduce(((acc, n) => acc * n), 1);
+MULTIPLY
+
+ nums = [1,2,3,4]
+ let res = nums.reduce((acc, i) => acc * i);
+[ 24, 24, 24, 24 ]
+
 /* let arr = [];s1.reduce((acc, i) => {
    return {...acc, i : (acc[i] || 0) + 1}
    }, {})
@@ -8,7 +18,27 @@
    }, {})
  
 };
+The alternative way to use Array.reduce should have the initial value set to 1 or else our function will return 0 no matter what.
 
+[1, 2, 3].reduce((a, b)=> a*b, 1)
+
+
+
+res = nums.reduce((sum, val, i) => sum + (val * nums[i]), 0)
+
+  var reformat = function(s) {
+  let cArr = [...s].filter(e => isNaN(e))
+	let nArr = [...s].filter(e => !isNaN(e))
+  let cLen = cArr.length, nLen = nArr.length;
+  if(Math.abs(nLen-cLen)>1) return ''
+  let ifCArr = cLen > nLen ? cArr : nArr;
+  let ifNArr = cLen > nLen ? nArr : cArr;
+  	return ifCArr.reduce((a, c, i) => {
+		return a + c + (ifNArr[i] || '')
+	}, '')
+  }
+
+  reformat( s = "ec"); 
 /******************REDUCE YOUTVIDEO ************************************************************/
 https://www.youtube.com/watch?v=NiLUGy1Mh4U
   https://github.com/leighhalliday/reduce-example/blob/master/index.js
@@ -246,3 +276,9 @@ var firstMissingPositive = function (nums) {
 firstMissingPositive(nums = [7,8,9,11,12]);
 
 */
+
+
+ res = arr.reduce((prevValue,curValue) => {
+   console.log(prevValue,curValue)
+        return prevValue * curValue
+    },1);

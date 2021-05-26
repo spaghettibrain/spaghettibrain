@@ -1,4 +1,7 @@
-
+let lastRes=res.slice(-1); get last letter in string doesnt change string
+  let tackChar =()=>{res+=charStr[0], charStr=charStr.substring(1)}
+  let tackNum = ()=> {res+=numStr[0], numStr=numStr.substring(1)}
+          add to a string with a +=
 /**************************************STRING EXAMPLES******************************/
 var str="0-12345";
 var is_dashed=(str.indexOf("-") !== -1);
@@ -46,3 +49,47 @@ lengthOfLongestSubstring(s = "abcabcbb");
 check for spaces in string
 
   if(s[i]=' '){
+
+
+    /*****************************change indexes of string without split and join***/
+
+    var rotateString = function (s, goal) {
+  if (s===goal) return true ;
+  for (let char of s) {
+    s = s.slice(1) + s.slice(0, 1);   //rotating the string 
+    if (s===goal) return true;
+  }
+  return false;
+};
+
+let arr = [[abc][efg][hij]];
+let str;
+ arr.forEach((i)=> str+=i.join(''));
+ result = abcefghij
+
+
+   add to beginning of string 
+  s = 'abcd'
+   s= 'e'+ s
+   return s
+  returns -> eabcd
+
+
+
+
+var diStringMatch=function (s) {
+  let len=s.length, a =[...Array(len + 1).keys()], left=0, right=len,i=0;
+  while (left <= right && i <= len) {
+    if (left===right) a[i]=left;
+    else if (i===0){
+      if (s[i]==='D') a.reverse(), right--
+      else a[i]=left, left++ }
+    else {
+      if (s[i]==='D') (a[i]=right), right--
+      else a[i]=left, left++ }
+   i++;
+  }
+  return a;
+};
+
+diStringMatch( 'IDID')

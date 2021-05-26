@@ -80,4 +80,333 @@ var lengthOfLongestSubstring = function(s) {
     }   
     return lnHigh
 };
-lengthOfLongestSubstring(s = "pwwkew");   
+lengthOfLongestSubstring(s = "pwwkew");  
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************/
+/*
+6. ZigZag Conversion
+Medium
+The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
+P   A   H   N
+A P L S I I G
+Y   I   R
+And then read line by line: "PAHNAPLSIIGYIR"
+Write the code that will take a string and make this conversion given a number of rows:
+string convert(string s, int numRows);
+
+Example 1:
+0 4 8 12
+0 2 
+Input: s = "PAYPALISHIRING", numRows = 3
+Output: "PAHNAPLSIIGYIR"
+Example 2:
+
+Input: s = "PAYPALISHIRING", numRows = 4
+Output: "PINALSIGYAHRPI"
+Explanation:
+P     I    N
+A   L S  I G
+Y A   H R
+P     I
+Example 3:
+Input: s = "A", numRows = 1
+Output: "A"
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+var convert = function(s, numRows) {
+ let zig = [], str = '', i = 0, len=s.length;
+  if (numRows == 1) return s
+  while (i != numRows) {
+    zig.push([])
+    i++
+  } 
+  i = 0
+  // algorithim
+  while (i != len) {
+    let j = 0
+    // increasing
+    while (j!=numRows && i!=len) {
+      zig[j].push(s[i])
+      i++
+      j++
+    }
+    // decreasing
+    j = numRows - 2 //coming back down from peak 
+    while (j!=0 && i!=len) {
+      zig[j].push(s[i])
+      i++
+      j--
+    }
+  }
+  zig.forEach((i)=> str+=i.join(''))
+return str
+};
+
+convert(s = "PAYPALISHIRING", numRows = 3);
+
+//To solve this problem, we think of the example string and divide it into 3 arrays, 0,1,2, like so:
+/*We can see some numeric mountains above (which start at 0, peak at 2, and decrease back to 0) and we can use two pointers - one used to keep track of index in the word and a second pointer to track position in each mountain. We then assign array values using a a loop as we increase, and one as we decrease.
+
+//P A Y P A L I S H I R I N G
+//0 1 2 1 0 1 2 1 0 1 2 1 0 1
+
+//"PAHNAPLSIIGYIR"
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************/
+/*
+8. String to Integer (atoi)
+Medium
+Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer (similar to C/C++'s atoi function).
+
+The algorithm for myAtoi(string s) is as follows:
+
+Read in and ignore any leading whitespace.
+Check if the next character (if not already at the end of the string) is '-' or '+'. Read this character in if it is either. This determines if the final result is negative or positive respectively. Assume the result is positive if neither is present.
+Read in next the characters until the next non-digit charcter or the end of the input is reached. The rest of the string is ignored.
+Convert these digits into an integer (i.e. "123" -> 123, "0032" -> 32). If no digits were read, then the integer is 0. Change the sign as necessary (from step 2).
+If the integer is out of the 32-bit signed integer range [-231, 231 - 1], then clamp the integer so that it remains in the range. Specifically, integers less than -231 should be clamped to -231, and integers greater than 231 - 1 should be clamped to 231 - 1.
+Return the integer as the final result.
+Note:
+
+Only the space character ' ' is considered a whitespace character.
+Do not ignore any characters other than the leading whitespace or the rest of the string after the digits.
+ 
+
+Example 1:
+
+Input: s = "42"
+Output: 42
+Explanation: The underlined characters are what is read in, the caret is the current reader position.
+Step 1: "42" (no characters read because there is no leading whitespace)
+         ^
+Step 2: "42" (no characters read because there is neither a '-' nor '+')
+         ^
+Step 3: "42" ("42" is read in)
+           ^
+The parsed integer is 42.
+Since 42 is in the range [-231, 231 - 1], the final result is 42.
+Example 2:
+
+Input: s = "   -42"
+Output: -42
+Explanation:
+Step 1: "   -42" (leading whitespace is read and ignored)
+            ^
+Step 2: "   -42" ('-' is read, so the result should be negative)
+             ^
+Step 3: "   -42" ("42" is read in)
+               ^
+The parsed integer is -42.
+Since -42 is in the range [-231, 231 - 1], the final result is -42.
+Example 3:
+
+Input: s = "4193 with words"
+Output: 4193
+Explanation:
+Step 1: "4193 with words" (no characters read because there is no leading whitespace)
+         ^
+Step 2: "4193 with words" (no characters read because there is neither a '-' nor '+')
+         ^
+Step 3: "4193 with words" ("4193" is read in; reading stops because the next character is a non-digit)
+             ^
+The parsed integer is 4193.
+Since 4193 is in the range [-231, 231 - 1], the final result is 4193.
+Example 4:
+
+Input: s = "words and 987"
+Output: 0
+Explanation:
+Step 1: "words and 987" (no characters read because there is no leading whitespace)
+         ^
+Step 2: "words and 987" (no characters read because there is neither a '-' nor '+')
+         ^
+Step 3: "words and 987" (reading stops immediately because there is a non-digit 'w')
+         ^
+The parsed integer is 0 because no digits were read.
+Since 0 is in the range [-231, 231 - 1], the final result is 0.
+Example 5:
+
+Input: s = "-91283472332"
+Output: -2147483648
+Explanation:
+Step 1: "-91283472332" (no characters read because there is no leading whitespace)
+        ^
+Step 2: "-91283472332" ('-' is read, so the result should be negative)
+          ^
+Step 3: "-91283472332" ("91283472332" is read in)
+                     ^
+The parsed integer is -91283472332.
+Since -91283472332 is less than the lower bound of the range [-231, 231 - 1], the final result is clamped to -231 = -2147483648.
+ */
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+/*
+var myAtoi = function(s) {
+   let str = '', sn=1, bit=2**31;
+  s= s.trim();
+  for(let i=0; i<s.length; i++){
+  if(s[i]==='+' && i===0) {}
+  else if (s[i]==='-' && i===0)  sn=-1;
+  else if(!isNaN(s[i])) str = str+s[i];
+  else if (isNaN(s[i])) break;
+  }
+ let toNum = parseFloat(str);
+if(isNaN(toNum) || str[1] === ' ') return 0;
+else if (toNum>=bit) {if(sn>0){return (bit-1)*sn} else{return bit*sn;}}
+return sn*toNum
+};
+
+myAtoi(
+
+"21474836460")*/
+
+var myAtoi = function(s) {
+    let min = -(2**31);
+    let max = (2**31)-1;
+    let [_, sign, num] = /^\s*([-|+]?)(\d*)/.exec(s);
+    if(num.length == 0) return 0;
+    if(sign === '-'){
+        return  -Number(num) <= min ? min : -Number(num); 
+    }else{
+        return Number(num) >= max ? max : Number(num); 
+    }
+};
+myAtoi("-42")
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************/
+/*
+11. Container With Most Water
+Medium
+/*Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of the line i is at (i, ai) and (i, 0). Find two lines, which, together with the x-axis forms a container, such that the container contains the most water.
+
+Notice that you may not slant the container.
+
+Example 1:
+Input: height = [1,8,6,2,5,4,8,3,7]
+Output: 49
+Explanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.
+
+Example 2:
+Input: height = [1,1]
+Output: 1
+
+Example 3:
+Input: height = [4,3,2,1,4]
+Output: 16
+
+Example 4:
+Input: height = [1,2,1]
+Output: 2
+*/
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+
+/****TOO SLOW ****55/60
+var maxArea = function (height) {
+  let specs = 0, len = height.length, c=0;
+  for (let l = 0; l < len; l++) {
+  if(height[l]!=0 && c<2) c++;
+    for (let r = l + 1; r < len; r++) {
+        let width = r - l, cap = Math.min(height[l], height[r]), area=width*cap;
+    specs = Math.max(area, specs)
+    }
+  }
+  if(c<2) return 0;
+  return specs;
+
+};
+
+maxArea(height = [2,3,10,5,7,8,9])
+*/
+
+
+var maxArea = function (height) {
+  let max = 0, len = height.length, left=0, right=len-1;
+  while(left<right){
+    let area=(right-left)*Math.min(height[left], height[right])
+     max = Math.max(max, area);
+     if (height[left] < height[right]) left++;
+        else right--;
+    }
+   return max;
+};
+
+maxArea(height = [2,3,10,5,7,8,9])
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************/
+/*
+12. Integer to Roman
+Medium
+Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
+
+Symbol       Value
+I             1
+V             5
+X             10
+L             50
+C             100
+D             500
+M             1000
+For example, 2 is written as II in Roman numeral, just two one's added together. 12 is written as XII, which is simply X + II. The number 27 is written as XXVII, which is XX + V + II.
+
+Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:
+
+I can be placed before V (5) and X (10) to make 4 and 9. 
+X can be placed before L (50) and C (100) to make 40 and 90. 
+C can be placed before D (500) and M (1000) to make 400 and 900.
+Given an integer, convert it to a roman numeral.
+Example 1:
+
+Input: num = 3
+Output: 'III'
+Example 2:
+
+Input: num = 4
+Output: 'IV'
+Example 3:
+
+Input: num = 9
+Output: 'IX'
+Example 4:
+
+Input: num = 58
+Output: 'LVIII'
+Explanation: L = 50, V = 5, III = 3.
+Example 5:
+
+Input: num = 1994
+Output: 'MCMXCIV'
+Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
+'I':1
+'V':5,
+'X':10,
+'L':50,
+'C':100,
+'D':500,
+'M':1000,
+*/
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+var intToRoman = function(num) {
+  let obj = {1:'I', 4: 'IV', 5:'V', 9: 'IX',10:'X',  40: 'XL',50:'L',  90: 'XC', 100:'C',  400: 'CD',500: 'D', 900: 'CM', 1000:'M'};
+    let result = '', whole = 0, keys = Object.keys(obj), key = keys.pop();
+    while (num > 0) {
+        if (num >= key) {
+            whole = Math.floor(num / key);
+            num = num % key;
+            result += obj[key].repeat(whole);
+        } else {
+            key = keys.pop();
+        }
+    }
+    return result;
+};
+intToRoman( num = 58)

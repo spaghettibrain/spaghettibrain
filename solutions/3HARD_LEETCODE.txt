@@ -109,7 +109,131 @@ var longestPalindrome = function(s) {
     return s.slice(start, end + 1) 
 };
 longestPalindrome(s = "cbbd");
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************/
+/*
+10. Regular Expression Matching
+Hard
+Given an input string (s) and a pattern (p), implement regular expression matching with support for '.' and '*' where: 
 
+'.' Matches any single character.​​​​
+'*' Matches zero or more of the preceding element.
+The matching should cover the entire input string (not partial).
+
+ 
+
+Example 1:
+
+Input: s = "aa", p = "a"
+Output: false
+Explanation: "a" does not match the entire string "aa".
+Example 2:
+
+Input: s = "aa", p = "a*"
+Output: true
+Explanation: '*' means zero or more of the preceding element, 'a'. Therefore, by repeating 'a' once, it becomes "aa".
+Example 3:
+
+Input: s = "ab", p = ".*"
+Output: true
+Explanation: ".*" means "zero or more (*) of any character (.)".
+Example 4:
+
+Input: s = "aab", p = "c*a*b"
+Output: true
+Explanation: c can be repeated 0 times, a can be repeated 1 time. Therefore, it matches "aab".
+Example 5:
+
+Input: s = "mississippi", p = "mis*is*p*."
+Output: false
+*/
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+
+//var isMatch = function(s, p) {
+
+  /*
+  let obj ={}, star=0, period =0;
+  let dot = p.indexOf('.');
+  
+  if(dot===-1 && p.indexOf('*')===-1 && s!=p) return false
+  //if(p.indexOf('.')!=-1) 
+  
+  for(let i=0; i<s.length; i++){
+    if(s.indexOf(p[i])===-1 && p.indexOf('*')===-1){return false}
+     if(p[i]!= '*' && p[i]!='.' && s.indexOf(p[i])===-1 ){
+       p.slice(p.indexOf(p[i]))
+       p.slice(p.indexOf('*'))
+       }
+  if(p[i]==='*') star=star+1;
+  if(p[i]==='.') period=period+1;
+  if(p.indexOf(s[i])===-1 && dot===-1) return false
+    if(!obj[s[i]]) obj[s[i]]=1;
+    else obj[s[i]]=obj[s[i]]+1
+
+  }
+
+  console.log(star)
+  console.log(period)
+ //p[p.indexOf('*')]=Object.keys(obj)[0];
+//if(obj[s[i]])
+let z = p.replace(p[p.indexOf('*')],Object.keys(obj)[0])
+//console.log(p[p.indexOf('*')]=Object.keys(obj)[0])
+console.log(z)
+  console.log(obj)
+  
+};*/
+
+const isMatch = (s, p) => {
+	let matrix = [...new Array(s.length + 1)].map(() =>
+		new Array(p.length + 1).fill(false)
+	);
+console.log(matrix)
+	matrix[0][0] = true;
+
+	// fill first row
+	for (let i = 1; i <= p.length; i++) {
+		let pChar = p[i - 1];
+
+		if (pChar === '*') matrix[0][i] = matrix[0][i - 2];
+	}
+	// can only be the most previous value
+	for (let row = 1; row <= s.length; row++) {
+		for (let col = 1; col <= p.length; col++) {
+			let pChar = p[col - 1],
+				sChar = s[row - 1],
+				previousPChar = p[col - 2]; // col - 2 is for deletion of the previous character
+
+			if (pChar === '*') {
+				// matrix[row][col - 2] --> if we shaved off the letter, would we have a match
+				if (matrix[row][col - 2]) {
+					matrix[row][col] = true;
+				}
+				// if previous p and sChar are the same, we look
+				else if (previousPChar === sChar || previousPChar === '.') {
+					// This is the weirdest case to understand
+					// Since the previousPChar and sChar are equal, we can look at s as if it
+					// does not exist, to account for shavng it off / extra occurances
+					// of that single letter
+					matrix[row][col] = matrix[row - 1][col];
+				}
+			} else if (pChar === sChar || pChar === '.') {
+				// answer is the same as if not having these two letters
+				matrix[row][col] = matrix[row - 1][col - 1];
+			}
+		}
+	}
+  console.log(matrix)
+	return matrix[s.length][p.length];
+};
+
+
+isMatch( s = "aa", p = "a*")
+
+
+//if theres more of a letter in p than in s return false 1
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
 /***********************************************************************************/

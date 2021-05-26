@@ -1,0 +1,13 @@
+var productExceptSelf = function(nums) {
+  let a=[], len=nums.length, i=0;
+function multi(nums, i){
+
+  if(i>=len) return res
+  a.push(nums.filter(e => e!=nums[i]).reduce((acc,curr) => acc * curr ,1))
+    i++; 
+   
+ multi(nums, i)
+}
+multi(nums, 0)
+return a;
+};

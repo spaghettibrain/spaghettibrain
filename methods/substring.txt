@@ -1,0 +1,66 @@
+ 
+ /********************************SUBSTRING EXAMPLES********************************/
+
+ 3. Longest Substring Without Repeating Characters
+Medium
+Given a string s, find the length of the longest substring without repeating characters.
+Example 1:
+  Input: s = "abcabcbb"
+  Output: 3
+  Explanation: The answer is "abc", with the length of 3.
+Example 2:
+  Input: s = "bbbbb"
+  Output: 1
+  Explanation: The answer is "b", with the length of 1.
+Example 3:
+  Input: s = "pwwkew"
+  Output: 3
+  Explanation: The answer is "wke", with the length of 3.
+  Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
+
+
+
+1. Using substring() method
+The substring() method returns the part of the string between the specified indexes or to the end of the string.
+
+
+let str = 'Hello';
+ 
+str = str.substring(1);
+console.log(str);
+ 
+/*
+    Output: ello
+*/
+ 
+You can easily extend the solution to remove the first n characters from the string.
+
+let str = 'Hello';
+let n = 3;
+ 
+str = str.substring(n);
+console.log(str);
+
+/*
+    Output: lo
+*/
+
+2. Using slice() method
+The slice() method extracts the text from a string and returns a new string.
+
+let str = 'Hello'; 
+str = str.slice(1);
+console.log(str);
+/*
+    Output: ello
+*/
+This can be easily extended to remove first n characters from the string.
+let str = 'Hello';
+let n = 3;
+ 
+str = str.slice(n);
+console.log(str);
+
+/*
+    Output: lo
+*/

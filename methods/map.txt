@@ -1,5 +1,34 @@
 /****************************************MAP EXAMPLES******************************/
 
+var isIsomorphic = function(s, t) {
+  let sMap = new Map;
+  let tMap = new Map;
+  
+  for (i in s)
+  { 
+    !sMap.has(s[i]) && sMap.set(s[i], i);
+    !tMap.has(t[i]) && tMap.set(t[i], i);
+    
+    if (sMap.get(s[i]) !== tMap.get(t[i]))
+    {
+      return false;
+    }
+  }
+  
+  return true;
+};
+
+
+
+
+
+
+
+
+
+
+
+
 var lengthOfLongestSubstring = function(s) {
     let letters = new Map()
     let highestLength = 0

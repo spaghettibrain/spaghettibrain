@@ -16,88 +16,6 @@ Example 2:
 Input: nums = [2,2,1,1,1,2,2]
 Output: 2
 */
-/**************************************************************************************/
-/*************************************QUESTION********************************************/
-/***************************************************************************************/
-/*
-205. Isomorphic Strings
-Easy
-Given two strings s and t, determine if they are isomorphic.
-Two strings s and t are isomorphic if the characters in s can be replaced to get t.
-All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character, but a character may map to itself.
-
-Example 1:
-Input: s = "egg", t = "add"
-Output: true
-
-Example 2:
-Input: s = "foo", t = "bar"
-Output: false
-
-Example 3:
-Input: s = "paper", t = "title"
-Output: true
-*/
-/*************************************************************************************/
-/************************************ANSWER********************************************/
-/*********************************************************************************/
-/****38/39cases */
-var isIsomorphic = function(s, t) {
-let map = new Map();
-let map2 = new Map();
-if(1 >= s.length) return false
-if(s.length >= ((10**4)*5)) return false
-
-/
-    let lenS=s.length, lenT=t.length, same=0, diff=0, same2=0, diff2=0;
-   
-    if(lenS!=lenT) return false
-
-    for(let i in s){
-  if(!( (/^[\x00-\x7F]*$/.test(s)) && (/^[\x00-\x7F]*$/.test(t)))) return false
-    let sCurr = s[i], tCurr= t[i], sNext = s[i-1], tNext=t[i-1], occ=s.indexOf(sCurr), tocc=t.indexOf(tCurr);
-
-     occ!=+i ? same++ : diff++;
-     tocc!=+i ? same2++ : diff2++;
-
-    if(sCurr!==sNext && tCurr===tNext) return false
-    else if (sCurr===sNext && tCurr!==tNext) return false
-
-let x;
-      if(map.get(s[i])!==undefined )  x = map.get(s[i]),  map.set(s[i],x+1);
-     else  map.set(s[i], 1)
-           if(map2.get(t[i])!==undefined )  y = map2.get(t[i]),  map2.set(t[i],y+1);
-     else  map2.set(t[i], 1)
-
-  //  let m = map.get(sCurr);
-   // map.set(sCurr, m)
-
-    
-    }
-
-      if(same!==same2 && diff!==diff2) return false
-   return true
-};
-//correct ANSWER
-
-var isIsomorphic = function(s, t) {
-  let sMap = new Map;
-  let tMap = new Map;
-  
-  for (i in s)
-  { 
-    console.log( !sMap.has(s[i]))
-    !sMap.has(s[i]) && sMap.set(s[i], i);
-    !tMap.has(t[i]) && tMap.set(t[i], i);
-    if (sMap.get(s[i]) !== tMap.get(t[i]))
-    {
-      return false;
-    }
-  }
-  
-  return true;
-};
-isIsomorphic("foo", 'bar')
 /*************************************************************************************/
 /************************************ANSWER********************************************/
 /*********************************************************************************/
@@ -148,6 +66,9 @@ const productExceptSelf = (nums) => {
 };
 
 productExceptSelf( nums =[-1,1,0,-3,3]); 
+
+
+
 
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
@@ -713,78 +634,6 @@ minimumAbsDifference([3,8,-10,23,19,-4,-14,27])
 };
 
 minimumAbsDifference([3,8,-10,23,19,-4,-14,27])
-/**************************************************************************************/
-/*************************************QUESTION********************************************/
-/***************************************************************************************/
-/*
-1417. Reformat The String
-Easy
-Given alphanumeric string s. (Alphanumeric string is a string consisting of lowercase English letters and digits).
-
-You have to find a permutation of the string where no letter is followed by another letter and no digit is followed by another digit. That is, no two adjacent characters have the same type.
-Return the reformatted string or return an empty string if it is impossible to reformat the string.
-
-Example 1:
-Input: s = "a0b1c2"
-Output: "0a1b2c"
-Explanation: No two adjacent characters have the same type in "0a1b2c". "a0b1c2", "0a1b2c", "0c2a1b" are also valid permutations.
-
-Example 2:
-Inut: s = "leetcode"
-Output: ""
-Explanation: "leetcode" has only characters so we cannot separate them by digits.
-
-Example 3:
-Input: s = "1229857369"
-Output: ""
-Explanation: "1229857369" has only digits so we cannot separate them by characters.
-
-Example 4:
-Input: s = "covid2019"
-Output: "c2o0v1i9d"
-
-Example 5:
-Input: s = "ab123"
-Output: "1a2b3"
-*/
-/*************************************************************************************/
-/************************************ANSWER********************************************/
-/*********************************************************************************/
-  
-  /***** my answer 
-  var reformat = function(s) {
-  let len = s.length, i=0 , charStr='', numStr='', res='';
-  if(len===1) return s
-  else if(len<1|| len>500|| !(/[a-z]/).test(s)|| !(/[0-9]/).test(s)) return ''
-  for(e of s){
-    if(isNaN(e)) charStr=charStr+e
-    else numStr=numStr+e
-  }
-  let nLen=numStr.length, cLen=charStr.length; 
-  let tackChar =()=>{ !charStr? res='' : res+=charStr[0], charStr=charStr.substring(1)}
-  let tackNum = ()=> {!numStr? res='' :res+=numStr[0], numStr=numStr.substring(1)}
-  for(i in s){
-
-   if(i<1) if(cLen>nLen) tackChar(); else tackNum(); 
-   else if(!isNaN(res[i-1])) tackChar();
-   else tackNum();
-  }
-  return res
-  }
-//leetcode answer 
-    var reformat = function(s) {
-  let cArr = [...s].filter(e => isNaN(e))
-	let nArr = [...s].filter(e => !isNaN(e))
-  let cLen = cArr.length, nLen = nArr.length;
-  if(Math.abs(nLen-cLen)>1) return ''
-  let ifCArr = cLen > nLen ? cArr : nArr;
-  let ifNArr = cLen > nLen ? nArr : cArr;
-  	return ifCArr.reduce((a, c, i) => {
-		return a + c + (ifNArr[i] || '')
-	}, '')
-  }
-
-  reformat( s = "ec"); 
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
 /***********************************************************************************/

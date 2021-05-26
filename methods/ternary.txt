@@ -1,0 +1,56 @@
+var isIsomorphic = function(s, t) {
+    let lenS=s.length, lenT=t.length, same=0, diff=0;
+   // if(lenS!=lenT) return false
+    for(let i in s){ //this i is a string 
+  
+
+
+    let sCurr = s[i], tCurr= t[i], sNext = s[i-1], tNext=t[i-1], occ=s.indexOf(sCurr);
+  //  console.log(+i) 
+//if u put the + in front of the i makes it a num 
+     occ!=+i ? same++ : diff++;
+   
+/*
+    if(sCurr!=sNext && tCurr===tNext) return false
+    else if (sCurr===sNext && tCurr!=tNext) return false*/
+    }
+      console.log(diff)
+    console.log(same)
+  //  return true
+};
+isIsomorphic("babce", "baba");
+
+/**************
+   !sMap.has(s[i]) && sMap.set(s[i], i);
+    !tMap.has(t[i]) && tMap.set(t[i], i);
+u can set it with  &&
+
+
+
+
+var isIsomorphic = function(s, t) {
+  let sMap = new Map;
+  let tMap = new Map;
+  
+  for (i in s)
+  { 
+    console.log( !sMap.has(s[i]))
+    !sMap.has(s[i]) && sMap.set(s[i], i);
+    !tMap.has(t[i]) && tMap.set(t[i], i);
+    
+    if (sMap.get(s[i]) !== tMap.get(t[i]))
+    {
+      return false;
+    }
+  }
+  
+  return true;
+};
+
+
+
+let s= 'apple';
+!s[5] && console.log(s) //if s[5] does not exist then return apple  if it does it returns false
+
+let s2= 'pea';
+!s[2] && console.log(s)//if s[5] does not exist then return pea  if it does it returns false

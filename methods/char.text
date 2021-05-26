@@ -1,0 +1,24 @@
+    
+    if the string is all alphabet
+    s = "paper"
+     console.log((/[a-zA-Z]/).test(s)) -->     true
+
+     (s2 = "pape%r"
+       console.log((/[a-zA-Z]/).test(s2)) -->     false
+
+
+if any charctors in either of these strings are not alphabet then
+return false: 
+        if(!(/[a-zA-Z]/).test(s) || !(/[a-zA-Z]/).test(s2)) return false
+
+if either of these strings is not alphabet or number
+
+        //!(/[a-zA-Z0-9]/).test(s)
+
+
+
+let s= 'apple';
+!s[5] && console.log(s) //if s[5] does not exist then return apple  if it does it returns false
+
+let s2= 'pea';
+!s[2] && console.log(s)//if s[5] does not exist then return pea  if it does it returns false

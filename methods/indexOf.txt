@@ -1,0 +1,6 @@
+ 
+looks like indexOf finds the first value so with it u could use to see if it exists any where else 
+
+s='aaab'
+       for(let i in s){
+     if(i!=s.indexOf(s[i])) console.log(s[i]) //print a theres another a 

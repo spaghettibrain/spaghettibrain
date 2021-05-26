@@ -1,0 +1,50 @@
+
+/****************************************LOOP EXAMPLES******************************/
+
+  let arrx = s1 + s2;
+  console.log(arrx.split(''))
+  s1.split('').forEach((i, j) =>i!= s2[j] ? arr.push(s2[j], i) : '');  
+  arr.sort();
+  console.log(arr)
+  for (i = 0; i < arr.length; i++) {
+    if (arr[i] != arr[i + 1] || arr.length > 4 ) {
+      return false;
+    } 
+      i = i + 1;
+  }
+  return true 
+
+
+var diStringMatch = function(s) {
+    let max = s.length, min = 0, result = []
+    for (let i of s){ //if u let i of s it prints the 
+    console.log(i) --> //  console : I D I D
+  //  console : I D I D
+        if (i === 'D'){
+            result.push(max)
+            max--
+        }
+        else if (i === 'I'){
+            result.push(min)
+            min++
+        }
+    }
+    result.push(max)
+    return result
+};
+diStringMatch( s = 'IDID')
+
+
+/**********DIFFERECE BETWEEN IN AND OF*******/
+
+  var isIsomorphic = function(s, t) {
+
+    for(i in s){    ---> 0 1 2
+       for(i of s){    ---> e g g
+  
+     console.log(i)
+    }
+};
+isIsomorphic( s = "egg", t = "add");
+   for(i in s){    ---> 0 1 2
+       for(i of s){    ---> e g g

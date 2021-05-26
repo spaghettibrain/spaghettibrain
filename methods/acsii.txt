@@ -1,0 +1,18 @@
+
+
+/********ACSII******/
+Q: JavaScript & regex : How do I check if the string is ASCII only?
+
+A:
+All you need to do it test that the characters are in the right character range.
+
+function isASCII(str) {
+    return /^[\x00-\x7F]*$/.test(str);
+}
+
+      if(!( (/^[\x00-\x7F]*$/.test(s)) && (/^[\x00-\x7F]*$/.test(t)))) return false
+
+
+if(!(s.length <= ((10**4)*5))) return false
+
+(1 <= s.length <= 5 * 10^4) ->  if(!(1 <= s.length &&  s.length <= ((10**4)*5))))) return false

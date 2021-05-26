@@ -1,0 +1,162 @@
+
+/****************************************ARRAY EXAMPLES******************************/
+ let pairs =  [[ '7', '6', '5' ],
+  [ '2', '1', '0' ],
+  [ '7', '6', '5' ],
+  [ '2', '1', '0' ],
+  [ '2', '1', '0' ]]
+  --->
+  console.log(pairs.join().split(','))
+
+--->
+
+  [
+  '7', '6', '5', '2',
+  '1', '0', '7', '6',
+  '5', '2', '1', '0',
+  '2', '1', '0'
+]
+    //p.forEach((e) => half.push(e));
+      half.push(...p)
+      to copy an array just use ... not for each
+
+
+
+//arr.join('').toString()
+
+
+  THIS WILL JOIN WITHINTHENESTED ARRAYS
+  //let pairsNums = pairs.map((x) => x.map((y) => y.join()));
+
+    //let pairsNums = pairs.map((x) => x.join());
+
+
+
+
+/***ARRAY*****/
+
+const animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
+//console.log(animals.slice(1)); //this deletes ant i guess it it's the new
+//starting point
+/****NESTED***/
+
+
+
+s[s.length-1]
+
+/*****create different amount of arrays for different input****/
+let numRows=3;
+  let zig = [], i=0;
+while(i!=numRows){
+zig.push([])
+i++
+}
+result : [ [], [], [] ]
+
+
+
+var maxArea = function(height) {
+  let i=0, specs=[], area=0;
+  while(i<height.length){
+  specs.push([]) 
+  i++}
+    for(let j=0; j<height.length; j++){
+       let h = height[j]
+        for(let k=j+1; k<height.length; k++){
+      let width=k-j;
+     let p = Math.min(width, h);
+      area=p**2;
+      specs[h].push([p,p, area])
+    }
+
+    }
+let flat=[];
+//flattten without flat [[[]]]
+specs.forEach((e)=> e.forEach((f)=>flat.push(...f)))
+  return Math.max(...flat)
+};
+maxArea(height = [4,3,2,1,4])
+
+
+
+
+/*****************/
+
+
+
+/* fast way to print an array of indexes
+Question: 
+
+I'm looking for any alternatives to the below for creating a JavaScript array containing 1 through to N where N is only known at runtime.
+
+var foo = [];
+for (var i = 1; i <= N; i++) {
+   foo.push(i);
+}
+Answer: 
+In ES6 using Array from() and keys() methods.
+
+Array.from(Array(10).keys())
+//=> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+Shorter version using spread operator.
+
+[...Array(10).keys()]
+//=> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+Start from 1 by passing map function to Array from(), with an object with a length property:
+
+Array.from({length: 10}, (_, i) => i + 1)
+//=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+
+
+
+var diStringMatch=function (s) {
+  let len=s.length, a =[...Array(len + 1).keys()], left=0, right=len,i=0;
+  while (left <= right && i <= len) {
+    if (left===right) a[i]=left;
+    else if (i===0){
+      if (s[i]==='D') a.reverse(), right--
+      else a[i]=left, left++ }
+    else {
+      if (s[i]==='D') (a[i]=right), right--
+      else a[i]=left, left++ }
+   i++;
+  }
+  return a;
+};
+
+diStringMatch( 'IDID')
+
+
+//...Array(len + 1).keys() <--this part 
+actully dont even need 
+var diStringMatch=function (s) {
+  let len=s.length, a =[], left=0, right=len,i=0;
+  while (left <= right && i <= len) {
+    if (left===right) a[i]=left;
+    else if (i===0){
+      if (s[i]==='D') a.reverse(), right--
+      else a[i]=left, left++ }
+    else {
+      if (s[i]==='D') (a[i]=right), right--
+      else a[i]=left, left++ }
+   i++;
+  }
+  return a;
+};
+
+diStringMatch( 'IDID')
+
+
+const productExceptSelf = (nums) => {
+  let len = nums.length, res = Array(len).fill(1), left=1, right=1, ln=len-1;
+  for (let i = 0; i < len; i++) {
+    res[i] *= left;
+    res[ln - i] *= right;
+    left *= nums[i];
+    right *= nums[ln - i];
+  }
+  return res;
+};
+
+productExceptSelf( nums =[-1,1,0,-3,3]); 
