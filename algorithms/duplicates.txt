@@ -1,3 +1,52 @@
+code.splice(code.indexOf(cMin)) it looks like indexOf removes duplicates 
+[
+  108, 101, 101,
+  116,  99, 111,
+  100, 101
+]
+[ 108, 101, 101, 116 ]
+[ 108 ]
+[]
+[]
+[]
+[]
+[]
+[]
+Hint:
+let chars = ['A', 'B', 'A', 'C', 'B'];
+
+let uniqueChars = chars.filter((c, index) => {
+    return chars.indexOf(c) === index;
+});
+
+chars.filter((c, index) => chars.indexOf(c) === index);  ---> [ 'A', 'B', 'C' ]
+let rmDup = arr.filter((c, index) => arr.indexOf(c) === index) 
+
+var stringMatching = function(words) {
+  let arr=[], res;
+
+  for(e of words){
+  res = words.filter(elem => elem.includes(e));
+  res.sort((a, b) => b.length - a.length)
+  res.splice(0, 1);
+  arr = [...arr, ...res]
+}
+let rmDup = arr.filter((c, index) => arr.indexOf(c) === index)  //remove dupicates words
+return rmDup
+};
+stringMatching(words = ["leetcoder","leetcode","od","hamlet","am"]); 
+
+var stringMatching = function(words) {
+  let sub, res=[];
+  for(e of words){
+  let hiLen = Math.max(...(words.map(e => e.length)));
+  sub=words.filter(e => e.length<hiLen);
+  res = [...res, ...sub]
+}
+let noRepeat = res.filter((w, i) => res.indexOf(w) === i)
+return noRepeat
+};
+stringMatching(words = ["dzf","dzfay","hrl","ydzfo"]); 
 1) Remove duplicates from an array using a Set
 A Set is a collection of unique values. To remove duplicates from an array:
 
@@ -85,3 +134,17 @@ Code language: JavaScript (javascript)
 Output:
 
 [ 'A', 'B', 'C' ]  
+//with sort 
+var sortString = function(s) {
+let curr='', str='';
+s= s.split('');
+s.sort(); //sort to put in order so if they are not equal they are duplicates 
+console.log(s)
+
+for(e of s){
+  if(e!=curr) str+=e, curr=e;
+}
+
+return str
+
+};

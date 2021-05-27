@@ -2,5 +2,61 @@
 looks like indexOf finds the first value so with it u could use to see if it exists any where else 
 
 s='aaab'
+
+for(e of s){
+if its true then it exists somewhere else 
+  s.lastIndexOf(e) > s.indexOf(e) ? console.log(true) : console.log(false)
+}
+for(e of s){
+  //console.log(curr)
+  console.log(s.lastIndexOf(e))
+  if(s.lastIndexOf(e) > s.indexOf(e))
+if the last index is greater than the current index 
+then there must be a duplicate 
+
        for(let i in s){
      if(i!=s.indexOf(s[i])) console.log(s[i]) //print a theres another a 
+
+Array.prototype.lastIndexOf()
+The lastIndexOf() method returns the last index at which a given element can be found in the array, or -1 if it is not present. The array is searched backwards, starting at fromIndex.
+
+
+const animals = ['Dodo', 'Tiger', 'Penguin', 'Dodo'];
+
+console.log(animals.lastIndexOf('Dodo'));
+// expected output: 3
+
+console.log(animals.lastIndexOf('Tiger'));
+// expected output: 1
+
+
+Finding all the occurrences of an element
+The following example uses lastIndexOf to find all the indices of an element in a given array, using push to add them to another array as they are found.
+
+let newArr = [];
+let array = ['a', 'b', 'a', 'c', 'a', 'd'];
+let element = 'a';
+let idx = array.lastIndexOf(element); 
+while (idx != -1) {
+  newArr.push(idx);
+  idx = (idx > 0 ? array.lastIndexOf(element, idx - 1) : -1);
+}
+
+console.log(newArr);
+// [4, 2, 0] finds all the indexes of a 
+
+var index = items.indexOf(3452);
+
+if (index !== -1) {
+    items[index] = 1010;
+}
+Also it is recommend you not use the constructor method to initialize your arrays. Instead, use the literal syntax:
+
+var items = [523, 3452, 334, 31, 5346];
+You can also use the ~ operator if you are into terse JavaScript and want to shorten the -1 comparison:
+
+var index = items.indexOf(3452);
+
+if (~index) {
+    items[index] = 1010;
+}

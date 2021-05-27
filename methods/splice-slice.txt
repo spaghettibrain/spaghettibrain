@@ -1,3 +1,14 @@
+let arr = [ 108, 101, 101, 116,  99, 111, 100, 101];
+let index = 4;
+code.splice(index, 1)
+
+REMOVE SPECIFIC INDEX 
+let array = [2, 5, 9, 4];
+to remove 9 ->
+
+array.splice(index, 1);
+console.log(array);
+
 
 BEFORE ATTEMPTING THINK ABOUT FILTER 
 

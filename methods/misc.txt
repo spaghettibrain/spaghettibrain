@@ -1,4 +1,46 @@
+var stringMatching = function(words) {
+  let arr=[], res;
 
+  for(e of words){
+  res = words.filter(elem => elem.includes(e));
+  res.sort((a, b) => b.length - a.length)
+  res.splice(0, 1);
+  arr = [...arr, ...res]
+}
+//let rmDup = arr.filter((c, index) => arr.indexOf(c) === index)
+return rmDup
+};
+stringMatching(words = 
+["dzf","dzfay","hrl","ydzfo"]); 
+
+
+
+wordy = ["dzf","dzfay","hrl","ydzfo"]; 
+
+let y = Math.max(...(wordy.map(e => e.length)));
+console.log(y)
+//res=words.filter
+res = wordy.filter(e => e.length<y);
+console.log(res)
+*/
+/*
+let output = ["pldam","ww"];
+var stringMatching = function(words) {
+  let hasSub, hiLen, sub, res=[], noRepeat;
+  for(e of words){
+  hasSub = words.filter(elem => elem.some(e));
+  console.log(hasSub)
+  hiLen = Math.max(...(hasSub.map(el => el.length)));
+  sub = hasSub.filter(ele => ele.length<hiLen);
+  //console.log(sub)
+  res = [...res, ...sub]
+}
+noRepeat = res.filter((w, i) => res.indexOf(w) === i)
+noRepeat === output ? console.log('correct') : console.log('incorrect')
+return noRepeat
+};
+stringMatching(words = ["mass","as","hero","superhero"])
+//["pldam","klpldamyp","ww","xnpldam","qz","prww","vbhu","fww"]); 
 
 
   

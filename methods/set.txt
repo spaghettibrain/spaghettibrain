@@ -1,5 +1,9 @@
+/*Set
+The Set object lets you store unique values of any type, whether primitive values or object references.
 
-/**************************************Set() EXAMPLES*******************************/
+Description
+Set objects are collections of values. You can iterate through the elements of a set in insertion order. A value in the Set may only occur once; it is unique in the Set's collection.*/
+/**************************************Set() EXAMPLES******************************/
  let bannedSet = new Set();
   banned.forEach((e) => bannedSet.add(e));
   console.log(bannedSet);
@@ -42,3 +46,39 @@ mostCommonWord("Bob hit a ball, the hit BALL ball flew far after it was hit.", [
 
 /*****FASTEST WAY TO MOVE INDEX TO BACK****/
 students.push(students.shift(i));
+
+var sortString = function(s) {
+  let res ='', map= new Map(), unique = [...new Set(s.split('').sort())];
+  console.log(unique)
+    for(i in s){
+        map.set(s[i],map.get(s[i])+1||1);
+    }
+     console.log(map)
+        while(unique.length>0){
+            for(let i=0;i<unique.length;i++){
+                if(map.has(unique[i]) && map.get(unique[i])>0){
+                    res+=unique[i]
+                    map.set(unique[i],map.get(unique[i])-1);
+                }else{
+                    unique.splice(i,1);
+                    i--;
+                }
+            }
+			unique.reverse()
+		}
+    return res;
+}
+sortString(  s = "aaaabbbbcccc")
+
+
+Initialize a Set with values
+You can initialize a Set with a set of values:
+
+const s = new Set([1, 2, 3, 4])
+Convert to array
+Convert the Set keys into an array
+const a = [...s.keys()]
+
+// or
+
+const a = [...s.values()]

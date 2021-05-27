@@ -1,5 +1,8 @@
 let noSelf = arr.filter(e=> arr[e]!=nums[i]); happy random filter one array 
 by unwanted in of another
+
+  let y = Math.max(...(words.map(e => e.length)));
+    res = words.filter(e => e.length<y);
 /*********************************************************************************/
 
 var productExceptSelf = function(nums) {

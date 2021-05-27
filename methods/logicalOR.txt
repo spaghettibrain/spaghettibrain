@@ -1,0 +1,19 @@
+
+/*************************LOGICAL OR********************************/
+
+Logical OR assignment (||=)
+The logical OR assignment (x ||= y) operator only assigns if x is falsy.
+
+let a = { duration: 50, title: '' };
+
+a.duration ||= 10;
+console.log(a.duration);
+// expected output: 50
+
+a.title ||= 'title is empty.';
+console.log(a.title);
+// expected output: "title is empty"
+
+x || y;
+// returns x when x is truthy
+// returns y when x is not truthy

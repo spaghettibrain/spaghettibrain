@@ -48,3 +48,16 @@ diStringMatch( s = 'IDID')
 isIsomorphic( s = "egg", t = "add");
    for(i in s){    ---> 0 1 2
        for(i of s){    ---> e g g
+
+       A for-of loop, introduced in ES6, is a great way to iterate over an array:
+
+for (const v of ['a', 'b', 'c']) {
+  console.log(v)
+}
+How can you get the index of an iteration?
+
+The loop does not offer any syntax to do this, but you can combine the destructuring syntax introduced in ES6 with calling the entries() method on the array:
+
+for (const [i, v] of ['a', 'b', 'c'].entries()) {
+  console.log(i, v)
+}

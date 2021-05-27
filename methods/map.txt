@@ -1,5 +1,16 @@
 /****************************************MAP EXAMPLES******************************/
+Map
+Map is a collection of keyed data items, just like an Object. But the main difference is that Map allows keys of any type.
 
+Methods and properties are:
+
+new Map() – creates the map.
+map.set(key, value) – stores the value by the key.
+map.get(key) – returns the value by the key, undefined if key doesn’t exist in map.
+map.has(key) – returns true if the key exists, false otherwise.
+map.delete(key) – removes the value by the key.
+map.clear() – removes everything from the map.
+map.size – returns the current element count.
 var isIsomorphic = function(s, t) {
   let sMap = new Map;
   let tMap = new Map;
@@ -17,16 +28,31 @@ var isIsomorphic = function(s, t) {
   
   return true;
 };
+22
+let map = new Map(), count=1, str='';
+for(e of s){ 
+  map.has(e) && map.set(e, count)
+  map.set(e, count++)
+ }
+//console -> Map { 'a' => 4, 'b' => 8, 'c' => 12 }
+The way you do it is fine. That is how you need to do it if you are working with primitive values. If you want to avoid the call to map.set, then you must revert to a reference to a value. In other words, then you need to store an object, not a primitive:
+
+let map = new Map();
+map.set("a", {val: 1});
+And then incrementing becomes:
+
+map.get("a").val++;
 
 
 
 
 
+function fun(value, key, map) {
+  str+=key, map.get(key).val--;
+  console.log(map)
 
 
-
-
-
+  map.get(e) ?  map.set(e, {val: count}) : map.set(e, {val: count+=1})
 
 
 var lengthOfLongestSubstring = function(s) {
@@ -80,3 +106,49 @@ map1.set('b', 'beta');
 map1.set('g', 'gamma');
 
 console.log(map1.size);
+
+for (const [key, value] of map) {
+    // `key` is the key of the entry, `value` is the value
+    if (/*...some condition...*/) {
+        break;
+    }
+}
+(You don't have to destructure, though, you could use for (const entry of map) and then use entry[0] for the key and entry[1] for the value.)
+
+Or for looping keys:
+
+for (const key of map.keys()) {
+    // ...
+Or for looping values:
+
+for (const value of map.values()) {
+    // ...
+
+    let iter = map.keys();
+while(!iter.next().done) {
+  if(foo.match(iter.value)) {
+    match = map.get(iter.value);
+    break
+  }
+}
+
+
+0
+
+Well, it looks like this old JQuery thread has been coopted by ES6 Map users.
+
+If this is what you're looking for, may I suggest using the Array.from() function which converts the Map to an Array. This allows you to easily chain transforms such as filter(), map(), etc.
+
+const map = new Map([
+  ['key one', 'value one'],
+  ['key two', 'value two'],
+]);
+
+// Loop through key-value-pairs
+Array.from(map.entries()).map(([key, val]) => console.log(key, val));
+
+// Loop through map keys
+Array.from(map.keys()).map(key => console.log(key));
+
+// Loop through values
+Array.from(map.values()).map(value => console.log(value));

@@ -1,4 +1,27 @@
-    
+/******************************char********************************************/
+/
+s.charCodeAt(index) --> 113
+s.charAt(index)-->a
+String.fromCharCode(65) -----> 'A'
+'A'.charCodeAt() ------> 65
+let elem = 'A'
+elem.charCodeAt() ---> 65
+
+
+
+
+
+String.prototype.charCodeAt()
+The charCodeAt() method returns an integer between 0 and 65535 representing the UTF-16 code unit at the given index.
+
+const sentence = 'The quick brown fox jumps over the lazy dog.';
+
+const index = 4;
+
+console.log(sentence.charCodeAt(index)
+// expected output: "The character code 113 is equal to q"
+
+
     if the string is all alphabet
     s = "paper"
      console.log((/[a-zA-Z]/).test(s)) -->     true
@@ -15,10 +38,42 @@ if either of these strings is not alphabet or number
 
         //!(/[a-zA-Z0-9]/).test(s)
 
+41
 
+If you have only one char and not a string, you can use:
+
+'\n'.charCodeAt();
 
 let s= 'apple';
 !s[5] && console.log(s) //if s[5] does not exist then return apple  if it does it returns false
 
 let s2= 'pea';
 !s[2] && console.log(s)//if s[5] does not exist then return pea  if it does it returns false
+
+
+code = s.map(e => e.charCodeAt()); //[ 108, 101, 101, 116,  99, 111, 100, 101]
+
+for(e of s){
+
+let min = Math.min(...code);
+let max = Math.max(...code);
+fil = code.filter(e=> e!=curr);
+
+
+let smallest= function() {
+cMin = Math.min(...fil); 
+minIndex = fil.indexOf(cMin);
+code.splice(minIndex, 1) 
+curr=cMin;
+toChar= code.map(x => String.fromCharCode(x));
+}
+
+
+
+//largest
+let largest= function() {
+  cMax = Math.max(...fil); 
+  maxIndex = fil.indexOf(cMax);
+  code.splice(maxIndex, 1)
+  curr=cMax;
+  }

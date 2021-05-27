@@ -1,0 +1,7 @@
+Math.max(...(x.map(el => el.length)));
+
+
+wordy = ["dzf","dzfay","hrl","ydzfo"]; 
+
+let y = Math.max(...(wordy.map(e => e.length)));
+console.log(y)

@@ -1,0 +1,44 @@
+/****************************BITWISE************************************/
+
+
+/**********Bitwise OR (|)********/
+The bitwise OR operator (|) returns a 1 in each bit position for which the corresponding bits of either or both operands are 1s.
+
+const a = 5;        // 00000000000000000000000000000101
+const b = 3;        // 00000000000000000000000000000011
+
+console.log(a | b); // 00000000000000000000000000000111
+// expected output: 7
+
+
+/**********Bitwise AND assignment (&=)********/
+The bitwise AND assignment operator (&=) uses the binary representation of both operands, does a bitwise AND operation on them and assigns the result to the variable.
+
+let a = 5;      // 00000000000000000000000000000101
+a &= 3;         // 00000000000000000000000000000011
+
+console.log(a); // 00000000000000000000000000000001
+// expected output: 1
+
+
+
+/**********Bitwise AND (&)********/
+The bitwise AND operator (&) returns a 1 in each bit position for which the corresponding bits of both operands are 1s.
+
+const a = 5;        // 00000000000000000000000000000101
+const b = 3;        // 00000000000000000000000000000011
+
+console.log(a & b); // 00000000000000000000000000000001
+// expected output: 1
+
+
+/**********OR assignment (|=))********/
+The bitwise OR assignment operator (|=) uses the binary representation of both operands, does a bitwise OR operation on them and assigns the result to the variable.
+
+
+/***********Bitwise NOT (~)****************/
+The bitwise NOT operator (~) inverts the bits of its operand.
+
+
+
+
