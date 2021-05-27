@@ -1,5 +1,11 @@
 /****************************************MAP EXAMPLES******************************/
-Map
+
+let multiArr = [[1,5],[7,3],[3,5]]; //-> i want result:  [[6],[10],[8]]]
+multiArr.map(arr=> arr.reduce((a,b)=>a+b));
+
+
+
+
 Map is a collection of keyed data items, just like an Object. But the main difference is that Map allows keys of any type.
 
 Methods and properties are:

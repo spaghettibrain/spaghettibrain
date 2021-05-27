@@ -1,3 +1,13 @@
+/*********************************REDUCE*****************************/
+
+REDUCE NESTED ARRAY 
+
+let multiArr = [[1,5],[7,3],[3,5]]; //-> i want result:  [[6],[10],[8]]]
+multiArr.map(arr=> arr.reduce((a,b)=>a+b)); //returns an array w the values
+
+let a = [1,7,5]; //-> 13
+a.reduce((a,b)=>a+b);  //just returns the sum 
+
 ACC is an array? 
 */
  stringMatching = function(words) {

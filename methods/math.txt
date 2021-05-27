@@ -41,3 +41,8 @@ operateArrays(array1, array2, divide);   //[0.5, 0.5, 0.375]
 
 
 Math.max(...(x.map(e => e.length)));
+
+nestedArr = [[1,5],[7,3],[3,5]] 
+Math.max(...nestedArr.map(arr => arr.reduce((a, b) => a + b)));
+//-> [[6],[10],[8]] -> max : returns : 10 
+

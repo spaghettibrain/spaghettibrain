@@ -1,0 +1,45 @@
+Logical nullish assignment (??=)
+The logical nullish assignment (x ??= y) operator only assigns if x is nullish (null or undefined).
+
+const a = { duration: 50 };
+
+a.duration ??= 10;
+console.log(a.duration);
+// expected output: 50
+
+a.speed ??= 25;
+console.log(a.speed);
+// expected output: 25
+
+Nullish coalescing operator (??)
+The nullish coalescing operator (??) is a logical operator that returns its right-hand side operand when its left-hand side operand is null or undefined, and otherwise returns its left-hand side operand.
+
+This can be contrasted with the logical OR (||) operator, which returns the right-hand side operand if the left operand is any falsy value, not only null or undefined. In other words, if you use || to provide some default value to another variable foo, you may encounter unexpected behaviors if you consider some falsy values as usable (e.g., '' or 0). See below for more examples.
+
+The nullish coalescing operator has the fifth-lowest operator precedence, directly lower than || and directly higher than the conditional (ternary) operator.
+
+const foo = null ?? 'default string';
+console.log(foo);
+// expected output: "default string"
+
+const baz = 0 ?? 42;
+console.log(baz);
+// expected output: 0
+
+
+
+Examples
+Using the nullish coalescing operator
+In this example, we will provide default values but keep values other than null or undefined.
+
+const nullValue = null;
+const emptyText = ""; // falsy
+const someNumber = 42;
+
+const valA = nullValue ?? "default for A";
+const valB = emptyText ?? "default for B";
+const valC = someNumber ?? 0;
+
+console.log(valA); // "default for A"
+console.log(valB); // "" (as the empty string is not null or undefined)
+console.log(valC); // 42

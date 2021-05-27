@@ -34,32 +34,17 @@ Output: 17
 /*************************************************************************************/
 /************************************ANSWER********************************************/
 /*********************************************************************************/
-/*
 
-var maximumWealth = function(a) {
-  let p = [];
-   return  a.reduce((acc, c, i)=> {
-     // console.log(acc)
-     acc*c
-     return acc
-      }, 0)
-      
+var reverseStr = function(s, k) {
+  for(const i in s){
+  if(i>k){k.pop();}
+  }
+  
+   return k
 };
-maximumWealth(a = [[1,5],[7,3],[3,5]]);
-*/
-
-let students = ["Mike", "Tim", "Monique"]
-students << "Sarah"
-console.log(students)
-//students #=> ["Mike", "Tim", "Monique", "Sarah"]
+reverseStr( s = "abcdefg", k = 2)
 
 
-/*
-let multiArr = [[1,5],[7,3],[3,5]]; //-> i want result:  [[6],[10],[8]]]
-multiArr.forEach(arr=> arr.reduce((a,b)=>a+b));
-
-*/
 
 
-//let sumEach= multiArr => 
-//sumEach([[1,5],[7,3],[3,5]]);
+
