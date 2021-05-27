@@ -1,5 +1,8 @@
 /********************************OPERATORS*************/
 
+  if(!(arr.length >=3)) return false
+for a not greater than or equal to we need another set of braces 
+
 
 let s= 'apple';
 !s[5] && console.log(s) //if s[5] does not exist then return apple  if it does it returns false
