@@ -1,55 +1,99 @@
+
+let print = function (input){
+ console.log(input)
+}
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
-/***************************************************************************************
+/***********************************************************************************/
 /*
-
-896. Monotonic Array
+543. Diameter of Binary Tree
 Easy
-An array is monotonic if it is either monotone increasing or monotone decreasing.
+Given the root of a binary tree, return the length of the diameter of the tree.
+The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the tree.
 
-An array nums is monotone increasing if for all i <= j, nums[i] <= nums[j].  An array nums is monotone decreasing if for all i <= j, nums[i] >= nums[j].
-
-Return true if and only if the given array nums is monotonic.
+The length of a path between two nodes is represented by the number of edges between them.
 
 Example 1:
+Input: tree = [1,2,3,4,5]
+diameterOfBinaryTree( tree =
+{
+val: 1,
+    left: { val: 2, 
+                  left: { val: 4,        
+                                 left: null,
+                                 right: null
+                         }, 
+                  right: { val: 5,        
+                                 left: null,
+                                 right: null
+                         }, 
+         },  
+  
+    right:  { val: 3,        
+                    left: null,
+                    right: null
+            }, 
 
-Input: nums = [1,2,2,3]
-Output: true
+}
+) 
+Output: 3
+Explanation: 3is the length of the path [4,2,1,3] or [5,2,1,3].
+
 Example 2:
+Input: tree = [1,2]
 
-Input: nums = [6,5,4,4]
-Output: true
-Example 3:
+diameterOfBinaryTree( tree =
+{
+val: 1,
+       left: { val: 2,        
+                      left: null,
+                      right: null
+              }, 
+  
+    right: null
 
-Input: nums = [1,3,2]
-Output: false
-Example 4:
+}
+) 
+Output: 1
 
-Input: nums = [1,2,4,5]
-Output: true
-Example 5:
-
-Input: nums = [1,1,1]
-Output: true
-*/
-/* testcase 
-[1,3,2] --> 88. false 
-[5,4,3,1] -> 346. true
-[6,5,4,4] --> 351. true
-[2,2,2,1,4,5] -> 356. false
 /*************************************************************************************/
 /************************************ANSWER********************************************/
-/*********************************************************************************/
-
-//my correct answer 
-var isMonotonic = function(nums) {
-    let inc = false; dec=false, ln=nums.length;
-    for(let i = 0; i<ln; i++){
-    if(nums[i]===nums[i+1] || i===ln-1) continue;
-    else if(nums[i]>nums[i+1]) dec=true;
-    else inc=true;
-    };
-   return !(inc && dec)
+/***********************************************************************************/ 
+//call tree 
+//Time : O(n)
+//Space : Call stack O(n) linear 
+var diameterOfBinaryTree = function (tree) {
+  function search(tree) {
+    if (!tree) return [0, 0]; 
+    let [leftD, leftH] = search(tree.left);
+    let [rightD, rightH] = search(tree.right);
+    return [
+      Math.max(leftD, rightD, leftH + rightH),
+      Math.max(leftH, rightH) + 1,
+    ];
+  }
+  return search(tree)[0];
 };
- isMonotonic( [2,2,2,1,4,5]);
 
+
+diameterOfBinaryTree( tree =
+{
+val: 1,
+    left: { val: 2, 
+                  left: { val: 4,        
+                                 left: null,
+                                 right: null
+                         }, 
+                  right: { val: 5,        
+                                 left: null,
+                                 right: null
+                         }, 
+         },  
+  
+    right:  { val: 3,        
+                    left: null,
+                    right: null
+            }, 
+
+}
+) 

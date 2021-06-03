@@ -1,0 +1,6 @@
+
+
+
+
+
+let onlyChar= [...s].filter(e => /[a-z0-9]/.test(e)) filter out everything ot a letter or number 

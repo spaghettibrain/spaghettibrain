@@ -1,0 +1,18 @@
+
+
+var numIdenticalPairs = function(nums) {
+  let result = 0
+  nums.forEach((number, index) => {
+    index = nums.indexOf(number, index + 1)
+    while(index > 0) {
+      result++
+      index = nums.indexOf(number, index + 1)
+    }
+  })
+  return result
+};
+numIdenticalPairs( nums = [1,1,1,1])
+
+
+
+  d.indexOf(rev, i+1)!=-1 ? pairs++ :

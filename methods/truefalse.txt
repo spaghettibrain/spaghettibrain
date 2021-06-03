@@ -1,13 +1,26 @@
-/***********************************SORT*****************************************************/
 
-array.sort(function(a, b){return b.length - a.length});
-arr.sort((a, b) => b.length - a.length)
+0 and 1 are type 'number' but in a Boolean expression, 0 casts to false and 1 casts to true .
+ i%2=0 or 1     if even it will be 0 and if odd it will be 1
+              if true its odd           if false even 
+       i%2 ? res.push(odds.pop()) : res.push(evens.pop())
 
+array = [
+  {strength: 3, name: "Leo"},
+  {strength: 3, name: "Mike"},
+  {strength: 2, name: "Aike"},
+  {strength: 1, name: "Zike"} 
+]
 
-itemsArray.sort(function(a, b){  
-  return sortingArr.indexOf(a) - sortingArr.indexOf(b);
-});
-
+/* sorting by strenght first and name second 
+> for char works in strings 
+Returns : 
+[
+  { strength: 1, name: 'Zike' },
+  { strength: 2, name: 'Aike' },
+  { strength: 3, name: 'Leo' },
+  { strength: 3, name: 'Mike' }
+]
+*/ 
 
 
 This little function is often handy when sorting by multiple keys:
@@ -58,14 +71,3 @@ var kidsWithCandies = function(candies, extraCandies) {
 };
 kidsWithCandies( candies = [2,3,5,1,3], extraCandies = 3)
 //Output : [ true, true, true, false, true ]
-
-//Sort an array in the same order of another array
-
-Use indexOf() to get the position of each element in the reference array, and use that in your comparison function.
-
-var reference_array = ["ryan", "corbin", "dan", "steven", "bob"];
-var array = ["bob", "dan", "steven", "corbin"];
-array.sort(function(a, b) {
-  return reference_array.indexOf(a) - reference_array.indexOf(b);
-});
-console.log(array); // ["corbin", "dan", "steven", "bob"]

@@ -1,0 +1,8 @@
+
+/********************************RETURN********************************************/
+
+var kidsWithCandies = function(candies, extraCandies) {
+ return candies.map(val => { return val + extraCandies >= Math.max(...candies); });
+};
+kidsWithCandies( candies = [2,3,5,1,3], extraCandies = 3)
+//Output : [ true, true, true, false, true ]

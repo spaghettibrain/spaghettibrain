@@ -1,29 +1,47 @@
 //1-100
-/*
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
 /***********************************************************************************/
+/*
 1. Two Sum
 Easy
 Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 You may assume that each input would have exactly one solution, and you may not use the same element twice.
 You can return the answer in any order.
+
+
+Example 1:
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Output: Because nums[0] + nums[1] == 9, we return [0, 1].
+
+Example 2:
+Input: nums = [3,2,4], target = 6
+Output: [1,2]
+
+Example 3:
+Input: nums = [3,3], target = 6
+Output: [0,1]
+
+Testcases:
+50. [2,5,5,11], 10 --> [1,2]
+
+
 */
 /**************************************************************************************/
 /************************************ANSWER********************************************/
 /***********************************************************************************/
-let nums = [2,4,7,15];
-let target = 9;
-var twoSum = function (nums, target) {
-  for (let i=0; i<nums.length; i++){
-    for(let j = i + 1; j<nums.length; j++) {
-      if(nums[i] + nums[j] === target){
-        return [i, j]
-      }
-    }
-  }
+var twoSum = function(nums, target) {
+for (i = 0; i < nums.length; i++) {
+  for (j = 1; j < nums.length; j++) {
+    if(i!= j) {
+   if (nums[i]+nums[j]===target) return [i,j]
+   }
 }
-twoSum(nums, target);
+} 
+};       
+twoSum(  [2,5,5,11], 10);
+
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
 /***********************************************************************************/
@@ -384,7 +402,7 @@ Internally you can think of this:
 // nums is passed in by reference. (i.e., without making a copy)
 int len = removeDuplicates(nums);
 
-// any modification to nums in your function would be known by the caller.
+// any modification to nums in your function be known by the caller.
 // using the length returned by your function, it prints the first len elements.
 for (int i = 0; i < len; i++) {
     print(nums[i]);
@@ -737,7 +755,7 @@ Output: "10101"
 Constraints: 1 <= a.length, b.length <= 104
 a and b consist only of '0' or '1' characters.
 Each string does not contain leading zeros except for the zero itself.*/
-//1100100
+
 
 /*************************************************************************************/
 /************************************ANSWER********************************************/
@@ -1075,7 +1093,7 @@ function inorderTraversal(arr) {
 }
 
 inorderTraversal([1, null, 2, 3]);
-
+//100-199
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
 /***********************************************************************************/
@@ -1129,6 +1147,7 @@ function isSymmetric(root) {
 
 //isSymmetric([1,2,2,null,3,null,3]);
 isSymmetric([1,2,2,3,4,4,3]);
+
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
 /***********************************************************************************/
@@ -1315,7 +1334,210 @@ function TreeNode(val) {
  }
 
 sortedArrayToBST([0,-3,9,-10,null,5]);
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***********************************************************************************/
+/*
+110. Balanced Binary Tree
+Easy
+Given a binary tree, determine if it is height-balanced.
+For this problem, a height-balanced binary tree is defined as:
+a binary tree in which the left and right subtrees of every node differ in height by no more than 1.
 
+Example 1:
+Input: tree = [3,9,20,null,null,15,7]
+Output: true
+
+Example 2:
+Input: tree = [1,2,2,3,3,null,null,4,4]
+Output: false
+
+Example 3:
+Input: tree = []
+Output: true
+
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/***********************************************************************************/ 
+var isBalanced = function(tree) {
+	let res = true
+	function depthSearch(tree){
+		if(!tree) return 0
+		let leftDepth = depthSearch(tree.left), rightDepth = depthSearch(tree.right)
+		if(Math.abs(leftDepth-rightDepth) > 1) res = false
+    return 1 + Math.max(leftDepth, rightDepth) 
+	}
+	depthSearch(tree)
+  return res;    
+};
+
+isBalanced(tree = 
+{
+  val: 3,
+  left: { val: 9, 
+                  left: null, 
+                  right: null,
+         }, 
+  right: { val: 20, 
+                  left: { val: 15, left: null, right: null }, 
+                  right: { val: 7, left: null, right: null },
+         },  
+  
+}
+)
+
+/*For this problem, a Height-Balanced binary tree is defined as:
+a binary tree in which the left and right subtrees of every node differ in height by no more than 1.
+
+Depth first search(calculate heights) is like post order recursive  call all the way down to double null values until you reach a leaf and count back up 
+
+Leaf nodes will always have height of 1 consider that null is a height of zero.
+ LEAF NODE EXAMPLE :   A Leaf means left and right are both null  : 
+ { val: 2, //height : 1 
+                  left: null,  //height: 0
+                  right: null,  //height : 0 
+         }
+*/ 
+/*******************Example 1*******************************/
+//Input: tree = [3,9,20,null,null,15,7]   ----> in tree form : 
+isBalanced(tree1 =
+{
+  val: 3,   //h: 1
+  left: { val: 9, 
+                  left: null, //h: 0
+                  right: null, //h: 0
+         },   //h: 2
+  right: { val: 20,           //h : 1          //h: 0           //h: 0
+                  left: { val: 15, left: null, right: null }, 
+                  right: { val: 7, left: null, right: null },
+         },                   //h: 1          //h: 0           //h: 0
+  
+}
+)
+/*
+Tree One: every node differ in height by no more than 1
+ Left Depth : 1, Right Depth : 2 
+       For Tree1: AbsoluteValue(1-2)= 1   A difference in one is fine: True 
+*/                      //Output: TRUE
+/*******************Example 2*******************************/
+//Input: tree = [1,2,2,3,3,null,null,4,4] --> in tree form : 
+isBalanced(tree2 = 
+{
+  val: 1,      //h: 3
+  left: { val: 2,             //h: 2       
+                  left: { val: 3,    //h: 1         //h: 0            //h: 0  
+                            left: { val: 4, left: null, right: null },
+                            right: { val: 4, left: null, right: null }
+                         },            //h: 1         //h: 0          //h: 0  
+                              //h: 1         //h: 0          //h: 0  
+                  right: { val: 3, left: null, right: null },
+         },    //h: 1
+  right:  { val: 2, 
+                  left: null,  //h: 0
+                  right: null,  //h: 0
+         }
+}
+)
+/* Tree Two: every node differ in height by no more than 1
+ Left Depth : 3, Right Depth : 2 
+ For Tree2: AbsoluteValue(3-1)= 2   A difference of two is not ok: False  
+*/.                   //Output: FALSE
+/*******************Example 3*******************************/
+//Input: tree = []  --> in tree form :
+isBalanced(tree3 = 
+{
+  val: null //h: 0
+}
+)
+/* Tree Three every node differ in height by no more than 1
+            Left Depth : 0, Right Depth : 0 
+  For Tree2: AbsoluteValue(0-0)= 0  A difference in one is okay: True  
+               //Output: TRUE
+*/
+
+let print = function (input){
+ console.log(input)
+}
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***********************************************************************************/
+/*
+111. Minimum Depth of Binary Tree
+Easy
+Given a binary tree, find its minimum depth.
+
+The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.
+
+Note: A leaf is a node with no children.
+
+Example 1:
+Input: tree = [3,9,20,null,null,15,7]
+minDepth(tree = 
+{
+  val: 3,
+  left: { val: 9, 
+                  left: null, 
+                  right: null,
+         }, 
+  right: { val: 20, 
+                  left: { val: 15, left: null, right: null }, 
+                  right: { val: 7, left: null, right: null },
+         },  
+  
+}
+)
+Output: 2
+
+Example 2:
+Input: tree = [2,null,3,null,4,null,5,null,6]
+minDepth( tree =
+{
+  val: 2,
+  left: null, 
+  right: { val: 3, 
+                  left: null, 
+                  right: { val: 4,
+                                 left: null, 
+                                     right: { val: 5,        
+                                                    left: null,
+                                                    right: { val: 6, left: null, right: null }
+                                             },  
+                         },
+         },  
+  
+}
+         )
+
+Output: 5
+
+//shortest past to the nearest leaf  so if tree left and tree right do not exist then it 
+it is not a leaf so we want to find the max depth of either tree 
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/***********************************************************************************/ 
+
+var minDepth = function(tree) {
+    if (!tree) return 0;
+    let leftDepth = minDepth(tree.left), rightDepth = minDepth(tree.right);
+    return (tree.left && tree.right ? Math.min(leftDepth, rightDepth) : Math.max(leftDepth, rightDepth)) + 1;
+};
+minDepth( tree =
+{
+  val: 2,
+  left: null, 
+  right: { val: 3, 
+                  left: null, 
+                  right: { val: 4,
+                                 left: null, 
+                                     right: { val: 5,        
+                                                    left: null,
+                                                    right: { val: 6, left: null, right: null }
+                                             },  
+                         },
+         },  
+  
+}
+         )
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
 /***********************************************************************************/
@@ -1350,8 +1572,343 @@ var getRow = function(rowIndex) {
   return row[rowIndex] 
 };
 getRow(3)
+///**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************
+/*
+121. Best Time to Buy and Sell Stock
+Easy
+You are given an array prices where prices[i] is the price of a given stock on the ith day.
+You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+
+Example 1:
+Input: prices = [7,1,5,3,6,4]
+Output: 5
+Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
+
+Example 2:
+Input: prices = [7,6,4,3,1]
+Output: 0
+Explanation: In this case, no transactions are done and the max profit = 0.
+
+Test Cases 
+1.prices = [7,1,5,3,6,4] -> 5
+2. prices = [7,6,4,3,1] -> 0
+80. prices = [1,4,2] -> 3
+105. prices = [2,1,4] -> 3
+150. prices =[3,2,6,5,0,3] -> 4
+151. prices = [2,4,1] -> 2
+175. prices=[2,1,2,0,1] -> 1
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+var maxProfit = function(prices) {
+    let buy = prices[0], profit = 0, len=prices.length, i=1, e;
+    while(i<len) {
+      e = prices[i];
+      if(buy>e) buy=e;
+      else profit = Math.max(profit, e-buy);
+    i++;
+     }
+    return profit;
+};
+maxProfit(prices = [7,6,4,3,1]);
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***********************************************************************************/
+/*
+112. Path Sum
+Easy
+Given the tree of a binary tree and an integer targetSum, return true if the tree has a tree-to-leaf path such that adding up all the values along the path equals targetSum.
+
+A leaf is a node with no children.
+
+Example 1:
+Input: tree = [5,4,8,11,null,13,4,7,2,null,null,null,1], targetSum = 22
+
+hasPathSum( tree =
+(
+{
+val: 5,
+    left: { val: 4, 
+                  left:  { val: 11,
+                                 left: { val: 7,        
+                                                 left: null,
+                                                 right: null
+                                        }, 
+                                 right: null,
+                         },
+                  right: { val: 2,        
+                                 left: null,
+                                 right: null
+                         }, 
+         },  
+  
+    right: { val: 8, 
+                  left: { val: 13,        
+                                left: null,
+                                right: null
+                        }, 
+                  right: { val: 4,
+                                 left: null, 
+                                 right: { val: 1,        
+                                                    left: null,
+                                                    right: null
+                                        },  
+                         },
+        },  
+
+}
+), targetSum= 22)
+Output: true
+
+Example 2:
+Input: tree = [1,2,3], targetSum = 5
+hasPathSum( tree =
+{
+  val: 1,      
+       left: { val: 2,
+                    left: null, 
+                    right: null 
+              },                
+       right: { val: 3, 
+                    left: null, 
+                    right: null 
+             },        
+}
+, targetSum= 5) 
+Output: false
+
+Example 3:
+Input: tree = [1,2], targetSum = 0
+Output: false
+
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/***********************************************************************************/ 
+
+var hasPathSum = function(tree, targetSum) {
+    if(!tree) return false;
+    if(!tree.left && !tree.right) return targetSum === tree.val; //hits leaf sum check if sum 0
+    return (!!tree.left && hasPathSum(tree.left, targetSum - tree.val)) ||
+        (!!tree.right && hasPathSum(tree.right, targetSum - tree.val));
+};
+
+hasPathSum( tree =
+{
+val: 5,
+    left: { val: 4, 
+                  left:  { val: 11,
+                                 left: { val: 7,        
+                                                 left: null,
+                                                 right: null
+                                        }, 
+                                 right: null,
+                         },
+                  right: { val: 2,        
+                                 left: null,
+                                 right: null
+                         }, 
+         },  
+  
+    right: { val: 8, 
+                  left: { val: 13,        
+                                left: null,
+                                right: null
+                        }, 
+                  right: { val: 4,
+                                 left: null, 
+                                 right: { val: 1,        
+                                                    left: null,
+                                                    right: null
+                                        },  
+                         },
+        },  
+
+}
+, targetSum= 22) 
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************
+/*
+125. Valid Palindrome
+Easy
+Given a string s, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
+
+Example 1:
+
+Input: s = "A man, a plan, a canal: Panama"
+Output: true
+Explanation: "amanaplanacanalpanama" is a palindrome.
+Example 2:
+
+Input: s = "race a car"
+Output: false
+Explanation: "raceacar" is not a palindrome.
+s.charCodeAt(index) --> 113
+s.charAt(index)-->a
+   console.log(s[i])
+   console.log(s.charCodeAt(i))
+   console.log(64<32 && 91)
+   console.log( 64< s.charCodeAt(i) < 91)
+   console.log(96 < s.charCodeAt(i) < 123)
+
+   This function check if number n is between a and b
+TestCases: 
+448. ' ' -> true 
+451. ' a.' -> true 
+454. 0P -> false
 
 
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+
+
+var isPalindrome = function(s) {
+s = s.toLowerCase();
+let onlyChar= [...s].filter(e=> /[a-z0-9]/.test(e))
+console.log(onlyChar)
+ return  [...onlyChar].reverse().join('') === onlyChar.join('') ? true : false 
+};
+isPalindrome( s = "OP");
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************
+/*
+136. Single Number
+Easy
+Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+You must implement a solution with a linear runtime complexity and use only constant extra space.
+
+Example 1:
+Input: nums = [2,2,1]
+Output: 1
+
+Example 2:
+Input: nums = [4,1,2,1,2]
+Output: 4
+
+Example 3:
+Input: nums = [1]
+Output: 1
+
+TestCases: 
+1. [2,2,1] -> 1
+2.  [4,1,2,1,2] -> 4
+3. [1] -> 1
+9. [1,3,1,-1,3] -> 3
+
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+
+
+var singleNumber = function(nums) {
+nums=nums.sort((a,b)=> a-b)
+ for(let i=0; i<nums.length; i++){
+   if( nums.includes(nums[i], i+1) ) i++;
+   else return nums[i]
+ } 
+};
+singleNumber([4,1,2,1,2]);
+
+
+const singleNumber = (nums) => {
+  return nums.reduce((acc, num) => acc ^ num)
+};
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***********************************************************************************/
+/*
+144. Binary Tree Preorder Traversal
+Easy
+Given the root of a binary tree, return the preorder traversal of its nodes' values.
+
+Example 1:
+Input: root = [1,null,2,3]
+root = 
+{
+  val: 1,
+  left:  null,
+
+  right: { val: 2, 
+                  left: { val: 3, left: null, right: null }, 
+                  right: null,
+         }  
+}
+
+Output: [1,2,3]
+Example 2:
+Input: root = []
+Output: []
+
+Example 3:
+Input: root = [1]
+root={
+  val: 1 
+  }
+Output: [1]
+
+Example 4:
+Input: root = [1,2]
+root = 
+{
+  val: 1,
+  left: { val: 2, 
+                  left: null, 
+                  right: null,
+         },  
+  right: null  
+}
+)
+Output: [1,2]
+
+Example 5:
+Input: root = [1,null,2]
+Output: [1,2]
+
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/***********************************************************************************/ 
+
+
+//treenode left right 
+function TreeNode(val, left, right) {
+  let node = {};
+  node.val = val === undefined ? 0 : val;
+  node.left = left === undefined ? null : left;
+  node.right = right === undefined ? null : right;
+  return node;
+}
+//algorithm for problem modify
+function algorithm(treeNode, res) {
+  if (!treeNode) return res;
+   res.push(treeNode.val);
+  algorithm(treeNode.left, res);
+  algorithm(treeNode.right, res);
+  return res;
+}
+
+//leetcode function 
+function preorderTraversal(tree) {
+  return algorithm(tree, []);
+}
+//convert array to tree and put in as parameter here 
+
+preorderTraversal(tree = 
+{
+  val: 1,
+  left: null,
+  right: { val: 2, 
+                  left: null, 
+                  right: null,
+         },  
+  
+}
+)
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
 /***************************************************************************************/
@@ -1514,6 +2071,90 @@ const productExceptSelf = (nums) => {
 };
 
 productExceptSelf( nums =[-1,1,0,-3,3]); 
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************
+/*
+242. Valid Anagram
+Easy
+Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+Example 1:
+Input: s = 'anagram', t = 'nagaram'
+Output: true
+Example 2:
+Input: s = 'rat', t = 'car'
+Output: false
+
+Test Case:
+20. 'a', 'ab' --> false 
+26. 'ac', bb' --> false 
+31. 'aacc', 'ccac' --> false 
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+
+//my first answer correct
+var isAnagram = function(s, t) {
+  if(s.length != t.length) return false
+  let sap = new Map(), tap= new Map();
+    for(i in s){
+     if(!t.includes(s[i])) return false 
+    sap.get(s[i]) ? sap.set(s[i], sap.get(s[i])+1) : sap.set(s[i], 1)
+    tap.get(t[i]) ? tap.set(t[i], tap.get(t[i])+1) : tap.set(t[i], 1)
+    }
+ for(e of s){
+   if(sap.get(e) != tap.get(e)) return false
+ }
+    return true 
+};
+// my second answer correct?
+//passes leetcode but is actually wrong submitted testcase for it 
+var isAnagram = function(s, t) {
+  if(s.length!=t.length) return false 
+sCode=0; tCode=0;
+   for(i in s){
+if(!t.includes(s[i])) return false 
+    sCode+=s.charCodeAt(i)
+     tCode+=t.charCodeAt(i);
+    }
+if(sCode!=tCode) return false 
+return true 
+};
+isAnagram('acacbac' ,'bbbbbac');
+
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************
+/*
+258. Add Digits
+Easy
+
+Given an integer num, repeatedly add all its digits until the result has only one digit, and return it.
+Example 1:
+
+Input: num = 38
+Output: 2
+Explanation: The process is
+38 --> 3 + 8 --> 11
+11 --> 1 + 1 --> 2 
+Since 2 has only one digit, return it.
+Example 2:
+
+Input: num = 0
+Output: 0
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+
+var addDigits = function(num) {
+    while(num > 9){
+       let toStr =num.toString().split(''), toNum = toStr.map(e=> +e);
+       num = toNum.reduce((a,b)=> a+b);
+    }
+return num
+};
+addDigits(-100);
+
 //300-399
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
@@ -1546,6 +2187,69 @@ var reverseVowels = function(s) {
 return str
 };
 reverseVowels(s = "leetcode");
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************
+/*
+349. Intersection of Two Arrays
+Easy
+Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in the result must be unique and you may return the result in any order.
+
+Example 1:
+Input: nums1 = [1,2,2,1], nums2 = [2,2]
+Output: [2]
+
+Example 2:
+Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+Output: [9,4]
+Explanation: [4,9] is also accepted.
+
+ */
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+
+// my answer correct 
+var intersection = function(nums1, nums2) {
+  let arr=[];
+  nums1.forEach(e=> nums2.indexOf(e)===-1 ?  '' : arr.push(e))
+    return   [...new Set(arr)]
+};
+
+//leetcode answer 
+var intersection = function(nums1, nums2) {
+    return [...new Set(nums1.filter(e => nums2.includes(e)))]
+};
+intersection( nums1 = [1,2,2,1], nums2 = [2,2])
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************
+/*
+350. Intersection of Two Arrays II
+Easy
+Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in the result must appear as many times as it shows in both arrays and you may return the result in any order.
+
+Example 1:
+Input: nums1 = [1,2,2,1], nums2 = [2,2]
+Output: [2,2]
+
+Example 2:
+Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+Output: [4,9]
+Explanation: [9,4] is also accepted.
+
+ */
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+//my answer correct 
+var intersect = function(nums1, nums2) {
+  let res=[], map= new Map();
+  nums1.forEach(e=> map.get(e) && nums2.includes(e) ? map.set(e, map.get(e)+1) : nums2.includes(e) ? map.set(e, 1 ) : '')
+  nums2.forEach(e=> map.get(e)>0 ? map.set(e, map.get(e)-1) && res.push(e) : '');
+  return res
+};
+intersect( nums1 = [1,2,2,1], nums2 = [2,2])
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
 /***************************************************************************************/
@@ -1725,7 +2429,182 @@ var reverseStr = function(s, k) {
     }
  return ans;
 };
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***********************************************************************************/
+/*
+543. Diameter of Binary Tree
+Easy
+Given the root of a binary tree, return the length of the diameter of the tree.
+The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the tree.
+
+The length of a path between two nodes is represented by the number of edges between them.
+
+Example 1:
+Input: tree = [1,2,3,4,5]
+diameterOfBinaryTree( tree =
+{
+val: 1,
+    left: { val: 2, 
+                  left: { val: 4,        
+                                 left: null,
+                                 right: null
+                         }, 
+                  right: { val: 5,        
+                                 left: null,
+                                 right: null
+                         }, 
+         },  
+  
+    right:  { val: 3,        
+                    left: null,
+                    right: null
+            }, 
+
+}
+) 
+Output: 3
+Explanation: 3is the length of the path [4,2,1,3] or [5,2,1,3].
+
+Example 2:
+Input: tree = [1,2]
+
+diameterOfBinaryTree( tree =
+{
+val: 1,
+       left: { val: 2,        
+                      left: null,
+                      right: null
+              }, 
+  
+    right: null
+
+}
+) 
+Output: 1
+
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/***********************************************************************************/ 
+//call tree 
+//Time : O(n)
+//Space : Call stack O(n) linear 
+var diameterOfBinaryTree = function (tree) {
+  function search(tree) {
+    if (!tree) return [0, 0]; 
+    let [leftD, leftH] = search(tree.left);
+    let [rightD, rightH] = search(tree.right);
+    return [
+      Math.max(leftD, rightD, leftH + rightH),
+      Math.max(leftH, rightH) + 1,
+    ];
+  }
+  return search(tree)[0];
+};
+
+
+diameterOfBinaryTree( tree =
+{
+val: 1,
+    left: { val: 2, 
+                  left: { val: 4,        
+                                 left: null,
+                                 right: null
+                         }, 
+                  right: { val: 5,        
+                                 left: null,
+                                 right: null
+                         }, 
+         },  
+  
+    right:  { val: 3,        
+                    left: null,
+                    right: null
+            }, 
+
+}
+) 
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************
+/*
+561. Array Partition I
+Easy
+
+Given an integer array nums of 2n integers, group these integers into n pairs (a1, b1), (a2, b2), ..., (an, bn) such that the sum of min(ai, bi) for all i is maximized. Return the maximized sum.
+
+
+Example 1:
+Input: nums = [1,4,3,2]
+Output: 4
+Explanation: All possible pairings (ignoring the ordering of elements) are:
+1. (1, 4), (2, 3) -> min(1, 4) + min(2, 3) = 1 + 2 = 3
+2. (1, 3), (2, 4) -> min(1, 3) + min(2, 4) = 1 + 2 = 3
+3. (1, 2), (3, 4) -> min(1, 2) + min(3, 4) = 1 + 3 = 4
+
+So the maximum possible sum is 4.
+Example 2:
+Input: nums = [6,2,6,5,1,2]
+Output: 9
+Explanation: The optimal pairing is (2, 1), (2, 5), (6, 6).
+ min(2, 1) + min(2, 5) + min(6, 6) = 1 + 2 + 6 = 9.
+ 
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+
+//my correct answer 
+var arrayPairSum = function(nums) {
+  nums = nums.sort((a, b)=> b-a), sum=0, i=0;
+  while(i<nums.length){
+  sum+=Math.min(nums[i], nums[i+1]), i+=2;
+  }
+ return sum
+};
+arrayPairSum(nums = [1,4,3,2])
+    
+
+
 //600-699
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************
+/*
+697. Degree of an Array
+
+Given a non-empty array of non-negative integers nums, the degree of this array is defined as the maximum frequency of any one of its elements.
+
+Your task is to find the smallest possible length of a (contiguous) subarray of nums, that has the same degree as nums.
+
+Example 1:
+
+Input: nums = [1,2,2,3,1]
+Output: 2
+Explanation: 
+The input array has a degree of 2 because both elements 1 and 2 appear twice.
+Of the subarrays that have the same degree:
+[1, 2, 2, 3, 1], [1, 2, 2, 3], [2, 2, 3, 1], [1, 2, 2], [2, 2, 3], [2, 2]
+The shortest length is 2. So return 2.
+
+Example 2:
+Input: nums = [1,2,2,3,1,4,2]
+Output: 6
+Explanation: 
+The degree is 3 because the element 2 is repeated 3 times.
+So [2,2,3,1,4,2] is the shortest subarray, therefore returning 6.
+ 
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+
+var findShortestSubArray = function(nums) {
+  let map = new Map(), arr;
+   nums.forEach(e => (map.get(e)) ? map.get(e)[0]+=1 : map.set(e,[1,(nums.lastIndexOf(e)-nums.indexOf(e))+1])); 
+    arr= [...map.values()].sort((a,b)=> b[0]-a[0] || a[1]-b[1]);
+  return arr[0][1]
+}
+findShortestSubArray(nums = [1,2,2,3,1,4,2])
+
 //700-799
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
@@ -1785,6 +2664,52 @@ if(ans===undefined){ ans=-1}
 return ans
 };
 search(nums = [-1,0,3,5,9,12], target = 9)
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************
+/*
+771. Jewels and Stones
+Easy
+
+You're given strings jewels representing the types of stones that are jewels, and stones representing the stones you have. Each character in stones is a type of stone you have. You want to know how many of the stones you have are also jewels.
+
+Letters are case sensitive, so "a" is considered a different type of stone from "A".
+
+Example 1:
+
+Input: jewels = "aA", stones = "aAAbbbb"
+Output: 3
+Example 2:
+
+Input: jewels = "z", stones = "ZZ"
+Output: 0
+
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+
+/*
+// my answer correct
+var numJewelsInStones = function(jewels, stones) {
+ let map= new Map();
+ jewels= jewels.split(''), stones=stones.split('');
+    stones.forEach(e => jewels.includes(e) ? map.get(e) ? map.set(e, 1+map.get(e)) : map.set(e, 1) : '')
+    let val = [...map.values()]
+   if(val.length<1) return 0
+ return   val.reduce((a,b )=> a + b)
+};
+numJewelsInStones(jewels = "aA", stones = "aAAbbbb")
+*/
+//leetcode 
+var numJewelsInStones = function(jewels, stones) {
+    let count = 0;
+    for (let i = 0; i < stones.length; i++) {
+        if (jewels.includes(stones.charAt(i))) count++;
+    }
+    return count;
+};
+
+numJewelsInStones(jewels = "aA", stones = "aAAbbbb")
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
 /***************************************************************************************/
@@ -2041,6 +2966,69 @@ var isMonotonic = function(nums) {
 /*************************************QUESTION********************************************/
 /***************************************************************************************
 /*
+/*
+905. Sort Array By Parity
+Easy
+Given an array nums of non-negative integers, return an array consisting of all the even elements of nums, followed by all the odd elements of nums.
+You may return any answer array that satisfies this condition.
+
+Example 1:
+Input: nums = [3,1,2,4]
+Output: [2,4,3,1]
+The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accepted.
+
+ */
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+
+var sortArrayByParity = function(nums) {
+    let [odds, evens] = [nums.filter(e => e%2===1), nums.filter(e => e%2 === 0)];
+    evens.push.apply(evens, odds);
+   return evens
+};
+sortArrayByParity([3,1,4,2])
+
+
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************
+/*
+922. Sort Array By Parity II
+Easy
+Given an array of integers nums, half of the integers in nums are odd, and the other half are even.
+Sort the array so that whenever nums[i] is odd, i is odd, and whenever nums[i] is even, i is even.
+Return any answer array that satisfies this condition.
+
+Example 1:
+Input: nums = [4,2,5,7]
+Output: [4,5,2,7]
+Explanation: [4,7,2,5], [2,5,4,7], [2,7,4,5] would also have been accepted.
+
+Example 2:
+Input: nums = [2,3]
+Output: [2,3]
+
+ */
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+
+
+var sortArrayByParityII = function(nums) {
+    let [odds, evens] = [nums.filter(e => e%2===1), nums.filter(e => e%2 === 0)],  res = []
+    for(i in nums){
+       i%2 ? res.push(odds.pop()) : res.push(evens.pop())
+    }
+    return res
+};
+sortArrayByParityII([3,1,4,2])
+
+
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************
+/*
 941. Valid Mountain Array
 Easy
 Given an array of integers arr, return true if and only if it is a valid mountain array.
@@ -2181,6 +3169,36 @@ var diStringMatch = function(s) {
     return result
 };
 diStringMatch( s = 'IDID')
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************
+/*
+977. Squares of a Sorted Array
+Easy
+Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
+
+Example 1:
+Input: nums = [-4,-1,0,3,10]
+Output: [0,1,9,16,100]
+Explanation: After squaring, the array becomes [16,1,0,9,100].
+After sorting, it becomes [0,1,9,16,100].
+
+Example 2:
+Input: nums = [-7,-3,2,3,11]
+Output: [4,9,9,49,121]
+
+ */
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+
+var sortedSquares = function(nums) {
+    nums.forEach((e, i)=> nums[i]=(e**2))
+    nums.sort((a,b) => a-b)
+    return nums
+};
+sortedSquares(nums = [-4,-1,0,3,10])
+
 //1000-1099
 /*
 /**************************************************************************************/
@@ -2209,6 +3227,70 @@ var defangIPaddr = function (address) {
 };
 defangIPaddr("255.100.50.0");
 //1100-1199
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************
+/*
+1122. Relative Sort Array
+Easy
+Given two arrays arr1 and arr2, the elements of arr2 are distinct, and all elements in arr2 are also in arr1.
+
+Sort the elements of arr1 such that the relative ordering of items in arr1 are the same as in arr2.  Elements that don't appear in arr2 should be placed at the end of arr1 in ascending order.
+
+Example 1:
+
+Input: arr1 = [2,3,1,3,2,4,6,7,9,2,19], arr2 = [2,1,4,3,9,6]
+Output: [2,2,2,1,4,3,3,9,6,7,19]
+Input:
+[26,21,11,20,50,34,1,18]
+[21,11,26,20]
+Output:
+[1,11,18,21,26,20,34,50]
+Expected:
+[21,11,26,20,1,18,34,50]
+ */
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+
+var relativeSortArray = function(arr1, arr2) {
+    let containsArr = []
+    arr2.forEach((a, index) => containsArr.push(...arr1.filter(num => num === a)))
+    return [...containsArr, ...arr1.filter(a => !arr2.includes(a)).sort((b,c) => b-c)]
+};
+relativeSortArray([28,6,22,8,44,17],
+[22,28,8,6])
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************
+1128. Number of Equivalent Domino Pairs
+Easy
+
+Given a list of dominoes, dominoes[i] = [a, b] is equivalent to dominoes[j] = [c, d] if and only if either (a==c and b==d), or (a==d and b==c) - that is, one domino can be rotated to be equal to another domino.
+
+Return the number of pairs (i, j) for which 0 <= i < j < dominoes.length, and dominoes[i] is equivalent to dominoes[j].
+
+Example 1:
+
+Input: dominoes = [[1,2],[2,1],[3,4],[5,6]]
+Output: 1
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+
+var numEquivDominoPairs = function(dominoes) {
+    let arr = Array(100).fill(0), pairCount = 0;
+    for(let e of dominoes){
+       let num = e[0] < e[1] ? e[0] * 10 + e[1] : e[1] * 10 + e[0];
+        pairCount += arr[num];
+        arr[num]++;
+    }
+    
+    return pairCount;
+};
+numEquivDominoPairs(dominoes = [[1,2],[2,1],[3,4],[5,6]])
+
+
 //1200-1299
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
@@ -2348,7 +3430,183 @@ minimumAbsDifference([3,8,-10,23,19,-4,-14,27])
 };
 
 minimumAbsDifference([3,8,-10,23,19,-4,-14,27])
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************
+/*
+1281. Subtract the Product and Sum of Digits of an Integer
+Easy
+Given an integer number n, return the difference between the product of its digits and the sum of its digits.
+
+Example 1:
+Input: n = 234
+Output: 15 
+Explanation: 
+Product of digits = 2 * 3 * 4 = 24 
+Sum of digits = 2 + 3 + 4 = 9 
+Result = 24 - 9 = 15
+
+Example 2:
+Input: n = 4421
+Output: 21
+Explanation: 
+Product of digits = 4 * 4 * 2 * 1 = 32 
+Sum of digits = 4 + 4 + 2 + 1 = 11 
+Result = 32 - 11 = 21
+
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+
+
+var subtractProductAndSum = function(n) {
+ n = n.toString().split('')
+ let toNum = n.map((e, i) => +e), prod =  toNum.reduce((a,b)=> a*b), sum =  toNum.reduce((a,b)=> a+b);
+  return prod - sum
+};
+subtractProductAndSum(n=234)
 //1300-1399
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************
+/*
+1331. Rank Transform of an Array
+Easy
+
+Given an array of integers arr, replace each element with its rank.
+
+The rank represents how large the element is. The rank has the following rules:
+Rank is an integer starting from 1.
+The larger the element, the larger the rank. If two elements are equal, their rank must be the same.
+Rank should be as small as possible.
+ 
+
+Example 1:
+Input: arr = [40,10,20,30]
+Output: [4,1,2,3]
+Explanation: 40 is the largest element. 10 is the smallest. 20 is the second smallest. 30 is the third smallest.
+
+Example 2:
+Input: arr = [100,100,100]
+Output: [1,1,1]
+Explanation: Same elements share the same rank.
+
+Example 3:
+Input: arr = [37,12,28,9,100,56,80,5,12]
+Output: [5,3,4,2,8,6,7,1,3]
+
+ */
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+
+//my answer passed 
+/*
+var arrayRankTransform = function(arr) {
+  let copy, obj={}, res=[]; 
+  copy= [...new Set(arr)]; 
+  copy.sort((a, b)=> a-b)
+  copy.forEach(e=> obj[e]=(copy.indexOf(e)+1))
+  arr.forEach(e=> res.push(obj[e]))
+    return res
+};*/
+//leetcode answer apperently mapping the index is faster than finding the indexOf()
+var arrayRankTransform = function(arr) {
+  let ranks = new Map()
+  let cloneArray = [...new Set(arr)]
+  
+  cloneArray.sort((a, b) => a - b)
+  cloneArray.forEach((n, i) => ranks.set(n, i))
+  console.log(ranks)
+  
+  return arr.map(n => {
+    // using map.get(n) faster than cloneArray.indexOf(n) 99 times
+    //  and faster than use object 2 times
+    return ranks.get(n) + 1
+  })
+};
+arrayRankTransform (arr = [37,12,28,9,100,56,80,5,12])
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************
+/*
+1342. Number of Steps to Reduce a Number to Zero
+Easy
+
+Given a non-negative integer num, return the number of steps to reduce it to zero. If the current number is even, you have to divide it by 2, otherwise, you have to subtract 1 from it.
+
+Example 1:
+Input: num = 14
+Output: 6
+Explanation: 
+Step 1) 14 is even; divide by 2 and obtain 7. 
+Step 2) 7 is odd; subtract 1 and obtain 6.
+Step 3) 6 is even; divide by 2 and obtain 3. 
+Step 4) 3 is odd; subtract 1 and obtain 2. 
+Step 5) 2 is even; divide by 2 and obtain 1. 
+Step 6) 1 is odd; subtract 1 and obtain 0.
+
+Example 2:
+Input: num = 8
+Output: 4
+Explanation: 
+Step 1) 8 is even; divide by 2 and obtain 4. 
+Step 2) 4 is even; divide by 2 and obtain 2. 
+Step 3) 2 is even; divide by 2 and obtain 1. 
+Step 4) 1 is odd; subtract 1 and obtain 0.
+
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+
+
+var numberOfSteps = function(num) {
+  let inc = 0;
+  while(num> 0){
+    if(num%2!=0) num=num-1, inc++;
+    else if(num%2===0) num=num/2, inc++;
+  }
+  return inc
+};
+numberOfSteps(num=1)
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************
+/*
+1365. How Many Numbers Are Smaller Than the Current Number
+Easy
+Given the array nums, for each nums[i] find out how many numbers in the array are smaller than it. That is, for each nums[i] you have to count the number of valid j's such that j != i and nums[j] < nums[i].
+
+Return the answer in an array.
+
+Example 1:
+Input: nums = [8,1,2,2,3]
+Output: [4,0,1,1,3]
+Explanation: 
+For nums[0]=8 there exist four smaller numbers than it (1, 2, 2 and 3). 
+For nums[1]=1 does not exist any smaller number than it.
+For nums[2]=2 there exist one smaller number than it (1). 
+For nums[3]=2 there exist one smaller number than it (1). 
+For nums[4]=3 there exist three smaller numbers than it (1, 2 and 2).
+
+Example 2:
+Input: nums = [6,5,4,8]
+Output: [2,1,0,3]
+
+Example 3:
+Input: nums = [7,7,7,7]
+Output: [0,0,0,0]
+
+
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+var smallerNumbersThanCurrent = function(nums) {
+  let copy = [...nums].sort((a,b)=> a-b);
+  return nums.map((a,b) => copy.indexOf(a))
+};
+
+smallerNumbersThanCurrent(nums = [8,1,2,2,3])
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
 /***************************************************************************************
@@ -2423,6 +3681,62 @@ var sortString = function(s) {
     return res;
 }
 sortString(  s = "aaaabbbbcccc")
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************
+/*
+1389. Create Target Array in the Given Order
+Easy
+
+Given two arrays of integers nums and index. Your task is to create target array under the following rules:
+
+Initially target array is empty.
+From left to right read nums[i] and index[i], insert at index index[i] the value nums[i] in target array.
+Repeat the previous step until there are no elements to read in nums and index.
+Return the target array.
+
+It is guaranteed that the insertion operations will be valid.
+
+Example 1:
+Input: nums = [0,1,2,3,4], index = [0,1,2,2,1]
+Output: [0,4,1,3,2]
+Explanation:
+nums       index     target
+0            0        [0]
+1            1        [0,1]
+2            2        [0,1,2]
+3            2        [0,1,3,2]
+4            1        [0,4,1,3,2]
+
+Example 2:
+Input: nums = [1,2,3,4,0], index = [0,1,2,3,0]
+Output: [0,1,2,3,4]
+Explanation:
+nums       index     target
+1            0        [1]
+2            1        [1,2]
+3            2        [1,2,3]
+4            3        [1,2,3,4]
+0            0        [0,1,2,3,4]
+
+Example 3:
+Input: nums = [1], index = [0]
+Output: [1]
+
+
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+
+
+var createTargetArray = function(nums, index) {
+   let target = [];
+   for(let i=0; i<nums.length; i++){
+      target.splice(index[i], 0, nums[i])
+   }
+   return target 
+};
+createTargetArray( nums = [1], index = [0])
 
 //1400-1499
 /**************************************************************************************/
@@ -2497,6 +3811,110 @@ Output: "1a2b3"
   }
 
   reformat( s = "ec"); 
+  /**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************
+/*
+1431. Kids With the Greatest Number of Candies
+Easy
+Share
+Given the array candies and the integer extraCandies, where candies[i] represents the number of candies that the ith kid has.
+
+For each kid check if there is a way to distribute extraCandies among the kids such that he or she can have the greatest number of candies among them. Notice that multiple kids can have the greatest number of candies.
+
+Example 1:
+Input: candies = [2,3,5,1,3], extraCandies = 3
+Output: [true,true,true,false,true] 
+Explanation: 
+Kid 1 has 2 candies and if he or she receives all extra candies (3) will have 5 candies --- the greatest number of candies among the kids. 
+Kid 2 has 3 candies and if he or she receives at least 2 extra candies will have the greatest number of candies among the kids. 
+Kid 3 has 5 candies and this is already the greatest number of candies among the kids. 
+Kid 4 has 1 candy and even if he or she receives all extra candies will only have 4 candies. 
+Kid 5 has 3 candies and if he or she receives at least 2 extra candies will have the greatest number of candies among the kids. 
+
+Example 2:
+Input: candies = [4,2,1,1,2], extraCandies = 1
+Output: [true,false,false,false,false] 
+Explanation: There is only 1 extra candy, therefore only kid 1 will have the greatest number of candies among the kids regardless of who takes the extra candy.
+Example 3:
+
+Input: candies = [12,1,12], extraCandies = 10
+Output: [true,false,true]
+
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+var kidsWithCandies = function(candies, extraCandies) {
+ return candies.map(val => { return val + extraCandies >= Math.max(...candies); });
+};
+kidsWithCandies( candies = [2,3,5,1,3], extraCandies = 3)
+//Output : [ true, true, true, false, true ]
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************
+/*
+1455. Check If a Word Occurs As a Prefix of Any Word in a Sentence
+Easy
+Given a sentence that consists of some words separated by a single space, and a searchWord.
+You have to check if searchWord is a prefix of any word in sentence.
+
+Return the index of the word in sentence where searchWord is a prefix of this word (1-indexed).
+If searchWord is a prefix of more than one word, return the index of the first word (minimum index). If there is no such word return -1.
+
+A prefix of a string S is any leading contiguous substring of S.
+
+Example 1:
+Input: sentence = "i love eating burger", searchWord = "burg"
+Output: 4
+Explanation: "burg" is prefix of "burger" which is the 4th word in the sentence.
+
+Example 2:
+Input: sentence = "this problem is an easy problem", searchWord = "pro"
+Output: 2
+Explanation: "pro" is prefix of "problem" which is the 2nd and the 6th word in the sentence, but we return 2 as it's the minimal index.
+
+Example 3:
+Input: sentence = "i am tired", searchWord = "you"
+Output: -1
+Explanation: "you" is not a prefix of any word in the sentence.
+
+Example 4:
+Input: sentence = "i use triple pillow", searchWord = "pill"
+Output: 4
+
+Example 5:
+Input: sentence = "hello from the other side", searchWord = "they"
+Output: -1
+
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+
+//my answer correct 
+
+/*
+var isPrefixOfWord = function(sentence, searchWord) {
+ sentence = sentence.split(' ')
+  let str='', k=0, index=-1;
+  for(e of sentence){
+    for(j of e){
+    if(j===searchWord[k]) str+=j, index=sentence.indexOf(e)+1
+    k++;
+  }
+  if(str!=searchWord) str='', index=-1, k=0;
+  else if(str===searchWord) return index
+  }
+return index                                                
+};         */
+
+//leetcode answer 
+var isPrefixOfWord = function(sentence, searchWord) {
+	const find = sentence.split(' ').findIndex(str => str.startsWith(searchWord))
+	return ~find ? find + 1 : find
+};
+isPrefixOfWord( sentence = "this problem is an easy problem", searchWord = "pro")
+
+
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
 /***********************************************************************************/
@@ -2575,7 +3993,126 @@ runSum.push(sum);
 return runSum;
 };
 //1500-1599
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************
+/*
+1512. Number of Good Pairs
+Easy
+Given an array of integers nums.
+A pair (i,j) is called good if nums[i] == nums[j] and i < j.
+Return the number of good pairs.
+
+Example 1:
+Input: nums = [1,2,3,1,1,3]  4/2 2 +1 + 1 v
+Output: 4                
+Explanation: There are 4 good pairs (0,3), (0,4), (3,4), (2,5) 0-indexed.
+
+Example 2:
+Input: nums = [1,1,1,1] 1+1+1+1 = 4 + 2 
+Output: 6
+Explanation: Each pair in the array are good.
+
+Example 3:
+Input: nums = [1,2,3]
+Output: 0
+
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+
+//my answer correct 
+
+var numIdenticalPairs = function(nums) {
+  let result = 0
+  nums.forEach((e, i) => {
+    i = nums.indexOf(e, i+1)
+    while(i>0) {
+      result++
+      i = nums.indexOf(e, i+1)
+    }
+  })
+  return result
+};
+numIdenticalPairs( nums = [1,2,3,1,1,3])
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************
+/*
+1662. Check If Two String Arrays are Equivalent
+Easy
+
+Given two string arrays word1 and word2, return true if the two arrays represent the same string, and false otherwise.
+
+A string is represented by an array if the array elements concatenated in order forms the string.
+
+Example 1:
+Input: word1 = ["ab", "c"], word2 = ["a", "bc"]
+Output: true
+Explanation:
+word1 represents string "ab" + "c" -> "abc"
+word2 represents string "a" + "bc" -> "abc"
+The strings are the same, so return true.
+
+Example 2:
+Input: word1 = ["a", "cb"], word2 = ["ab", "c"]
+Output: false
+Example 3:
+
+Input: word1  = ["abc", "d", "defg"], word2 = ["abcddefg"]
+Output: true
+
+
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+
+
+var arrayStringsAreEqual = function(word1, word2) {
+  return word1.join('') === word2.join('') ? true : false 
+};
+arrayStringsAreEqual(word1 = ["a", "cb"], word2 = ["ab", "c"])
 */
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************
+/*
+1486. XOR Operation in an Array
+Easy
+Given an integer n and an integer start.
+Define an array nums where nums[i] = start + 2*i (0-indexed) and n == nums.length.
+Return the bitwise XOR of all elements of nums.
+
+Example 1:
+Input: n = 5, start = 0
+Output: 8
+Explanation: Array nums is equal to [0, 2, 4, 6, 8] where (0 ^ 2 ^ 4 ^ 6 ^ 8) = 8.
+Where "^" corresponds to bitwise XOR operator.
+
+Example 2:
+Input: n = 4, start = 3
+Output: 8
+Explanation: Array nums is equal to [3, 5, 7, 9] where (3 ^ 5 ^ 7 ^ 9) = 8.
+
+Example 3:
+Input: n = 1, start = 7
+Output: 7
+
+Example 4:
+Input: n = 10, start = 5
+Output: 2
+ */
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+var xorOperation = function(n, start) {
+    let x;
+    for(let i = 0; i < n; i++) {
+      x = x ^ start + 2*i
+    }
+    return x
+};
+xorOperation(  n = 4, start = 3)
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
 /***********************************************************************************/
@@ -2930,6 +4467,62 @@ var maxAscendingSum = function (nums) {
 };
 
 maxAscendingSum([12,17,15,13,10,11,12])
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************
+/*
+1816. Truncate Sentence
+Easy
+
+A sentence is a list of words that are separated by a single space with no leading or trailing spaces. Each of the words consists of only uppercase and lowercase English letters (no punctuation).
+
+For example, "Hello World", "HELLO", and "hello world hello world" are all sentences.
+You are given a sentence s​​​​​​ and an integer k​​​​​​. You want to truncate s​​​​​​ such that it contains only the first k​​​​​​ words. Return s​​​​​​ after truncating it.
+
+Example 1:
+Input: s = "Hello how are you Contestant", k = 4
+Output: "Hello how are you"
+Explanation:
+The words in s are ["Hello", "how" "are", "you", "Contestant"].
+The first 4 words are ["Hello", "how", "are", "you"].
+Hence, you should return "Hello how are you".
+
+Example 2:
+Input: s = "What is the solution to this problem", k = 4
+Output: "What is the solution"
+Explanation:
+The words in s are ["What", "is" "the", "solution", "to", "this", "problem"].
+The first 4 words are ["What", "is", "the", "solution"].
+Hence, you should return "What is the solution".
+
+Example 3:
+Input: s = "chopper is not a tanuki", k = 5
+Output: "chopper is not a tanuki"
+
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+//my answer 
+/*
+var truncateSentence = function(s, k) {
+   let ind = [], i, spl = s.split(' ');
+  if(spl.length === k) return s;
+  function getAllIndexes(arr, val) {
+    for(i = 0; i < arr.length; i++)
+        if (arr[i] === val)
+            ind.push(i);
+      return ind;
+    }
+    getAllIndexes(s, ' ');
+    ind=ind.splice(0, k)
+  return s.slice(0, ind[ind.length-1])
+};*/
+
+//leet code answer 
+var truncateSentence = function(s, k) {
+    return s.split(" ").slice(0,k).join(" ");
+};
+ truncateSentence(  s = "Hello how are you Contestant", k = 4)
 */
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
@@ -2962,7 +4555,50 @@ var checkIfPangram = function (sentence) {
 };
 checkIfPangram("thequickbrownfoxjumpsoverthelazydog");
 */
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************
+/*
+1844. Replace All Digits with Characters
+Easy
+You are given a 0-indexed string s that has lowercase English letters in its even indices and digits in its odd indices.
+There is a function shift(c, x), where c is a character and x is a digit, that returns the xth character after c.
+For example, shift('a', 5) = 'f' and shift('x', 0) = 'x'.
+For every odd index i, you want to replace the digit s[i] with shift(s[i-1], s[i]).
 
+Return s after replacing all digits. It is guaranteed that shift(s[i-1], s[i]) will never exceed 'z'.
+
+Example 1:
+Input: s = "a1c1e1"
+Output: "abcdef"
+Explanation: The digits are replaced as follows:
+- s[1] -> shift('a',1) = 'b'
+- s[3] -> shift('c',1) = 'd'
+- s[5] -> shift('e',1) = 'f'
+
+Example 2:
+Input: s = "a1b2c3d4e"
+Output: "abbdcfdhe"
+Explanation: The digits are replaced as follows:
+- s[1] -> shift('a',1) = 'b'
+- s[3] -> shift('b',2) = 'd'
+- s[5] -> shift('c',3) = 'f'
+- s[7] -> shift('d',4) = 'h'
+
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+
+
+var replaceDigits = function(s) {
+let toCode, toChar, str='';
+   for(let i=0; i<s.length; i++){
+     if(!isNaN(s[i])) toCode = s[i-1].charCodeAt(), toChar = String.fromCharCode(toCode+parseInt(s[i])),str+=toChar;
+     else str+=s[i]
+   }
+   return str
+};
+replaceDigits(s = "a1b2c3d4e")
 /**************************************************************************************/
 /*************************************QUESTION********************************************/
 /***********************************************************************************/
@@ -3127,3 +4763,76 @@ var subsetXORSum = function(nums) {
     ;
 };
 subsetXORSum(nums = [5,1,6]);
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***************************************************************************************
+/*
+1880. Check if Word Equals Summation of Two Words
+Easy
+The letter value of a letter is its position in the alphabet starting from 0 (i.e. 'a' -> 0, 'b' -> 1, 'c' -> 2, etc.).
+
+The numerical value of some string of lowercase English letters s is the concatenation of the letter values of each letter in s, which is then converted into an integer.
+
+For example, if s = "acb", we concatenate each letter's letter value, resulting in "021". After converting it, we get 21.
+You are given three strings firstWord, secondWord, and targetWord, each consisting of lowercase English letters 'a' through 'j' inclusive.
+
+Return true if the summation of the numerical values of firstWord and secondWord equals the numerical value of targetWord, or false otherwise.
+
+ 
+
+Example 1:
+
+Input: firstWord = "acb", secondWord = "cba", targetWord = "cdb"
+Output: true
+Explanation:
+The numerical value of firstWord is "acb" -> "021" -> 21.
+The numerical value of secondWord is "cba" -> "210" -> 210.
+The numerical value of targetWord is "cdb" -> "231" -> 231.
+We return true because 21 + 210 == 231.
+Example 2:
+
+Input: firstWord = "aaa", secondWord = "a", targetWord = "aab"
+Output: false
+Explanation: 
+The numerical value of firstWord is "aaa" -> "000" -> 0.
+The numerical value of secondWord is "a" -> "0" -> 0.
+The numerical value of targetWord is "aab" -> "001" -> 1.
+We return false because 0 + 0 != 1.
+
+Example 3:
+Input: firstWord = "aaa", secondWord = "a", targetWord = "aaaa"
+Output: true
+Explanation: 
+The numerical value of firstWord is "aaa" -> "000" -> 0.
+The numerical value of secondWord is "a" -> "0" -> 0.
+The numerical value of targetWord is "aaaa" -> "0000" -> 0.
+We return true because 0 + 0 == 0.
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/*********************************************************************************/
+
+/*
+//first answer correct
+var isSumEqual = function(firstWord, secondWord, targetWord) {
+   let fCode='', sCode=''; tCode='', ln=0, i=0;
+    ln = Math.max(firstWord.length, secondWord.length, targetWord.length)
+    while(i<ln){
+    firstWord[i] ? fCode+=firstWord.charCodeAt(i)-97 : '';
+    secondWord[i] ? sCode+=secondWord.charCodeAt(i)-97: '';
+    targetWord[i] ? tCode+=targetWord.charCodeAt(i)-97 : '';
+    i++;
+    }
+    if((+fCode)+(+sCode)===(+tCode)) return true
+    return false
+};
+//second answer correct 
+var isSumEqual = function(firstWord, secondWord, targetWord) {
+   let sum = (str) => {
+     let res = '';
+      for(let i in str){ res+=str.charCodeAt(i)-97}
+      return +res
+    }
+    return sum(firstWord)+sum(secondWord)===sum(targetWord) 
+};
+isSumEqual( firstWord = "aaa", secondWord = "a", targetWord = "aaaa");
+*/

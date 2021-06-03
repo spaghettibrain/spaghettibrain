@@ -1,0 +1,221 @@
+/********************COPY PASTE THIS WHEN DOING TREE PROBLEMS********/
+
+isBalanced(tree2 = 
+{
+  val: 1,      /
+  left: { val: 2,            
+                  left: { val: 3,        
+                            left: { val: 4, left: null, right: null },
+                            right: { val: 4, left: null, right: null }
+                         },       
+                     
+                  right: { val: 3, left: null, right: null },
+         },   
+  right:  { val: 2, 
+                  left: null,  
+                  right: null,  
+         }
+}
+)
+/*************INORDER TRAVERSAL******/
+
+//treenode left right 
+function TreeNode(val, left, right) {
+  let node = {};
+  node.val = val === undefined ? 0 : val;
+  node.left = left === undefined ? null : left;
+  node.right = right === undefined ? null : right;
+  return node;
+}
+//algorithm for problem modify for each problem 
+function algorithm(tree, res) {
+  if (!tree) return res;
+  inOrder(tree.left, res);
+  res.push(tree.val);
+  inOrder(tree.right, res);
+  return res;
+}
+//leetcode function 
+function inorderTraversal(tree) {
+  return algorithm(tree, []);
+}
+//convert array to tree and put in as parameter here 
+inorderTraversal({
+  val: 1,
+  left: null,
+  right: { val: 2, 
+              left: { val: 3, left: null, right: null }, 
+              right: null }});
+
+/************PRE ORDER Traversal**************/
+//treenode left right 
+function TreeNode(val, left, right) {
+  let node = {};
+  node.val = val === undefined ? 0 : val;
+  node.left = left === undefined ? null : left;
+  node.right = right === undefined ? null : right;
+  return node;
+}
+//algorithm for problem modify
+function algorithm(tree, res) {
+  if (!tree) return res;
+   res.push(tree.val);
+  algorithm(tree.left, res);
+  algorithm(tree.right, res);
+  return res;
+}
+
+function preorderTraversal(tree) {
+  return algorithm(tree, []);
+}
+
+preorderTraversal(tree = 
+{
+  val: 3,
+  left: { val: 9, 
+                  left: null, 
+                  right: null,
+         }, 
+  right: { val: 20, 
+                  left: { val: 15, left: null, right: null }, 
+                  right: { val: 7, left: null, right: null },
+         },  
+  
+}
+)
+
+/***********************************************/
+
+tree = 
+{
+  val: 3,
+  left: { val: 9, 
+                  left: null, 
+                  right: null,
+         }, 
+  right: { val: 20, 
+                  left: { val: 15, left: null, right: null }, 
+                  right: { val: 7, left: null, right: null },
+         },  
+  
+}
+)
+
+
+
+
+
+
+
+
+
+
+
+/********************************/+
+
+TREE EXAMPLES
+// if the val is not null u have to fill out the whole {} 
+({
+  val: 3,
+  left:  { val: 9, 
+                  left: null,
+                  right: null},
+
+  right: { val: 20, 
+                  left: { val: 15, left: null, right: null }, 
+                  right: { val: 7, left: null, right: null }}
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//treenode left right 
+function TreeNode(val, left, right) {
+  let node = {};
+  node.val = val === undefined ? 0 : val;
+  node.left = left === undefined ? null : left;
+  node.right = right === undefined ? null : right;
+  return node;
+}
+//algorithm for problem modify
+function algorithm(treeNode, res) {
+  if (!treeNode) return res;
+  inOrder(treeNode.left, res);
+  res.push(treeNode.val);
+  inOrder(treeNode.right, res);
+  return res;
+}
+
+//leetcode function 
+function isBalanced(tree) {
+  return algorithm(tree, []);
+}
+//convert array to tree and put in as parameter here 
+
+isBalanced({
+  val: 3,
+  left:  { val: 9, 
+                  left: null,
+                  right: null},
+
+  right: { val: 20, 
+                  left: { val: 15, left: null, right: null }, 
+                  right: { val: 7, left: null, right: null }}
+})
+
+//isBalanced(root = [3,9,20,null,null,15,7]); */              

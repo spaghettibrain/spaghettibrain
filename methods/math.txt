@@ -46,3 +46,12 @@ nestedArr = [[1,5],[7,3],[3,5]]
 Math.max(...nestedArr.map(arr => arr.reduce((a, b) => a + b)));
 //-> [[6],[10],[8]] -> max : returns : 10 
 
+
+
+/****MAP. MA
+
+You can spread the values() into Math.max:
+
+let m = new Map([['a', 2], ['b',4], ['c',6]])
+
+console.log("Max:", Math.max(...m.values()))

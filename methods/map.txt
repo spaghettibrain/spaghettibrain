@@ -158,3 +158,30 @@ Array.from(map.keys()).map(key => console.log(key));
 
 // Loop through values
 Array.from(map.values()).map(value => console.log(value));
+
+
+
+You can spread the values() into Math.max:
+
+let m = new Map([['a', 2], ['b',4], ['c',6]])
+
+console.log("Max:", Math.max(...m.values()))
+
+You can spread the values() into Math.max:
+
+let m = new Map([['a', 2], ['b',4], ['c',6]])
+
+console.log("Max:", Math.max(...m.values()))
+Expand snippet
+If you need both the key and value, I think you are back to reduce() using the entries() for the map:
+
+let m = new Map([['a', 2], ['b',4], ['c',6]])
+
+console.log([...m.entries()].reduce((a, e ) => e[1] > a[1] ? e : a))
+
+  let elDeg = [...map.entries()].reduce((a, b ) => b[1] > a[1] ? b : a)
+  return elDeg
+/****************FOR EACH MAP  SHORT ***
+      // short map create if element exists add one if it doesnt set it to one 
+
+  nums.forEach(e => (map.get(e)) ? map.set(e, map.get(e)+1) : map.set(e, 1));

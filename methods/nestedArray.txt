@@ -1,0 +1,17 @@
+ arr= Array(nums.length/2).fill([]);
+arr=[[],[]]
+  for(let i=0 ; i<nums.length; i++){
+   arr.map((a)=> a.push(i))
+  }
+result : 
+
+[
+  [
+    0, 0, 1, 1,
+    2, 2, 3, 3
+  ],
+  [
+    0, 0, 1, 1,
+    2, 2, 3, 3
+  ]
+]

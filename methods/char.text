@@ -1,5 +1,60 @@
 /******************************char********************************************/
-/
+/let onlyChar= [...s].filter(e => /[a-z0-9]/.test(e)) filter out everything ot a letter or number 
+let onlyLettersArray = message.split('').filter(char => /[a-zA-Z]/.test(char));
+let arr = ['A', 'B']
+
+if uppercase 
+ console.log(65<= arr.charCodeAt(0) <=90)--> true
+ console.log(arr.charCodeAt(0) <=90)--> true
+
+if lower case
+  console.log(97<= arr.charCodeAt(0) <=122). --> true
+    console.log(arr.charCodeAt(0) <=122). --> true
+
+
+
+  if char 
+ console.log(65<= s.charCodeAt(0) <=90 || 97<= s.charCodeAt(0) <=122)
+  console.log(65<= arr.charCodeAt(0) <=90 || 97<= arr.charCodeAt(0) <=122) //true 
+
+  function isBetween(i, arr) {
+  let n = arr.charCodeAt(i)
+  let isUpperCase = ((n - 64) * (n - 91) <= 0)
+  let isLowerCase = ((n - 96) * (n - 123) <= 0)
+ if(isUpperCase || isLowerCase) return true
+ else return false
+}
+ return  isBetween(3, s)
+
+s.charCodeAt(i)-47)*(s.charCodeAt(i)-58)<= 0) ///checking for NUMS 
+var isPalindrome = function(s) {
+
+function isBetween(i, arr) {
+  let n = arr.charCodeAt(i)
+  let isUpperCase = ((n - 64) * (n - 91) <= 0)
+  let isLowerCase = ((n - 96) * (n - 123) <= 0)
+ if(isUpperCase || isLowerCase) return true
+ else return false
+}
+let w = [...s].filter((e, i)=>  isBetween(i, s)!=false);
+
+ return  w
+};
+removes everything that isnt a char 
+[
+  'A', 'm', 'a', 'n', 'a',
+  'p', 'l', 'a', 'n', 'a',
+  'c', 'a', 'n', 'a', 'l',
+  'P', 'a', 'n', 'a', 'm',
+  'a'
+]
+short hand
+let onlyChar= [...s].filter((e, i)=>  ((s.charCodeAt(i) - 64) * (s.charCodeAt(i) - 91) <= 0) || ((s.charCodeAt(i) - 96) * (s.charCodeAt(i) - 123) <= 0));
+
+ return  onlyChar
+
+A-Z         a-z
+65-90       97-122
 s.charCodeAt(index) --> 113
 s.charAt(index)-->a
 String.fromCharCode(65) -----> 'A'
@@ -77,3 +132,11 @@ let largest= function() {
   code.splice(maxIndex, 1)
   curr=cMax;
   }
+
+
+
+var isPalindrome = function(s) {
+
+let onlyChar= [...s.toLowerCase()]
+
+remove upper case somehow 

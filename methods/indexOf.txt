@@ -1,4 +1,7 @@
  
+indexOf(searchElement)
+indexOf(searchElement, fromIndex)
+
 looks like indexOf finds the first value so with it u could use to see if it exists any where else 
 
 s='aaab'
@@ -60,3 +63,56 @@ var index = items.indexOf(3452);
 if (~index) {
     items[index] = 1010;
 }
+
+
+
+var numIdenticalPairs = function(nums) {
+  let result = 0
+  nums.forEach((number, index) => {
+    index = nums.indexOf(number, index + 1)
+    while(index > 0) {
+      result++
+      index = nums.indexOf(number, index + 1)
+    }
+  })
+  return result
+};
+
+130
+
+The .indexOf() method has an optional second parameter that specifies the index to start searching from, so you can call it in a loop to find all instances of a particular value:
+
+function getAllIndexes(arr, val) {
+    var indexes = [], i = -1;
+    while ((i = arr.indexOf(val, i+1)) != -1){
+        indexes.push(i);
+    }
+    return indexes;
+}
+
+var indexes = getAllIndexes(Cars, "Nano");
+You don't really make it clear how you want to use the indexes, so my function returns them as an array (or returns an empty array if the value isn't found), but you could do something else with the individual index values inside the loop.
+
+UPDATE: As per VisioN's comment, a simple for loop would get the same job done more efficiently, and it is easier to understand and therefore easier to maintain:
+
+function getAllIndexes(arr, val) {
+    var indexes = [], i;
+    for(i = 0; i < arr.length; i++)
+        if (arr[i] === val)
+            indexes.push(i);
+    return indexes;
+}
+
+
+var truncateSentence = function(s, k) {
+let ind = [], i;
+function getAllIndexes(arr, val) {
+     for(i in arr)
+        if (arr[i] === val)
+            ind.push(i);
+    return ind;
+   }
+    getAllIndexes(s, ' ');
+    ind=ind.splice(0, k)
+  return s.slice(0, ind[ind.length-1])
+};

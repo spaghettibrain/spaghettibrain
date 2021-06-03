@@ -1,3 +1,13 @@
+/*****************BEST POSSIBLE WAY********************.
+const myArray = [1,2,3,1,5,8,1,2,9,4];
+const unique = [...new Set(myArray)]; // [1, 2, 3, 5, 8, 9, 4]
+
+const myString = ["a","b","c","a","d","b"];
+const uniqueString = [...new Set(myString)]; //["a", "b", "c", "d"]
+
+
+
+
 code.splice(code.indexOf(cMin)) it looks like indexOf removes duplicates 
 [
   108, 101, 101,
@@ -148,3 +158,6 @@ for(e of s){
 return str
 
 };
+
+  nums.forEach(e => (map.get(e)) ? map.set(e, map.get(e)+1) : map.set(e, 1));
+  let elDeg = [...map.entries()].reduce((a, b ) => b[1] > a[1] ? b : a)

@@ -1,5 +1,21 @@
 
+var smallerNumbersThanCurrent = function(nums) {
+  let copy = [...nums].sort((a, b)=> a -b)
+  let arr = [...copy.keys()]
+  console.log(arr)
+  for(let i=0; i<nums.length; i++){
+console.log(i)
+  }
+};
 
+[ 0, 1, 2, 3 ]
+0
+1
+2
+3
+fast way to make array of index keys 
+
+smallerNumbersThanCurrent(nums = [6,5,4,8])
 
 /****************************************ARRAY EXAMPLES******************************/
  let pairs =  [[ '7', '6', '5' ],

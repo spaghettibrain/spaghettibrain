@@ -1,3 +1,6 @@
+
+let onlyChar= [...s].filter(e => /[a-z0-9]/.test(e)) filter out everything ot a letter or number 
+
 let noSelf = arr.filter(e=> arr[e]!=nums[i]); happy random filter one array 
 by unwanted in of another
 

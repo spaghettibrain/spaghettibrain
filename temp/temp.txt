@@ -1,0 +1,143 @@
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***********************************************************************************/
+/*
+110. Balanced Binary Tree
+Easy
+Given a binary tree, determine if it is height-balanced.
+For this problem, a height-balanced binary tree is defined as:
+a binary tree in which the left and right subtrees of every node differ in height by no more than 1.
+
+Example 1:
+Input: root = [3,9,20,null,null,15,7]
+Output: true
+
+Example 2:
+Input: root = [1,2,2,3,3,null,null,4,4]
+Output: false
+
+Example 3:
+Input: root = []
+Output: true
+
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/***********************************************************************************/ 
+
+
+//treenode left right 
+function TreeNode(val, left, right) {
+  let node = {};
+  node.val = val === undefined ? 0 : val;
+  node.left = left === undefined ? null : left;
+  node.right = right === undefined ? null : right;
+  return node;
+}
+//algorithm for problem modify
+function algorithm(treeNode, res) {
+  if (!treeNode) return res;
+  inOrder(treeNode.left, res);
+  res.push(treeNode.val);
+  inOrder(treeNode.right, res);
+  return res;
+}
+
+//leetcode function 
+function isBalanced(tree) {
+  return algorithm(tree, []);
+}
+//convert array to tree and put in as parameter here 
+
+isBalanced({
+  val: 3,
+  left:  { val: 9, 
+                  left: null,
+                  right: null},
+
+  right: { val: 20, 
+                  left: { val: 15, left: null, right: null }, 
+                  right: { val: 7, left: null, right: null }}
+})
+
+//isBalanced(root = [3,9,20,null,null,15,7]); */              
+
+
+
+
+/**************************************************************************************/
+/*************************************QUESTION********************************************/
+/***********************************************************************************/
+/*
+144. Binary Tree Preorder Traversal
+Easy
+Given the root of a binary tree, return the preorder traversal of its nodes' values.
+
+Example 1:
+Input: root = [1,null,2,3]
+root = 
+{
+  val: 1,
+  left:  null,
+
+  right: { val: 2, 
+                  left: { val: 3, left: null, right: null }, 
+                  right: null,
+         }  
+}
+
+Output: [1,2,3]
+
+
+Example 2:
+Input: root = []
+Output: []
+
+Example 3:
+Input: root = [1]
+Output: [1]
+
+Example 4:
+Input: root = [1,2]
+Output: [1,2]
+
+Example 5:
+Input: root = [1,null,2]
+Output: [1,2]
+
+/*************************************************************************************/
+/************************************ANSWER********************************************/
+/***********************************************************************************/ 
+/*
+
+//treenode left right 
+function TreeNode(val, left, right) {
+  let node = {};
+  node.val = val === undefined ? 0 : val;
+  node.left = left === undefined ? null : left;
+  node.right = right === undefined ? null : right;
+  return node;
+}
+//algorithm for problem modify
+function algorithm(treeNode, res) {
+  if (!treeNode) return res;
+   res.push(treeNode.val);
+  algorithm(treeNode.left, res);
+  algorithm(treeNode.right, res);
+  return res;
+}
+
+//leetcode function 
+function preorderTraversal(tree) {
+  return algorithm(tree, []);
+}
+//convert array to tree and put in as parameter here 
+
+preorderTraversal(tree='
+'
+)
+//Input: root = []
+//preorderTraversal(tree = [1,null,2,3]);              
+
+*/
+
+console.log('hi')
