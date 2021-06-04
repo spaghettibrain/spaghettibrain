@@ -30,9 +30,9 @@ function TreeNode(val, left, right) {
 //algorithm for problem modify for each problem 
 function algorithm(tree, res) {
   if (!tree) return res;
-  inOrder(tree.left, res);
+  algorithm(tree.left, res);
   res.push(tree.val);
-  inOrder(tree.right, res);
+  algorithm(tree.right, res);
   return res;
 }
 //leetcode function 
@@ -218,4 +218,76 @@ isBalanced({
                   right: { val: 7, left: null, right: null }}
 })
 
-//isBalanced(root = [3,9,20,null,null,15,7]); */              
+//isBalanced(root = [3,9,20,null,null,15,7]); */        
+
+
+
+diameterOfBinaryTree( 
+tree1 =
+{
+val: 3,
+    left: { val: 5, 
+                  left: { val: 6,        
+                                 left: null,
+                                 right: null
+                         }, 
+                  right: { val: 2,        
+                                  left: { val: 7,        
+                                                left: null,
+                                                right: null
+                                          }, 
+                                  right: { val: 4,        
+                                                left: null,
+                                                right: null
+                                           }, 
+                          }, 
+         },  
+  
+ right: { val: 1, 
+                  left: { val: 9,        
+                                 left: null,
+                                 right: null
+                         }, 
+                  right: { val: 8,        
+                                 left: null,
+                                 right: null
+                         }, 
+         }
+
+},
+
+tree2= 
+{
+val: 3,
+    left: { val: 5, 
+                  left: { val: 6,       
+                                 left: null,
+                                 right: null
+                         }, 
+                  right: { val: 7,        
+                                 left: null,
+                                 right: null
+                         }, 
+         },  
+  
+ right: { val: 1, 
+                  left: { val: 4,        
+                                 left: null,
+                                 right: null
+                         }, 
+                  right: { val: 2,        
+                                  left: { val: 9,        
+                                                left: null,
+                                                right: null
+                                          }, 
+                                   right: { val: 8,        
+                                                 left: null,
+                                                 right: null
+                                           }, 
+                          }, 
+         }
+
+}
+
+
+) 
