@@ -13,17 +13,17 @@ var preorderArrayToTree = function(arr) {
   let tree = new TreeNode(arr[0]), ln=arr.length;
   if (!arr[0]) return null;
 
-  function search(tree, i) {
+  function build(tree, i) {
     if (!tree  || i >= ln) return i;
     tree.left  = arr[i] ? TreeNode(arr[i]) : null;
-    let nextR = search(tree.left, i+1);
+    let nextR = build(tree.left, i+1);
     tree.right = nextR>= ln || !arr[nextR] ? null : TreeNode(arr[nextR]);
-    let nextL =  search(tree.right, nextR+1)
+    let nextL =  build(tree.right, nextR+1)
     return nextL
 
   }
 
-  search(tree, 1);
+  build(tree, 1);
   return tree;
 }
 
